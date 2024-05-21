@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://dplf8d8w78la4"]
+[gd_scene load_steps=3 format=3 uid="uid://dplf8d8w78la4"]
 
 [ext_resource type="Environment" uid="uid://bvm7cbs5joq26" path="res://assets/env/env_day.tres" id="1_hf8p2"]
+[ext_resource type="Script" path="res://scripts/environment&lights.gd" id="1_pwku0"]
 
 [node name="environment" type="Node3D"]
+script = ExtResource("1_pwku0")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_hf8p2")
