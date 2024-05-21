@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://1r0ah5m40y1d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7xmn6"]
+albedo_color = Color(0.167902, 0.13043, 0.0719363, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_20rf8"]
+material = SubResource("StandardMaterial3D_7xmn6")
+
+[node name="SittingLog" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-2.20053e-08, -0.503424, 0, 0.503424, -2.20053e-08, 0, 0, 0, 0.503424, 0, 0, 0)
+mesh = SubResource("CylinderMesh_20rf8")

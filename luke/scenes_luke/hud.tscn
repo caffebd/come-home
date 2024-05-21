@@ -1,0 +1,478 @@
+[gd_scene load_steps=10 format=3 uid="uid://cm3d1u3ihuwtd"]
+
+[ext_resource type="Script" path="res://luke/scripts_luke/hud.gd" id="1_v33x2"]
+[ext_resource type="Texture2D" uid="uid://wynt0hi00qc8" path="res://assets/ui/target.png" id="2_4bb86"]
+[ext_resource type="FontFile" uid="uid://duirhuy7klyp8" path="res://assets/fonts/alagard.ttf" id="4_44lwp"]
+[ext_resource type="FontFile" uid="uid://cnv2p7n8e175w" path="res://assets/fonts/Comfortaa/Comfortaa-VariableFont_wght.ttf" id="4_qs75q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s4kd3"]
+bg_color = Color(0.929412, 0.886275, 0.788235, 1)
+
+[sub_resource type="Animation" id="Animation_hxk61"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TopLid:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TopLid:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-560, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BottomLid:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BottomLid:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1082, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_cnij3"]
+resource_name = "close"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TopLid:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TopLid:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-560, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BottomLid:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BottomLid:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1082, -0.25, 0, 0.25, 0, 547, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="Animation" id="Animation_11xft"]
+resource_name = "open"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TopLid:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TopLid:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -560, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BottomLid:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BottomLid:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(547, -0.25, 0, 0.25, 0, 1082, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e38kj"]
+_data = {
+"RESET": SubResource("Animation_hxk61"),
+"close": SubResource("Animation_cnij3"),
+"open": SubResource("Animation_11xft")
+}
+
+[node name="Hud" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_v33x2")
+use_fade = false
+
+[node name="target" type="TextureRect" parent="."]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.588235)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -7.5
+offset_top = -7.5
+offset_right = 7.5
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_4bb86")
+expand_mode = 2
+
+[node name="Inventory" type="GridContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -30.5
+offset_top = -123.0
+offset_right = 30.5
+offset_bottom = -67.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/h_separation = 5
+columns = 7
+
+[node name="Dialogue" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -319.5
+offset_top = -270.0
+offset_right = 319.5
+offset_bottom = -160.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_qs75q")
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_s4kd3")
+text = "Got to fix it yourself. Here's a screwdriver. Good luck."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="PlayerAvatar" type="TextureRect" parent="Dialogue"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = -53.5
+offset_top = 1.0
+offset_right = -3.5
+offset_bottom = 51.0
+
+[node name="CallAvatar" type="TextureRect" parent="Dialogue"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = -68.5
+offset_top = 55.0
+offset_right = -5.5
+offset_bottom = 105.0
+
+[node name="NoteText" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -870.0
+offset_top = -270.0
+offset_right = -389.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/bold_italics_font_size = 48
+theme_override_font_sizes/italics_font_size = 48
+theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/bold_font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxFlat_s4kd3")
+bbcode_enabled = true
+text = "You should have taken the stairs my friend."
+autowrap_mode = 2
+
+[node name="TextBackground" type="ColorRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -780.0
+offset_top = -175.0
+offset_right = 780.0
+offset_bottom = -62.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0, 0, 0, 0.784314)
+
+[node name="Speech" type="Label" parent="TextBackground"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -47.5
+offset_right = 20.0
+offset_bottom = 48.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/line_spacing = 12
+theme_override_fonts/font = ExtResource("4_qs75q")
+theme_override_font_sizes/font_size = 30
+text = "Come on Saif, keep up."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NarrationBackground" type="ColorRect" parent="."]
+unique_name_in_owner = true
+auto_translate_mode = 1
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -780.0
+offset_top = -427.5
+offset_right = 780.0
+offset_bottom = -314.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.89, 0.89, 0.89, 1)
+
+[node name="Narration" type="Label" parent="NarrationBackground"]
+unique_name_in_owner = true
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -93.0
+offset_top = -48.0
+offset_right = 93.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 12
+theme_override_fonts/font = ExtResource("4_qs75q")
+theme_override_font_sizes/font_size = 30
+text = "narraot text"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InfoToPlayer" type="ColorRect" parent="."]
+unique_name_in_owner = true
+auto_translate_mode = 1
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -780.0
+offset_top = -427.5
+offset_right = 780.0
+offset_bottom = -314.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.89, 0.89, 0.89, 1)
+
+[node name="InfoToPlayerText" type="Label" parent="InfoToPlayer"]
+unique_name_in_owner = true
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -93.0
+offset_top = -48.0
+offset_right = 93.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 12
+theme_override_fonts/font = ExtResource("4_qs75q")
+theme_override_font_sizes/font_size = 30
+text = "narraot text"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TopLid" type="ColorRect" parent="."]
+layout_mode = 0
+offset_top = -560.0
+offset_right = 1923.0
+offset_bottom = -12.0
+color = Color(0, 0, 0, 1)
+
+[node name="BottomLid" type="ColorRect" parent="."]
+auto_translate_mode = 1
+layout_mode = 0
+offset_top = 1082.0
+offset_right = 1923.0
+offset_bottom = 1630.0
+color = Color(0, 0, 0, 1)
+
+[node name="CloseEyes" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_e38kj")
+}
+
+[node name="FPS" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -80.0
+offset_top = 20.0
+offset_right = -29.0
+offset_bottom = 43.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("4_44lwp")
+theme_override_font_sizes/font_size = 50
+text = "123"
+
+[node name="Cover" type="ColorRect" parent="."]
+auto_translate_mode = 1
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="Title" type="Label" parent="Cover"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -210.5
+offset_top = -39.0
+offset_right = 210.5
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_44lwp")
+theme_override_font_sizes/font_size = 82
+text = "Come Home"
+
+[node name="Title2" type="Label" parent="Cover/Title"]
+unique_name_in_owner = true
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -348.0
+offset_top = 67.0
+offset_right = 351.0
+offset_bottom = 145.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_44lwp")
+theme_override_font_sizes/font_size = 50
+text = "Bangla Ghost Stories Chapter 1"

@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://degk2uih2lc5u"]
+
+[ext_resource type="AudioStream" uid="uid://dyrknge1ud6w7" path="res://luke/assets_luke/audio_luke/temp_bg_music.mp3" id="1_1bxgu"]
+[ext_resource type="Script" path="res://luke/scripts_luke/global_scene.gd" id="1_83qdu"]
+
+[node name="GlobalScene" type="Node3D"]
+script = ExtResource("1_83qdu")
+
+[node name="BgMusic" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("1_1bxgu")
+volume_db = -10.0

@@ -1,0 +1,21 @@
+[gd_resource type="Environment" load_steps=3 format=3 uid="uid://c3i4hj3gl2m6x"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_bjr3t"]
+
+[sub_resource type="Sky" id="Sky_hsqg0"]
+sky_material = SubResource("PhysicalSkyMaterial_bjr3t")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_hsqg0")
+ambient_light_source = 2
+reflected_light_source = 1
+tonemap_mode = 3
+fog_mode = 1
+fog_light_color = Color(0.134474, 0.278237, 0.28454, 1)
+fog_density = 0.5426
+fog_depth_begin = -27.0
+volumetric_fog_enabled = true
+volumetric_fog_albedo = Color(0, 0, 0, 1)
+volumetric_fog_emission = Color(0.156729, 0.292128, 0.29681, 1)
+volumetric_fog_length = 43.63

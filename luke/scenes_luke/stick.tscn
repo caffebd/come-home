@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://cgd8lcv552lbu"]
+
+[ext_resource type="Script" path="res://luke/scripts_luke/stick.gd" id="1_wmfmv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yyxl3"]
+albedo_color = Color(0.42, 0.1722, 0.1722, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_k6x6n"]
+material = SubResource("StandardMaterial3D_yyxl3")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_hj2go"]
+height = 0.265
+radius = 0.02
+
+[node name="Stick" type="RigidBody3D" groups=["highlight", "pick_item"]]
+collision_layer = 3
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+gravity_scale = 0.0
+script = ExtResource("1_wmfmv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.57452e-09, -0.140328, 0, 0.0360208, -6.13395e-09, 0, 0, 0, 0.0360208, 0, 0, 0)
+mesh = SubResource("CylinderMesh_k6x6n")
+
+[node name="MyCollision" type="CollisionShape3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_hj2go")

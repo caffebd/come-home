@@ -1,0 +1,101 @@
+[gd_scene load_steps=4 format=3 uid="uid://doxkrnuvvwqhc"]
+
+[ext_resource type="Script" path="res://luke/scripts_luke/PlayerChild.gd" id="1_ofowk"]
+[ext_resource type="PackedScene" uid="uid://cm3d1u3ihuwtd" path="res://luke/scenes_luke/hud.tscn" id="2_g6opo"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0ogxy"]
+height = 1.219
+
+[node name="PlayerChild" type="CharacterBody3D" node_paths=PackedStringArray("attack_marker", "rotate_marker", "lunge_marker") groups=["player"]]
+script = ExtResource("1_ofowk")
+attack_marker = NodePath("Head/PlayerCam/AttackMarker")
+rotate_marker = NodePath("RotateMarker")
+lunge_marker = NodePath("Head/PlayerCam/LungeMarker")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_0ogxy")
+
+[node name="RotateMarker" type="Marker3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00149998, 0.45512, -0.326577)
+
+[node name="Head" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.402157, 0)
+
+[node name="PlayerCam" type="Camera3D" parent="Head"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0239567, 0)
+cull_mask = 524287
+current = true
+fov = 60.0
+far = 1000.0
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Head/PlayerCam"]
+unique_name_in_owner = true
+transform = Transform3D(0.999667, 0, 0.0258105, 0, 1, 0, -0.0258105, 0, 0.999667, 0.00186288, 0.00689521, 0)
+light_color = Color(0.85578, 0.893093, 0.888796, 1)
+light_volumetric_fog_energy = 0.0
+spot_range = 37.5842
+
+[node name="PlayerRay" type="RayCast3D" parent="Head/PlayerCam"]
+unique_name_in_owner = true
+target_position = Vector3(0, 0, -2)
+collision_mask = 2
+
+[node name="LungeMarker" type="Marker3D" parent="Head/PlayerCam"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.708612)
+
+[node name="AttackMarker" type="Marker3D" parent="Head/PlayerCam"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.40703)
+
+[node name="PlayerInfoLabel" type="Label3D" parent="Head/PlayerCam"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0270636, -0.600696, -1.65353)
+visible = false
+text = "It's too high
+to reach"
+font_size = 22
+
+[node name="HoldPosition" type="Node3D" parent="Head/PlayerCam"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.248577, -1.53805)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+positional_shadow_atlas_size = 4096
+canvas_cull_mask = 4294443008
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="HandCam" type="Camera3D" parent="CanvasLayer/SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.656383, 0)
+cull_mask = 524288
+
+[node name="OmniLight3D" type="OmniLight3D" parent="CanvasLayer/SubViewportContainer/SubViewport/HandCam"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.129993, 0.195266, -0.786708)
+layers = 524288
+light_color = Color(0.957333, 1, 0.68, 1)
+light_energy = 2.0
+light_cull_mask = 4294443008
+omni_range = 0.915
+
+[node name="Hand" type="Node3D" parent="CanvasLayer/SubViewportContainer/SubViewport/HandCam"]
+unique_name_in_owner = true
+transform = Transform3D(0.931907, -0.362698, 0, 0.331336, 0.851326, 0.406769, -0.147534, -0.37907, 0.913531, 0.358857, -0.469255, -0.8357)
+
+[node name="Hud" parent="." instance=ExtResource("2_g6opo")]
+unique_name_in_owner = true
