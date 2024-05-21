@@ -4,6 +4,11 @@ extends CharacterBody3D
 @export var path_one_markers: Array[Marker3D]
 
 @export var player: CharacterBody3D
+@export var father: CharacterBody3D
+
+@export var breath_1: AudioStreamPlayer3D
+@export var breath_2: AudioStreamPlayer3D
+@export var breath_3: AudioStreamPlayer3D
 
 @onready var orb_collider: CollisionShape3D = %OrbCollider
 
@@ -32,6 +37,7 @@ func _ready() -> void:
 	GlobalSignals.orb_sense_player.connect(_orb_sense_player)
 	GlobalSignals.orb_next_position.connect(_orb_next_position)
 	GlobalSignals.night_path_set_up.connect(_night_path_set_up)
+	GlobalSignals.orb_to_night_path.connect(_night_path_set_up)
 	GlobalSignals.fork_set_up.connect(_fork_set_up)
 	_set_check_points(CLEARING)
 	await get_tree().create_timer(3.0).timeout
@@ -41,8 +47,9 @@ func _ready() -> void:
 
 func _clearing_trigger_orb():
 	speed = start_speed
-	moving = true
+	moving = false
 	check_index = 0
+	sense_player = false
 	_next_position()
 	#var tween = create_tween()
 	#tween.tween_property(self, "global_position:y", 9.4, 5.0)
@@ -94,7 +101,8 @@ func _physics_process(delta: float) -> void:
 		velocity = direction * speed
 	else:
 		moving = false
-		sense_player = true
+		if not father.visible:
+			sense_player = true
 
 	move_and_slide()
 
@@ -131,10 +139,19 @@ func _check_for_narration(check_point: String):
 	print(check_point)
 	match check_point:
 		"OrbNight2":
+			GlobalSignals.emit_signal("time_transition_0")
 			Narration.narrate()
 		"OrbNight5":
 			Narration.narrate()
+		"OrbNight6":
+			breath_1.play()
 		"OrbNight8":
+			breath_2.play()
+		"OrbNight10":
+			Narration.narrate()
+		"OrbNight11":
+			breath_2.play()
+		"OrbNight12":
 			Narration.narrate()
 		#"OrbNight11":
 			#moving = false

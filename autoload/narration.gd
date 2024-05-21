@@ -16,7 +16,7 @@ var leave_clearing_index: int = 8
 
 var night_path_index: int = 9
 
-var fork_index: int = 12
+var fork_index: int = 13
 
 var all_narration = [
 	["My dad was the only one who called me Saif instead of Saiful."],
@@ -30,7 +30,8 @@ var all_narration = [
 	["At the time, I felt I had to follow that glowing light."],
 	["It started to get dark."],
 	["I'd never been out in the forest this late before."],
-	["I heard sounds I'd never heard before."],
+	["I'd never been left on my own this long before."],
+	["It was getting cold and I began to shiver."],
 	["I came to a fork in the road. That was when I had to make a choice."],
 	["Follow the glowing light, or follow my dad's voice?"]
 ]

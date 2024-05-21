@@ -16,3 +16,4 @@ func _on_body_entered(body: Node3D) -> void:
 		if body.held == false:
 			body.queue_free()
 			GlobalSignals.emit_signal("stick_drop")
+			%StickDropSound.play()

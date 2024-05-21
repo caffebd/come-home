@@ -32,6 +32,7 @@ signal orb_next_position()
 signal orb_sense_player(state)
 
 signal night_path_set_up()
+signal orb_to_night_path()
 
 signal fork_set_up()
 

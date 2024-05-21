@@ -16,9 +16,11 @@ func _father_gone():
 func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		can_monitor = false
+		%DadGoneDrone.play()
 		set_deferred("monitoring", can_monitor)
+		await get_tree().create_timer(2.4).timeout
 		Narration.main_index = Narration.dad_gone_index
 		Narration.sub_index = 0
 		Narration.narrate()
-		GlobalSignals.emit_signal("orb_sense_player", true)
-		GlobalSignals.emit_signal("orb_next_position")
+		#GlobalSignals.emit_signal("orb_sense_player", true)
+		GlobalSignals.emit_signal("orb_to_night_path")

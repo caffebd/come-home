@@ -9,3 +9,6 @@ func start_bg_music():
 	%BgMusic.play()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
+func start_night_path_music():
+	%BgMusic.stop()
+	$NightPathMusic.play()

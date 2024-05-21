@@ -220,6 +220,7 @@ func _physics_process(delta):
 	
 	
 	if Input.is_action_just_pressed("jump") and is_on_floor():
+		%Jump.play()
 		velocity.y = JUMP_VELOCITY
 	
 	if Input.is_action_pressed("use"):
@@ -233,6 +234,11 @@ func _physics_process(delta):
 				#object.global_position.x = attack_marker.global_position.x
 	
 	var input_dir = Input.get_vector("left", "right", "forward", "back")
+	if input_dir != Vector2(0,0) and is_on_floor() and speed >= 1.5:
+		if not %Footsteps.playing:
+			%Footsteps.play()
+	else:
+		%Footsteps.stop()
 	var direction = (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if is_on_floor():
 		if direction:
@@ -263,6 +269,9 @@ func _physics_process(delta):
 	if constant_wobble:
 		t_bob += delta * 2.0 * float(is_on_floor())
 		camera.transform.origin =_headbob(t_bob)
+		
+	#print (str(velocity.x) +"   "+str(velocity.y))
+
 
 
 	move_and_slide()

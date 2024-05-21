@@ -18,4 +18,5 @@ func _on_body_entered(body: Node3D) -> void:
 		Narration.sub_index = 0
 		Narration.narrate()
 		await get_tree().create_timer(5.0).timeout
+		GlobalScene.start_night_path_music()
 		

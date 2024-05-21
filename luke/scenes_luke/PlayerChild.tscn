@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://doxkrnuvvwqhc"]
+[gd_scene load_steps=6 format=3 uid="uid://doxkrnuvvwqhc"]
 
 [ext_resource type="Script" path="res://luke/scripts_luke/PlayerChild.gd" id="1_ofowk"]
 [ext_resource type="PackedScene" uid="uid://cm3d1u3ihuwtd" path="res://luke/scenes_luke/hud.tscn" id="2_g6opo"]
+[ext_resource type="AudioStream" uid="uid://bd4trkkqkw1h0" path="res://luke/assets_luke/audio_luke/jump_short.mp3" id="3_okxv4"]
+[ext_resource type="AudioStream" uid="uid://oy0gvh16kvly" path="res://luke/assets_luke/audio_luke/grass_footsteps.mp3" id="3_r2ww0"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0ogxy"]
 height = 1.219
@@ -99,3 +101,13 @@ transform = Transform3D(0.931907, -0.362698, 0, 0.331336, 0.851326, 0.406769, -0
 
 [node name="Hud" parent="." instance=ExtResource("2_g6opo")]
 unique_name_in_owner = true
+
+[node name="Jump" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_okxv4")
+volume_db = -5.0
+
+[node name="Footsteps" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_r2ww0")
+volume_db = -12.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://qgbj73vixll4"]
+[gd_scene load_steps=41 format=3 uid="uid://qgbj73vixll4"]
 
 [ext_resource type="Script" path="res://luke/scripts_luke/village.gd" id="1_52nm1"]
 [ext_resource type="PackedScene" uid="uid://ds8jitdfn8yuj" path="res://assets/path.tscn" id="2_7n3rm"]
@@ -13,13 +13,18 @@
 [ext_resource type="Script" path="res://luke/scripts_luke/stick_drop_area.gd" id="8_8v8b4"]
 [ext_resource type="Script" path="res://luke/scripts_luke/arrow.gd" id="8_33w2u"]
 [ext_resource type="PackedScene" uid="uid://1r0ah5m40y1d" path="res://luke/scenes_luke/SittingLog.tscn" id="8_my4o7"]
+[ext_resource type="AudioStream" uid="uid://nuuhbrpl7cdv" path="res://luke/assets_luke/audio_luke/stick_drop.mp3" id="11_saw7h"]
 [ext_resource type="Script" path="res://luke/scripts_luke/see_dad_gone_area.gd" id="12_xt7f5"]
 [ext_resource type="Script" path="res://luke/scripts_luke/dad_speak_area.gd" id="14_1i5ef"]
+[ext_resource type="AudioStream" uid="uid://clw8gc5lvwpdo" path="res://luke/assets_luke/audio_luke/low_drone.mp3" id="14_4j83y"]
 [ext_resource type="Script" path="res://luke/scripts_luke/exit_path_trigger.gd" id="14_e0drn"]
 [ext_resource type="PackedScene" uid="uid://doxkrnuvvwqhc" path="res://luke/scenes_luke/PlayerChild.tscn" id="14_k0c81"]
 [ext_resource type="AudioStream" uid="uid://tgrrdeuedo2w" path="res://luke/assets_luke/audio_luke/dad_saiful_temp.mp3" id="18_ebsws"]
+[ext_resource type="AudioStream" uid="uid://bl8vkh25bmpku" path="res://luke/assets_luke/audio_luke/monster_breath_1.mp3" id="18_j7org"]
 [ext_resource type="Script" path="res://luke/scripts_luke/fork_area.gd" id="18_xmxnm"]
 [ext_resource type="Script" path="res://luke/scripts_luke/dad_voice.gd" id="19_od4ut"]
+[ext_resource type="AudioStream" uid="uid://c0y4er8tiyw6x" path="res://luke/assets_luke/audio_luke/monster_breath_2.mp3" id="19_y7sh4"]
+[ext_resource type="AudioStream" uid="uid://cjj6bqldd3lju" path="res://luke/assets_luke/audio_luke/monster_breath_3.mp3" id="20_bvfy3"]
 [ext_resource type="FontFile" uid="uid://duirhuy7klyp8" path="res://assets/fonts/alagard.ttf" id="20_or1ta"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_sr1r6"]
@@ -345,23 +350,27 @@ player = NodePath("../PlayerChild")
 top_mound_marker = NodePath("../Ledge/DadTopMound")
 sitting_log = NodePath("../Clearing/SittingLog")
 
-[node name="Orb" parent="." node_paths=PackedStringArray("clearing_markers", "path_one_markers", "player") instance=ExtResource("8_5d4jk")]
+[node name="Orb" parent="." node_paths=PackedStringArray("clearing_markers", "path_one_markers", "player", "father", "breath_1", "breath_2", "breath_3") instance=ExtResource("8_5d4jk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.575, 4.72011, 452.751)
 clearing_markers = [NodePath("../Clearing/OrbClearingMarkers/OrbC1"), NodePath("../Clearing/OrbClearingMarkers/OrbCPath")]
-path_one_markers = [NodePath("../NightPath/PathNight/OrbNight1"), NodePath("../NightPath/PathNight/OrbNight2"), NodePath("../NightPath/PathNight/OrbNight3"), NodePath("../NightPath/PathNight/OrbNight4"), NodePath("../NightPath/PathNight/OrbNight5"), NodePath("../NightPath/PathNight/OrbNight6"), NodePath("../NightPath/PathNight/OrbNight7"), NodePath("../NightPath/PathNight/OrbNight8"), NodePath("../NightPath/PathNight/OrbNight9"), NodePath("../NightPath/PathNight/OrbNight10"), NodePath("../NightPath/PathNight/OrbNight11")]
+path_one_markers = [NodePath("../NightPath/PathNight/OrbNight1"), NodePath("../NightPath/PathNight/OrbNight2"), NodePath("../NightPath/PathNight/OrbNight3"), NodePath("../NightPath/PathNight/OrbNight4"), NodePath("../NightPath/PathNight/OrbNight5"), NodePath("../NightPath/PathNight/OrbNight6"), NodePath("../NightPath/PathNight/OrbNight7"), NodePath("../NightPath/PathNight/OrbNight8"), NodePath("../NightPath/PathNight/OrbNight9"), NodePath("../NightPath/PathNight/OrbNight10"), NodePath("../NightPath/PathNight/OrbNight11"), NodePath("../NightPath/PathNight/OrbNight12"), NodePath("../NightPath/PathNight/OrbNight13"), NodePath("../NightPath/PathNight/OrbNight14")]
 player = NodePath("../PlayerChild")
+father = NodePath("../Father")
+breath_1 = NodePath("../NightPath/PathNight/OrbNight6/Breath")
+breath_2 = NodePath("../NightPath/PathNight/OrbNight8/Breath2")
+breath_3 = NodePath("../NightPath/PathNight/OrbNight11/Breath3")
 
 [node name="Clearing" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.3117, -10.9828, 475.86)
 
 [node name="Stick1" parent="Clearing" instance=ExtResource("8_1v5c4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.1446, 19.1108, -27.9402)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.6687, 19.0982, -31.1327)
 
 [node name="Stick2" parent="Clearing" instance=ExtResource("8_1v5c4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.1446, 19.1108, -27.0967)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.7572, 19.1404, -23.5384)
 
 [node name="Stick3" parent="Clearing" instance=ExtResource("8_1v5c4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.1446, 19.1108, -26.3968)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.4885, 19.1093, -26.3063)
 
 [node name="StickDropArea" type="Area3D" parent="Clearing"]
 transform = Transform3D(1, 0, -4.65661e-10, 0, 1, 0, 4.65661e-10, 0, 1, -32.4541, 19.1959, -24.8275)
@@ -370,8 +379,13 @@ script = ExtResource("8_8v8b4")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Clearing/StickDropArea"]
 shape = SubResource("CylinderShape3D_sr1r6")
 
+[node name="StickDropSound" type="AudioStreamPlayer3D" parent="Clearing/StickDropArea"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.29189, 0, 0)
+stream = ExtResource("11_saw7h")
+
 [node name="Arrow" type="Node3D" parent="Clearing"]
-transform = Transform3D(0.927843, 0, 0.372972, 0, 1, 0, -0.372972, 0, 0.927843, -33.4676, 19.0635, -24.7816)
+transform = Transform3D(0.998417, 0, -0.0562569, 0, 1, 0, 0.0562569, 0, 0.998417, -33.5761, 19.0635, -25.456)
 script = ExtResource("8_33w2u")
 
 [node name="MadeArrow" type="Node3D" parent="Clearing/Arrow"]
@@ -421,6 +435,10 @@ script = ExtResource("12_xt7f5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Clearing/SeeDadGoneArea"]
 shape = SubResource("CylinderShape3D_5vkaj")
+
+[node name="DadGoneDrone" type="AudioStreamPlayer" parent="Clearing/SeeDadGoneArea"]
+unique_name_in_owner = true
+stream = ExtResource("14_4j83y")
 
 [node name="OrbClearingMarkers" type="Node3D" parent="Clearing"]
 transform = Transform3D(1, 0, -4.65661e-10, 0, 1, 0, 4.65661e-10, 0, 1, -32.0011, 19.1957, -24.799)
@@ -601,37 +619,64 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.18726, 16.2428, 18.7241)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.81354, 6.69215, -91.224)
 
 [node name="OrbNight1" type="Marker3D" parent="NightPath/PathNight"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.93058, 8.72687, 72.4208)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.83159, 8.82389, 94.4825)
 
 [node name="OrbNight2" type="Marker3D" parent="NightPath/PathNight"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.95923, 7.96542, 62.6428)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.16481, 8.53559, 83.8347)
 
 [node name="OrbNight3" type="Marker3D" parent="NightPath/PathNight"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.95923, 7.8537, 43.0775)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.76145, 8.49497, 73.1797)
 
 [node name="OrbNight4" type="Marker3D" parent="NightPath/PathNight"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.2899, 7.12669, 17.1068)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5182, 7.99389, 58.3887)
 
 [node name="OrbNight5" type="Marker3D" parent="NightPath/PathNight"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.62765, 6.35469, -6.40912)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.8995, 7.99483, 44.0435)
 
 [node name="OrbNight6" type="Marker3D" parent="NightPath/PathNight"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.0639, 7.39867, -25.6363)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3221, 6.75684, 27.6374)
+
+[node name="Breath" type="AudioStreamPlayer3D" parent="NightPath/PathNight/OrbNight6"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.63835, 1.7192, 1.63062)
+stream = ExtResource("18_j7org")
+volume_db = -15.0
 
 [node name="OrbNight7" type="Marker3D" parent="NightPath/PathNight"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.2614, 6.87051, -50.9635)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.73297, 6.10916, 4.32642)
 
 [node name="OrbNight8" type="Marker3D" parent="NightPath/PathNight"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.0588, 6.7399, -67.6462)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.20897, 6.34909, -16.8154)
+
+[node name="Breath2" type="AudioStreamPlayer3D" parent="NightPath/PathNight/OrbNight8"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.4198, 1.52224, 12.0461)
+stream = ExtResource("19_y7sh4")
+volume_db = -20.0
 
 [node name="OrbNight9" type="Marker3D" parent="NightPath/PathNight"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.2144, 6.95666, -78.0541)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.1649, 6.59604, -36.8209)
 
 [node name="OrbNight10" type="Marker3D" parent="NightPath/PathNight"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.44439, 6.68414, -86.4208)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.8907, 6.52501, -53.396)
 
 [node name="OrbNight11" type="Marker3D" parent="NightPath/PathNight"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.28624, 6.5725, -92.7824)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.2189, 6.60652, -70.3852)
+
+[node name="Breath3" type="AudioStreamPlayer3D" parent="NightPath/PathNight/OrbNight11"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.3354, 1.49388, 2.29318)
+stream = ExtResource("20_bvfy3")
+volume_db = -15.0
+
+[node name="OrbNight12" type="Marker3D" parent="NightPath/PathNight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.94435, 6.68784, -75.5878)
+
+[node name="OrbNight13" type="Marker3D" parent="NightPath/PathNight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.87611, 6.55134, -85.2331)
+
+[node name="OrbNight14" type="Marker3D" parent="NightPath/PathNight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.87611, 6.43105, -93.3211)
 
 [node name="PlayerFork" type="Marker3D" parent="NightPath"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.31841, 13.8327, -172.982)
@@ -666,12 +711,9 @@ libraries = {
 "": SubResource("AnimationLibrary_dn74t")
 }
 
-[node name="ClearingExit" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 2.72611, 0, 0, 0, 1, -59.4269, 9.13956, 430.202)
-mesh = SubResource("CapsuleMesh_cfc8h")
-
 [node name="ChoiceFork" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 2.72611, 0, 0, 0, 1, -51.8689, 3.39052, 246.467)
+visible = false
 mesh = SubResource("CapsuleMesh_cfc8h")
 
 [node name="Cave" type="MeshInstance3D" parent="."]
