@@ -1,0 +1,731 @@
+[gd_scene load_steps=38 format=3 uid="uid://c1s21leqfk0hx"]
+
+[ext_resource type="Script" path="res://luke/scripts_luke/village.gd" id="1_xj3v6"]
+[ext_resource type="PackedScene" uid="uid://uwgt08apwad6" path="res://scenes/ScreenEffect.tscn" id="2_enkdy"]
+[ext_resource type="PackedScene" uid="uid://bvvre0p6auulq" path="res://assets/world.tscn" id="3_3tc8g"]
+[ext_resource type="PackedScene" uid="uid://dplf8d8w78la4" path="res://assets/environment&lights.tscn" id="4_oae23"]
+[ext_resource type="PackedScene" uid="uid://ds8jitdfn8yuj" path="res://assets/path.tscn" id="5_v30fn"]
+[ext_resource type="PackedScene" uid="uid://doxkrnuvvwqhc" path="res://luke/scenes_luke/PlayerChild.tscn" id="6_mayfm"]
+[ext_resource type="PackedScene" uid="uid://df623wi4323mu" path="res://luke/scenes_luke/father_test.tscn" id="7_lfrey"]
+[ext_resource type="PackedScene" uid="uid://djwe3ra6fh80c" path="res://luke/scenes_luke/orb.tscn" id="8_qq75y"]
+[ext_resource type="PackedScene" uid="uid://cgd8lcv552lbu" path="res://luke/scenes_luke/stick.tscn" id="9_2sprj"]
+[ext_resource type="Script" path="res://luke/scripts_luke/stick_drop_area.gd" id="10_4emfm"]
+[ext_resource type="Script" path="res://luke/scripts_luke/arrow.gd" id="11_nvhbh"]
+[ext_resource type="Script" path="res://luke/scripts_luke/see_dad_gone_area.gd" id="12_wc7fk"]
+[ext_resource type="PackedScene" uid="uid://1r0ah5m40y1d" path="res://luke/scenes_luke/SittingLog.tscn" id="13_58d7i"]
+[ext_resource type="Script" path="res://luke/scripts_luke/exit_path_trigger.gd" id="14_uwxdn"]
+[ext_resource type="Script" path="res://luke/scripts_luke/climbed_mound.gd" id="15_otx5f"]
+[ext_resource type="PackedScene" uid="uid://btdf8my7v3yqn" path="res://luke/scenes_luke/log.tscn" id="16_tdr1t"]
+[ext_resource type="Script" path="res://luke/scripts_luke/dad_speak_area.gd" id="17_spb1v"]
+[ext_resource type="Script" path="res://luke/scripts_luke/fork_area.gd" id="18_27g15"]
+[ext_resource type="AudioStream" uid="uid://tgrrdeuedo2w" path="res://luke/assets_luke/audio_luke/dad_saiful_temp.mp3" id="19_32cwd"]
+[ext_resource type="Script" path="res://luke/scripts_luke/dad_voice.gd" id="20_u1hat"]
+[ext_resource type="FontFile" uid="uid://duirhuy7klyp8" path="res://assets/fonts/alagard.ttf" id="21_da3l7"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_sr1r6"]
+height = 1.385
+radius = 0.905
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b12jx"]
+albedo_color = Color(0.42, 0.1722, 0.1722, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_r5iw5"]
+material = SubResource("StandardMaterial3D_b12jx")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_5vkaj"]
+radius = 8.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_v7he5"]
+radius = 5.305
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lyhi0"]
+size = Vector3(10.625, 1, 0.06)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1fo8h"]
+size = Vector3(6.67, 0.565, 0.65)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j1mdo"]
+size = Vector3(12.305, 1, 1)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_l7tdc"]
+radius = 3.295
+
+[sub_resource type="Animation" id="Animation_yyfu4"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SaifulLabel:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SaifulLabel:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SaifulLabel:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SaifulLabel:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SaifulLabel:scale:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SaifulLabel:scale:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SaifulLabel:scale:z")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SaifulLabel:outline_modulate:r")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SaifulLabel:outline_modulate:g")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SaifulLabel:outline_modulate:b")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/10/type = "bezier"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("SaifulLabel:outline_modulate:a")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_t3n88"]
+resource_name = "expand"
+length = 1.6
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SaifulLabel:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.1, 1.6)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SaifulLabel:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.1, 1.6)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SaifulLabel:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.1, 1.6)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SaifulLabel:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.1, 1.6)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SaifulLabel:scale:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.6)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SaifulLabel:scale:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.6)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SaifulLabel:scale:z")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.6)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SaifulLabel:outline_modulate:r")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1.6)
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SaifulLabel:outline_modulate:g")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1.6)
+}
+tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SaifulLabel:outline_modulate:b")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1.6)
+}
+tracks/10/type = "bezier"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("SaifulLabel:outline_modulate:a")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1.6)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dn74t"]
+_data = {
+"RESET": SubResource("Animation_yyfu4"),
+"expand": SubResource("Animation_t3n88")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tqgou"]
+albedo_color = Color(0, 1, 1, 1)
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_cfc8h"]
+material = SubResource("StandardMaterial3D_tqgou")
+
+[sub_resource type="SphereMesh" id="SphereMesh_qk74g"]
+radius = 0.25
+height = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2guyj"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+
+[node name="village" type="Node3D"]
+script = ExtResource("1_xj3v6")
+
+[node name="screenEffect" parent="." instance=ExtResource("2_enkdy")]
+
+[node name="World" parent="." instance=ExtResource("3_3tc8g")]
+
+[node name="environment" parent="." instance=ExtResource("4_oae23")]
+
+[node name="path" parent="." instance=ExtResource("5_v30fn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.34267, 0)
+visible = false
+
+[node name="PlayerChild" parent="." node_paths=PackedStringArray("attack_marker", "rotate_marker", "lunge_marker", "father", "start_mound_marker", "start_clearing_marker", "start_night_path_marker", "start_fork_marker") instance=ExtResource("6_mayfm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7541, 2.08273, 592.364)
+attack_marker = NodePath("Head/PlayerCam/AttackMarker")
+rotate_marker = NodePath("RotateMarker")
+lunge_marker = NodePath("Head/PlayerCam/LungeMarker")
+father = NodePath("../Father")
+start_mound_marker = NodePath("../Ledge/PlayerToMound")
+start_clearing_marker = NodePath("../Clearing/PlayerClearing")
+start_night_path_marker = NodePath("../NightPath/PlayerNightPath")
+start_fork_marker = NodePath("../NightPath/PlayerFork")
+
+[node name="Father" parent="." node_paths=PackedStringArray("check_points", "clearing_check_points", "player", "top_mound_marker", "sitting_log") instance=ExtResource("7_lfrey")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.8218, 0.885342, 584.845)
+check_points = [NodePath("../FatherCheckPoints/Check9"), NodePath("../FatherCheckPoints/Check10"), NodePath("../FatherCheckPoints/Check11"), NodePath("../FatherCheckPoints/Check12"), NodePath("../FatherCheckPoints/Check13"), NodePath("../FatherCheckPoints/Check14"), NodePath("../FatherCheckPoints/Check15"), NodePath("../FatherCheckPoints/Check16"), NodePath("../FatherCheckPoints/Check17"), NodePath("../FatherCheckPoints/Check18"), NodePath("../FatherCheckPoints/Check19"), NodePath("../FatherCheckPoints/Check20"), NodePath("../FatherCheckPoints/Check21"), NodePath("../FatherCheckPoints/Check22"), NodePath("../FatherCheckPoints/Check23"), NodePath("../FatherCheckPoints/CheckEnd")]
+clearing_check_points = [NodePath("../FatherCheckPointsClearing/CheckM0"), NodePath("../FatherCheckPointsClearing/CheckM1"), NodePath("../FatherCheckPointsClearing/CheckM2"), NodePath("../FatherCheckPointsClearing/CheckM3"), NodePath("../FatherCheckPointsClearing/CheckM4"), NodePath("../FatherCheckPointsClearing/CheckM5"), NodePath("../FatherCheckPointsClearing/CheckM6"), NodePath("../FatherCheckPointsClearing/CheckM7"), NodePath("../FatherCheckPointsClearing/CheckM8"), NodePath("../FatherCheckPointsClearing/CheckM9")]
+player = NodePath("../PlayerChild")
+top_mound_marker = NodePath("../Ledge/DadTopMound")
+sitting_log = NodePath("../Clearing/SittingLog")
+
+[node name="Orb" parent="." node_paths=PackedStringArray("clearing_markers", "path_one_markers", "player") instance=ExtResource("8_qq75y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.575, 4.72011, 452.751)
+clearing_markers = [NodePath("../Clearing/OrbClearingMarkers/OrbC1"), NodePath("../Clearing/OrbClearingMarkers/OrbCPath")]
+path_one_markers = [NodePath("../NightPath/PathNight/OrbNight1"), NodePath("../NightPath/PathNight/OrbNight2"), NodePath("../NightPath/PathNight/OrbNight3"), NodePath("../NightPath/PathNight/OrbNight4"), NodePath("../NightPath/PathNight/OrbNight5"), NodePath("../NightPath/PathNight/OrbNight6"), NodePath("../NightPath/PathNight/OrbNight7"), NodePath("../NightPath/PathNight/OrbNight8"), NodePath("../NightPath/PathNight/OrbNight9"), NodePath("../NightPath/PathNight/OrbNight10"), NodePath("../NightPath/PathNight/OrbNight11")]
+player = NodePath("../PlayerChild")
+
+[node name="Clearing" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.3117, -10.9828, 475.86)
+
+[node name="Stick1" parent="Clearing" instance=ExtResource("9_2sprj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.1446, 19.1108, -27.9402)
+
+[node name="Stick2" parent="Clearing" instance=ExtResource("9_2sprj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.1446, 19.1108, -27.0967)
+
+[node name="Stick3" parent="Clearing" instance=ExtResource("9_2sprj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.1446, 19.1108, -26.3968)
+
+[node name="StickDropArea" type="Area3D" parent="Clearing"]
+transform = Transform3D(1, 0, -4.65661e-10, 0, 1, 0, 4.65661e-10, 0, 1, -32.4541, 19.1959, -24.8275)
+script = ExtResource("10_4emfm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Clearing/StickDropArea"]
+shape = SubResource("CylinderShape3D_sr1r6")
+
+[node name="Arrow" type="Node3D" parent="Clearing"]
+transform = Transform3D(0.927843, 0, 0.372972, 0, 1, 0, -0.372972, 0, 0.927843, -33.4676, 19.0635, -24.7816)
+script = ExtResource("11_nvhbh")
+
+[node name="MadeArrow" type="Node3D" parent="Clearing/Arrow"]
+unique_name_in_owner = true
+
+[node name="stick1" type="MeshInstance3D" parent="Clearing/Arrow/MadeArrow"]
+transform = Transform3D(-8.75533e-10, -0.0780313, 0.0299383, 0.0360208, -6.13393e-09, 0, 1.30865e-09, 0.116632, 0.0200299, 0.309799, 0, -0.0172729)
+visible = false
+mesh = SubResource("CylinderMesh_r5iw5")
+skeleton = NodePath("../..")
+
+[node name="stick2" type="MeshInstance3D" parent="Clearing/Arrow/MadeArrow"]
+transform = Transform3D(5.78904e-10, 0.0515944, 0.0334978, 0.0360208, -6.13393e-09, -1.79792e-17, 1.46423e-09, 0.130499, -0.0132438, 0.476257, 0, 0)
+visible = false
+mesh = SubResource("CylinderMesh_r5iw5")
+skeleton = NodePath("../..")
+
+[node name="stick3" type="MeshInstance3D" parent="Clearing/Arrow/MadeArrow"]
+transform = Transform3D(1.2863e-10, 0.0114641, 0.0359004, 0.0360208, -6.13393e-09, -1.79792e-17, 1.56926e-09, 0.139859, -0.00294271, 0.397873, 0, 0.196594)
+visible = false
+mesh = SubResource("CylinderMesh_r5iw5")
+skeleton = NodePath("../..")
+
+[node name="BrokeArrow" type="Node3D" parent="Clearing/Arrow"]
+unique_name_in_owner = true
+visible = false
+
+[node name="stickb1" type="MeshInstance3D" parent="Clearing/Arrow/BrokeArrow"]
+transform = Transform3D(-1.56259e-09, -0.139264, 0.0044266, 0.0360208, -6.13393e-09, 5.31811e-17, 1.93497e-10, 0.0172449, 0.0357478, 0.12059, 0, -0.0932617)
+mesh = SubResource("CylinderMesh_r5iw5")
+skeleton = NodePath("../..")
+
+[node name="stickb2" type="MeshInstance3D" parent="Clearing/Arrow/BrokeArrow"]
+transform = Transform3D(1.50235e-09, 0.133896, -0.0107801, 0.0360208, -6.13393e-09, 2.35456e-17, -4.71213e-10, -0.0419965, -0.0343699, 0.476257, 0, 0)
+mesh = SubResource("CylinderMesh_r5iw5")
+skeleton = NodePath("../..")
+
+[node name="stickb3" type="MeshInstance3D" parent="Clearing/Arrow/BrokeArrow"]
+transform = Transform3D(-2.16138e-10, -0.0192631, 0.0356798, 0.0360208, -6.13393e-09, -2.79869e-17, 1.55962e-09, 0.139, 0.00494464, 0.250931, 0, 0.137543)
+mesh = SubResource("CylinderMesh_r5iw5")
+skeleton = NodePath("../..")
+
+[node name="SeeDadGoneArea" type="Area3D" parent="Clearing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.4967, 19.4655, -24.8275)
+monitoring = false
+script = ExtResource("12_wc7fk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Clearing/SeeDadGoneArea"]
+shape = SubResource("CylinderShape3D_5vkaj")
+
+[node name="OrbClearingMarkers" type="Node3D" parent="Clearing"]
+transform = Transform3D(1, 0, -4.65661e-10, 0, 1, 0, 4.65661e-10, 0, 1, -32.0011, 19.1957, -24.799)
+
+[node name="OrbC1" type="Marker3D" parent="Clearing/OrbClearingMarkers"]
+transform = Transform3D(0.970771, 0.240008, 1.36108e-11, -0.240008, 0.970771, 1.11762e-10, 1.36108e-11, -1.11762e-10, 1, -17.0478, 0.615682, 2.63254)
+
+[node name="OrbCPath" type="Marker3D" parent="Clearing/OrbClearingMarkers"]
+transform = Transform3D(0.970771, 0.240008, 1.36108e-11, -0.240008, 0.970771, 1.11762e-10, 1.36108e-11, -1.11762e-10, 1, -4.28325, 0.615682, -16.7786)
+
+[node name="SittingLog" parent="Clearing" instance=ExtResource("13_58d7i")]
+transform = Transform3D(0.00462511, 0, 0.999989, 0, 1, 0, -0.999989, 0, 0.00462511, -32.0011, 19.1957, -24.799)
+
+[node name="ExitPathTrigger" type="Area3D" parent="Clearing"]
+transform = Transform3D(1, -5.0522e-20, -2.77556e-17, -5.0522e-20, 1, 6.93889e-18, 0, 0, 1, -36.2843, 19.8114, -41.5776)
+monitoring = false
+script = ExtResource("14_uwxdn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Clearing/ExitPathTrigger"]
+shape = SubResource("CylinderShape3D_v7he5")
+
+[node name="PlayerClearing" type="Marker3D" parent="Clearing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.3382, 19.3624, -24.169)
+
+[node name="Ledge" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.2731, 1.41581, 482.659)
+
+[node name="LedgeWall" type="StaticBody3D" parent="Ledge"]
+transform = Transform3D(0.985715, 0, 0.168421, 0, 1, 0, -0.168421, 0, 0.985715, 0, 0, 0)
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ledge/LedgeWall"]
+transform = Transform3D(0.998905, 0, -0.0467752, 0, 1, 0, 0.0467752, 0, 0.998905, 0, 0, 0)
+shape = SubResource("BoxShape3D_lyhi0")
+
+[node name="ClimbedMound" type="Area3D" parent="Ledge"]
+transform = Transform3D(0.99881, 0, 0.0487626, 0, 1, 0, -0.0487626, 0, 0.99881, -0.3055, 1.1951, -0.761993)
+script = ExtResource("15_otx5f")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ledge/ClimbedMound"]
+shape = SubResource("BoxShape3D_1fo8h")
+
+[node name="Log" parent="Ledge" instance=ExtResource("16_tdr1t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9905, 0.0889601, 1.50778)
+
+[node name="DadSpeakArea" type="Area3D" parent="Ledge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.270226, 0.272748, 2.23972)
+script = ExtResource("17_spb1v")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ledge/DadSpeakArea"]
+shape = SubResource("BoxShape3D_j1mdo")
+
+[node name="DadTopMound" type="Marker3D" parent="Ledge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3055, 1.1286, -1.34601)
+
+[node name="PlayerToMound" type="Marker3D" parent="Ledge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.356182, 0.354486, 7.21686)
+
+[node name="FatherCheckPoints" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.6958, 1.2475, 540.865)
+
+[node name="Check0" type="Marker3D" parent="FatherCheckPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.7649, -0.0243156, 46.0621)
+
+[node name="Check1" type="Marker3D" parent="FatherCheckPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.7921, 0.291243, 43.6624)
+
+[node name="Check2" type="Marker3D" parent="FatherCheckPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.3404, 0.044274, 39.6487)
+
+[node name="Check3" type="Marker3D" parent="FatherCheckPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.4607, -0.0243156, 38.032)
+
+[node name="Check4" type="Marker3D" parent="FatherCheckPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.2206, -0.0639189, 38.3425)
+
+[node name="Check5" type="Marker3D" parent="FatherCheckPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.6843, -0.0639189, 43.1819)
+
+[node name="Check6" type="Marker3D" parent="FatherCheckPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0918, -0.0639189, 46.0811)
+
+[node name="Check7" type="Marker3D" parent="FatherCheckPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.48023, -0.0639189, 45.9128)
+
+[node name="Check8" type="Marker3D" parent="FatherCheckPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3602, -0.398238, 42.5749)
+
+[node name="Check9" type="Marker3D" parent="FatherCheckPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.56815, -0.0639189, 37.5574)
+
+[node name="Check10" type="Marker3D" parent="FatherCheckPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.19933, -0.0639189, 31.6033)
+
+[node name="Check11" type="Marker3D" parent="FatherCheckPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.70905, -0.0639189, 18.1718)
+
+[node name="Check12" type="Marker3D" parent="FatherCheckPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.1267, -0.0639189, 14.0341)
+
+[node name="Check13" type="Marker3D" parent="FatherCheckPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.1021, -0.0639189, 6.5727)
+
+[node name="Check14" type="Marker3D" parent="FatherCheckPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.7189, -0.0639189, 1.65836)
+
+[node name="Check15" type="Marker3D" parent="FatherCheckPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.2661, -0.0639189, -6.62463)
+
+[node name="Check16" type="Marker3D" parent="FatherCheckPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.2584, -0.0639189, -11.5955)
+
+[node name="Check17" type="Marker3D" parent="FatherCheckPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.45411, -0.00272393, -18.7776)
+
+[node name="Check18" type="Marker3D" parent="FatherCheckPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.25648, 0.0925767, -23.7317)
+
+[node name="Check19" type="Marker3D" parent="FatherCheckPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.3715, 0.445938, -28.1669)
+
+[node name="Check20" type="Marker3D" parent="FatherCheckPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.305, 0.343376, -40.1675)
+
+[node name="Check21" type="Marker3D" parent="FatherCheckPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.8998, 0.343376, -49.2741)
+
+[node name="Check22" type="Marker3D" parent="FatherCheckPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.5223, -0.0639189, -46.8895)
+
+[node name="Check23" type="Marker3D" parent="FatherCheckPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.2822, 0.00103688, -46.0636)
+
+[node name="CheckEnd" type="Marker3D" parent="FatherCheckPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.3159, 0.012465, -49.8128)
+
+[node name="FatherCheckPointsClearing" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3292, -12.394, 427.393)
+
+[node name="CheckM0" type="Marker3D" parent="FatherCheckPointsClearing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.9078, 15.215, 52.9312)
+
+[node name="CheckM1" type="Marker3D" parent="FatherCheckPointsClearing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.5793, 15.7407, 51.9047)
+
+[node name="CheckM2" type="Marker3D" parent="FatherCheckPointsClearing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.101, 16.808, 49.7618)
+
+[node name="CheckM3" type="Marker3D" parent="FatherCheckPointsClearing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.8818, 17.6776, 47.112)
+
+[node name="CheckM4" type="Marker3D" parent="FatherCheckPointsClearing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.8818, 18.2712, 45.4124)
+
+[node name="CheckM5" type="Marker3D" parent="FatherCheckPointsClearing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.2071, 19.7413, 38.8322)
+
+[node name="CheckM6" type="Marker3D" parent="FatherCheckPointsClearing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.2071, 20.3198, 34.0786)
+
+[node name="CheckM7" type="Marker3D" parent="FatherCheckPointsClearing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.8123, 20.572, 31.5621)
+
+[node name="CheckM8" type="Marker3D" parent="FatherCheckPointsClearing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.8123, 20.572, 27.6371)
+
+[node name="CheckM9" type="Marker3D" parent="FatherCheckPointsClearing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67.7029, 20.6232, 23.1653)
+
+[node name="NightPath" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.3242, -6.69215, 423.121)
+
+[node name="PlayerNightPath" type="Marker3D" parent="NightPath"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.18726, 16.2428, 18.7241)
+
+[node name="PathNight" type="Node3D" parent="NightPath"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.81354, 6.69215, -91.224)
+
+[node name="OrbNight1" type="Marker3D" parent="NightPath/PathNight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.93058, 8.72687, 72.4208)
+
+[node name="OrbNight2" type="Marker3D" parent="NightPath/PathNight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.95923, 7.96542, 62.6428)
+
+[node name="OrbNight3" type="Marker3D" parent="NightPath/PathNight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.95923, 7.8537, 43.0775)
+
+[node name="OrbNight4" type="Marker3D" parent="NightPath/PathNight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.2899, 7.12669, 17.1068)
+
+[node name="OrbNight5" type="Marker3D" parent="NightPath/PathNight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.62765, 6.35469, -6.40912)
+
+[node name="OrbNight6" type="Marker3D" parent="NightPath/PathNight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.0639, 7.39867, -25.6363)
+
+[node name="OrbNight7" type="Marker3D" parent="NightPath/PathNight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.2614, 6.87051, -50.9635)
+
+[node name="OrbNight8" type="Marker3D" parent="NightPath/PathNight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.0588, 6.7399, -67.6462)
+
+[node name="OrbNight9" type="Marker3D" parent="NightPath/PathNight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.2144, 6.95666, -78.0541)
+
+[node name="OrbNight10" type="Marker3D" parent="NightPath/PathNight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.44439, 6.68414, -86.4208)
+
+[node name="OrbNight11" type="Marker3D" parent="NightPath/PathNight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.28624, 6.5725, -92.7824)
+
+[node name="PlayerFork" type="Marker3D" parent="NightPath"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.31841, 13.8327, -172.982)
+
+[node name="ForkArea" type="Area3D" parent="NightPath"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9407, 12.2964, -177.274)
+script = ExtResource("18_27g15")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NightPath/ForkArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.353807, 0)
+shape = SubResource("CylinderShape3D_l7tdc")
+
+[node name="VoicePathOne" type="Node3D" parent="."]
+
+[node name="DadVoice" type="AudioStreamPlayer3D" parent="VoicePathOne" node_paths=PackedStringArray("player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.2034, 6.90271, 236.126)
+stream = ExtResource("19_32cwd")
+volume_db = 5.0
+script = ExtResource("20_u1hat")
+player = NodePath("../../PlayerChild")
+
+[node name="SaifulLabel" type="Label3D" parent="VoicePathOne/DadVoice"]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -0.0171356, 0, 1.26886)
+modulate = Color(1, 1, 1, 0)
+outline_modulate = Color(0, 0, 0, 0)
+text = "SAIFUL"
+font = ExtResource("21_da3l7")
+font_size = 80
+
+[node name="SaifulTextAnim" type="AnimationPlayer" parent="VoicePathOne/DadVoice"]
+libraries = {
+"": SubResource("AnimationLibrary_dn74t")
+}
+
+[node name="ClearingExit" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 2.72611, 0, 0, 0, 1, -59.4269, 9.13956, 430.202)
+mesh = SubResource("CapsuleMesh_cfc8h")
+
+[node name="ChoiceFork" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 2.72611, 0, 0, 0, 1, -51.8689, 3.39052, 246.467)
+mesh = SubResource("CapsuleMesh_cfc8h")
+
+[node name="Cave" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 2.72611, 0, 0, 0, 1, -143.842, 9.13956, 19.4825)
+mesh = SubResource("CapsuleMesh_cfc8h")
+
+[node name="Hut" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 2.72611, 0, 0, 0, 1, 55.1641, 32.772, 53.6591)
+mesh = SubResource("CapsuleMesh_cfc8h")
+
+[node name="Clearing2 Exit" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 2.72611, 0, 0, 0, 1, -38.3304, 9.13956, -220.345)
+mesh = SubResource("CapsuleMesh_cfc8h")
+
+[node name="ClearinCaveENtry" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 2.72611, 0, 0, 0, 1, -95.3823, 12.0491, -157.985)
+mesh = SubResource("CapsuleMesh_cfc8h")
+
+[node name="ClearingHutEntry" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 2.72611, 0, 0, 0, 1, -3.07234, 19.481, -121.304)
+mesh = SubResource("CapsuleMesh_cfc8h")
+
+[node name="Bend" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 2.72611, 0, 0, 0, 1, 66.3448, 9.13956, -380.108)
+mesh = SubResource("CapsuleMesh_cfc8h")
+
+[node name="FinalFork" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 2.72611, 0, 0, 0, 1, -137.471, 9.13956, -400.543)
+mesh = SubResource("CapsuleMesh_cfc8h")
+
+[node name="Dad" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 2.72611, 0, 0, 0, 1, -304.934, 10.6558, -545.807)
+mesh = SubResource("CapsuleMesh_cfc8h")
+
+[node name="Lake" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 2.72611, 0, 0, 0, 1, 55.5583, -17.8029, -747.058)
+mesh = SubResource("CapsuleMesh_cfc8h")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64.7092, 10.076, 426.409)
+mesh = SubResource("SphereMesh_qk74g")
+surface_material_override/0 = SubResource("StandardMaterial3D_2guyj")
+
+[connection signal="body_entered" from="Clearing/StickDropArea" to="Clearing/StickDropArea" method="_on_body_entered"]
+[connection signal="body_entered" from="Clearing/SeeDadGoneArea" to="Clearing/SeeDadGoneArea" method="_on_body_entered"]
+[connection signal="body_entered" from="Clearing/ExitPathTrigger" to="Clearing/ExitPathTrigger" method="_on_body_entered"]
+[connection signal="body_entered" from="Ledge/ClimbedMound" to="Ledge/ClimbedMound" method="_on_body_entered"]
+[connection signal="body_entered" from="Ledge/DadSpeakArea" to="Ledge/DadSpeakArea" method="_on_body_entered"]
+[connection signal="body_entered" from="NightPath/ForkArea" to="NightPath/ForkArea" method="_on_body_entered"]
