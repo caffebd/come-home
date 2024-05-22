@@ -101,6 +101,7 @@ transform = Transform3D(0.931907, -0.362698, 0, 0.331336, 0.851326, 0.406769, -0
 
 [node name="Hud" parent="." instance=ExtResource("2_g6opo")]
 unique_name_in_owner = true
+use_fade = true
 
 [node name="Jump" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true

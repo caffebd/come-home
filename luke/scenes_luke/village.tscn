@@ -270,91 +270,91 @@ script = ExtResource("14_1i5ef")
 shape = SubResource("BoxShape3D_j1mdo")
 
 [node name="DadTopMound" type="Marker3D" parent="Ledge"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3055, 1.1286, -1.34601)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.04377, 1.1286, -1.34601)
 
 [node name="PlayerToMound" type="Marker3D" parent="Ledge"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.356182, 0.354486, 7.21686)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.69562, 0.354486, 7.21686)
 
 [node name="FatherCheckPoints" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.6958, 1.2475, 540.865)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.651, 1.247, 538.985)
 
 [node name="Check0" type="Marker3D" parent="FatherCheckPoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.7649, -0.0243156, 46.0621)
 
 [node name="Check1" type="Marker3D" parent="FatherCheckPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.7921, 0.291243, 43.6624)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.7921, 0.291243, 44.8876)
 
 [node name="Check2" type="Marker3D" parent="FatherCheckPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.3404, 0.044274, 39.6487)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.3404, 0.044274, 40.6342)
 
 [node name="Check3" type="Marker3D" parent="FatherCheckPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.4607, -0.0243156, 38.032)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.4607, 0.0829417, 38.6927)
 
 [node name="Check4" type="Marker3D" parent="FatherCheckPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.2206, -0.0639189, 38.3425)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.2206, -0.0639189, 38.9142)
 
 [node name="Check5" type="Marker3D" parent="FatherCheckPoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.6843, -0.0639189, 43.1819)
 
 [node name="Check6" type="Marker3D" parent="FatherCheckPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0918, -0.0639189, 46.0811)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0918, -0.0639189, 46.6718)
 
 [node name="Check7" type="Marker3D" parent="FatherCheckPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.48023, -0.0639189, 45.9128)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.48023, -0.0639189, 46.6823)
 
 [node name="Check8" type="Marker3D" parent="FatherCheckPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3602, -0.398238, 42.5749)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.98048, -0.398238, 42.5749)
 
 [node name="Check9" type="Marker3D" parent="FatherCheckPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.56815, -0.0639189, 37.5574)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.97184, -0.0639189, 37.5574)
 
 [node name="Check10" type="Marker3D" parent="FatherCheckPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.19933, -0.0639189, 31.6033)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.22023, -0.0639189, 30.5183)
 
 [node name="Check11" type="Marker3D" parent="FatherCheckPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.70905, -0.0639189, 18.1718)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.99817, -0.0639189, 18.1718)
 
 [node name="Check12" type="Marker3D" parent="FatherCheckPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.1267, -0.0639189, 14.0341)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8131, -0.0639189, 12.5408)
 
 [node name="Check13" type="Marker3D" parent="FatherCheckPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.1021, -0.0639189, 6.5727)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.6003, -0.0639189, 6.57269)
 
 [node name="Check14" type="Marker3D" parent="FatherCheckPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.7189, -0.0639189, 1.65836)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.6886, 0.221871, 1.65839)
 
 [node name="Check15" type="Marker3D" parent="FatherCheckPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.2661, -0.0639189, -6.62463)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.669, -0.0639189, -7.54803)
 
 [node name="Check16" type="Marker3D" parent="FatherCheckPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.2584, -0.0639189, -11.5955)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.2584, -0.0639189, -12.1479)
 
 [node name="Check17" type="Marker3D" parent="FatherCheckPoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.45411, -0.00272393, -18.7776)
 
 [node name="Check18" type="Marker3D" parent="FatherCheckPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.25648, 0.0925767, -23.7317)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.25648, 0.274685, -22.736)
 
 [node name="Check19" type="Marker3D" parent="FatherCheckPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.3715, 0.445938, -28.1669)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.1278, 0.445938, -27.2067)
 
 [node name="Check20" type="Marker3D" parent="FatherCheckPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.305, 0.343376, -40.1675)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.9763, 0.498932, -40.1675)
 
 [node name="Check21" type="Marker3D" parent="FatherCheckPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.8998, 0.343376, -49.2741)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.085, 0.343376, -48.5655)
 
 [node name="Check22" type="Marker3D" parent="FatherCheckPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.5223, -0.0639189, -46.8895)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.6577, 0.459321, -47.6929)
 
 [node name="Check23" type="Marker3D" parent="FatherCheckPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.2822, 0.00103688, -46.0636)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.2297, 0.304845, -46.0636)
 
 [node name="CheckEnd" type="Marker3D" parent="FatherCheckPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.3159, 0.012465, -49.8128)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.0413, 0.185625, -52.1382)
 
 [node name="FatherCheckPointsClearing" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3292, -12.394, 427.393)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.424, -12.394, 427.393)
 
 [node name="CheckM0" type="Marker3D" parent="FatherCheckPointsClearing"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.9078, 15.215, 52.9312)

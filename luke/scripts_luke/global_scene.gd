@@ -10,5 +10,8 @@ func start_bg_music():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
 func start_night_path_music():
-	%BgMusic.stop()
 	$NightPathMusic.play()
+	var tween = create_tween()
+	tween.tween_property(%BgMusic, "volume_db", -80.0,  10.0)
+	await tween.finished
+	%BgMusic.stop()

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://degk2uih2lc5u"]
 
-[ext_resource type="AudioStream" uid="uid://dyrknge1ud6w7" path="res://luke/assets_luke/audio_luke/temp_bg_music.mp3" id="1_1bxgu"]
 [ext_resource type="Script" path="res://luke/scripts_luke/global_scene.gd" id="1_83qdu"]
+[ext_resource type="AudioStream" uid="uid://oc516orgxhch" path="res://luke/assets_luke/audio_luke/intro_loop.mp3" id="2_mifdl"]
 [ext_resource type="AudioStream" uid="uid://p452w050vlbj" path="res://luke/assets_luke/audio_luke/night_path_music_drone.mp3" id="3_ewfyi"]
 
 [node name="GlobalScene" type="Node3D"]
@@ -9,8 +9,9 @@ script = ExtResource("1_83qdu")
 
 [node name="BgMusic" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
-stream = ExtResource("1_1bxgu")
+stream = ExtResource("2_mifdl")
 volume_db = -10.0
+stream_paused = true
 
 [node name="NightPathMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_ewfyi")
