@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://cj72mcn1cc5y2"]
+
+[ext_resource type="Script" path="res://luke/scripts_luke/animal_chase.gd" id="1_3wx4l"]
+[ext_resource type="AudioStream" uid="uid://cflxkcnnquvdf" path="res://luke/assets_luke/audio_luke/animal_walk.mp3" id="1_d45ta"]
+[ext_resource type="AudioStream" uid="uid://bil5lkd50wiu1" path="res://luke/assets_luke/audio_luke/animal_run.mp3" id="2_ey45u"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_51pu5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eqrbs"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_eglbk"]
+material = SubResource("StandardMaterial3D_eqrbs")
+
+[node name="AnimalChase" type="CharacterBody3D"]
+script = ExtResource("1_3wx4l")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_51pu5")
+
+[node name="WalkIngAnimal" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("1_d45ta")
+volume_db = 8.0
+unit_size = 15.0
+max_db = 6.0
+
+[node name="RunningAnimal" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_ey45u")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.28138, 0, 0, 0, 1.28138, 0, 0, 0, 1.28138, 0, 0, 0)
+mesh = SubResource("BoxMesh_eglbk")

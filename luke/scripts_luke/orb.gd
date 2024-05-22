@@ -112,9 +112,9 @@ func _set_check_points(phase):
 	use_check_points.clear()
 	match phase:
 		CLEARING:
-			use_check_points = clearing_markers
+			use_check_points = clearing_markers.duplicate()
 		PATHONE:
-			use_check_points = path_one_markers
+			use_check_points = path_one_markers.duplicate()
 	
 
 

@@ -38,6 +38,12 @@ signal fork_set_up()
 
 signal dad_call(count)
 
+signal follow_voice()
+
+signal stick_drop_forest()
+
+signal animal_trigger()
+
 signal time_transition_0
 signal time_transition_1
 signal time_transition_2

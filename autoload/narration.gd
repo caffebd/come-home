@@ -18,6 +18,11 @@ var night_path_index: int = 9
 
 var fork_index: int = 13
 
+var animal_stick_index: int = 15
+
+var stick_worked_index: int = 16
+
+
 var all_narration = [
 	["My dad was the only one who called me Saif instead of Saiful."],
 	["My dad always liked to take me on long walks through the forest...", "but that day we went further than we had ever been before."],
@@ -33,7 +38,9 @@ var all_narration = [
 	["I'd never been left on my own this long before."],
 	["It was getting cold and I began to shiver."],
 	["I came to a fork in the road. That was when I had to make a choice."],
-	["Follow the glowing light, or follow my dad's voice?"]
+	["Follow the glowing light, or follow my dad's voice?"],
+	["I remember hearing animal footsteps. Then I rememberd a trick my dad had taught me.", "Throw a stick into the forest as a distraction."],
+	["It worked!"]
 ]
 
 func narrate():
@@ -59,4 +66,7 @@ func hide_narration():
 		print (" HN main "+str(main_index)+" sub "+str(sub_index))
 	else:
 		narrate()
+		
+
+
 		

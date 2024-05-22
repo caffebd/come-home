@@ -42,7 +42,7 @@ func _start_game():
 func _show_speech(text: String):
 	%Speech.text = text
 	var tween = create_tween()
-	tween.tween_property(text_box, "modulate:a", 1.0, 2.0)
+	tween.tween_property(text_box, "modulate:a", 1.0, 1.0)
 	
 
 func _show_narration(text: String):
@@ -54,7 +54,7 @@ func _show_narration(text: String):
 		#Narration.hide_narration()
 	%Narration.text = text
 	var tween = create_tween()
-	tween.tween_property(narration_box, "modulate:a", 1.0, 2.0)
+	tween.tween_property(narration_box, "modulate:a", 1.0, 1.0)
 	await tween.finished
 	narration_showing = true
 	
@@ -68,7 +68,7 @@ func _show_player_info(text: String):
 		#Narration.hide_narration()
 	%InfoToPlayerText.text = text
 	var tween = create_tween()
-	tween.tween_property(info_to_player, "modulate:a", 1.0, 2.0)
+	tween.tween_property(info_to_player, "modulate:a", 1.0, 1.0)
 	await tween.finished
 	player_info_showing = true
 

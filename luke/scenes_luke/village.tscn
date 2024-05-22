@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://qgbj73vixll4"]
+[gd_scene load_steps=48 format=3 uid="uid://qgbj73vixll4"]
 
 [ext_resource type="Script" path="res://luke/scripts_luke/village.gd" id="1_52nm1"]
 [ext_resource type="PackedScene" uid="uid://ds8jitdfn8yuj" path="res://assets/path.tscn" id="2_7n3rm"]
@@ -13,19 +13,23 @@
 [ext_resource type="Script" path="res://luke/scripts_luke/stick_drop_area.gd" id="8_8v8b4"]
 [ext_resource type="Script" path="res://luke/scripts_luke/arrow.gd" id="8_33w2u"]
 [ext_resource type="PackedScene" uid="uid://1r0ah5m40y1d" path="res://luke/scenes_luke/SittingLog.tscn" id="8_my4o7"]
+[ext_resource type="PackedScene" uid="uid://cj72mcn1cc5y2" path="res://luke/scenes_luke/AnimalChase.tscn" id="9_vjlsi"]
 [ext_resource type="AudioStream" uid="uid://nuuhbrpl7cdv" path="res://luke/assets_luke/audio_luke/stick_drop.mp3" id="11_saw7h"]
 [ext_resource type="Script" path="res://luke/scripts_luke/see_dad_gone_area.gd" id="12_xt7f5"]
 [ext_resource type="Script" path="res://luke/scripts_luke/dad_speak_area.gd" id="14_1i5ef"]
 [ext_resource type="AudioStream" uid="uid://clw8gc5lvwpdo" path="res://luke/assets_luke/audio_luke/low_drone.mp3" id="14_4j83y"]
 [ext_resource type="Script" path="res://luke/scripts_luke/exit_path_trigger.gd" id="14_e0drn"]
 [ext_resource type="PackedScene" uid="uid://doxkrnuvvwqhc" path="res://luke/scenes_luke/PlayerChild.tscn" id="14_k0c81"]
-[ext_resource type="AudioStream" uid="uid://tgrrdeuedo2w" path="res://luke/assets_luke/audio_luke/dad_saiful_temp.mp3" id="18_ebsws"]
 [ext_resource type="AudioStream" uid="uid://bl8vkh25bmpku" path="res://luke/assets_luke/audio_luke/monster_breath_1.mp3" id="18_j7org"]
 [ext_resource type="Script" path="res://luke/scripts_luke/fork_area.gd" id="18_xmxnm"]
-[ext_resource type="Script" path="res://luke/scripts_luke/dad_voice.gd" id="19_od4ut"]
 [ext_resource type="AudioStream" uid="uid://c0y4er8tiyw6x" path="res://luke/assets_luke/audio_luke/monster_breath_2.mp3" id="19_y7sh4"]
 [ext_resource type="AudioStream" uid="uid://cjj6bqldd3lju" path="res://luke/assets_luke/audio_luke/monster_breath_3.mp3" id="20_bvfy3"]
-[ext_resource type="FontFile" uid="uid://duirhuy7klyp8" path="res://assets/fonts/alagard.ttf" id="20_or1ta"]
+[ext_resource type="Script" path="res://luke/scripts_luke/fork_collision.gd" id="24_6ohve"]
+[ext_resource type="PackedScene" uid="uid://y7sq7qpgkdo8" path="res://luke/scenes_luke/DadVoiceCharacter.tscn" id="26_gfgx6"]
+[ext_resource type="Script" path="res://luke/scripts_luke/stick_drop_area_forest.gd" id="27_phcf6"]
+[ext_resource type="Script" path="res://luke/scripts_luke/voice_route.gd" id="27_pm1md"]
+[ext_resource type="Script" path="res://luke/scripts_luke/animal_two.gd" id="29_au440"]
+[ext_resource type="Script" path="res://luke/scripts_luke/animal_trigger.gd" id="29_waprw"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_sr1r6"]
 height = 1.385
@@ -55,260 +59,23 @@ size = Vector3(12.305, 1, 1)
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_l7tdc"]
 radius = 3.295
 
-[sub_resource type="Animation" id="Animation_yyfu4"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("SaifulLabel:modulate:r")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("SaifulLabel:modulate:g")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("SaifulLabel:modulate:b")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/3/type = "bezier"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("SaifulLabel:modulate:a")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/4/type = "bezier"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("SaifulLabel:scale:x")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/5/type = "bezier"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("SaifulLabel:scale:y")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/6/type = "bezier"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("SaifulLabel:scale:z")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/7/type = "bezier"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("SaifulLabel:outline_modulate:r")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/8/type = "bezier"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("SaifulLabel:outline_modulate:g")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/9/type = "bezier"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("SaifulLabel:outline_modulate:b")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/10/type = "bezier"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("SaifulLabel:outline_modulate:a")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
+[sub_resource type="BoxShape3D" id="BoxShape3D_mnica"]
+size = Vector3(0.235, 1, 63.44)
 
-[sub_resource type="Animation" id="Animation_t3n88"]
-resource_name = "expand"
-length = 1.6
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("SaifulLabel:modulate:r")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1.1, 1.6)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("SaifulLabel:modulate:g")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1.1, 1.6)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("SaifulLabel:modulate:b")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1.1, 1.6)
-}
-tracks/3/type = "bezier"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("SaifulLabel:modulate:a")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1.1, 1.6)
-}
-tracks/4/type = "bezier"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("SaifulLabel:scale:x")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1.6)
-}
-tracks/5/type = "bezier"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("SaifulLabel:scale:y")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1.6)
-}
-tracks/6/type = "bezier"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("SaifulLabel:scale:z")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1.6)
-}
-tracks/7/type = "bezier"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("SaifulLabel:outline_modulate:r")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.5, 1.6)
-}
-tracks/8/type = "bezier"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("SaifulLabel:outline_modulate:g")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.5, 1.6)
-}
-tracks/9/type = "bezier"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("SaifulLabel:outline_modulate:b")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.5, 1.6)
-}
-tracks/10/type = "bezier"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("SaifulLabel:outline_modulate:a")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.5, 1.6)
-}
+[sub_resource type="BoxShape3D" id="BoxShape3D_1rdjx"]
+size = Vector3(3.165, 1, 11.605)
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_dn74t"]
-_data = {
-"RESET": SubResource("Animation_yyfu4"),
-"expand": SubResource("Animation_t3n88")
-}
+[sub_resource type="BoxShape3D" id="BoxShape3D_xh0eb"]
+size = Vector3(60.16, 7.14, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vd00i"]
+size = Vector3(150, 16.005, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ps0cm"]
+size = Vector3(41.085, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rfw8m"]
+size = Vector3(1.285, 1, 4.255)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tqgou"]
 albedo_color = Color(0, 1, 1, 1)
@@ -359,6 +126,16 @@ father = NodePath("../Father")
 breath_1 = NodePath("../NightPath/PathNight/OrbNight6/Breath")
 breath_2 = NodePath("../NightPath/PathNight/OrbNight8/Breath2")
 breath_3 = NodePath("../NightPath/PathNight/OrbNight11/Breath3")
+
+[node name="AnimalChase" parent="." node_paths=PackedStringArray("player", "animal_markers") instance=ExtResource("9_vjlsi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.2412, 8.24444, 251.641)
+player = NodePath("../PlayerChild")
+animal_markers = [NodePath("../VoicePathOne/AnimalMarkers/Animal1"), NodePath("../VoicePathOne/AnimalMarkers/Animal2")]
+
+[node name="DadVoiceCharacter" parent="." node_paths=PackedStringArray("player", "to_house_markers") instance=ExtResource("26_gfgx6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.5814, 6.73283, 238.15)
+player = NodePath("../PlayerChild")
+to_house_markers = [NodePath("../VoiceMarkers/VoicePath1"), NodePath("../VoiceMarkers/VoicePath2"), NodePath("../VoiceMarkers/VoicePath3"), NodePath("../VoiceMarkers/VoicePath4"), NodePath("../VoiceMarkers/VoicePath5"), NodePath("../VoiceMarkers/VoicePath6")]
 
 [node name="Clearing" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.3117, -10.9828, 475.86)
@@ -691,25 +468,140 @@ shape = SubResource("CylinderShape3D_l7tdc")
 
 [node name="VoicePathOne" type="Node3D" parent="."]
 
-[node name="DadVoice" type="AudioStreamPlayer3D" parent="VoicePathOne" node_paths=PackedStringArray("player")]
+[node name="AnimalMarkers" type="Node3D" parent="VoicePathOne"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.5814, 7.97524, 236.983)
+
+[node name="Animal1" type="Marker3D" parent="VoicePathOne/AnimalMarkers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1352, 6.21609, 39.1893)
+
+[node name="Animal2" type="Marker3D" parent="VoicePathOne/AnimalMarkers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.57933, 6.82165, -80.5923)
+
+[node name="ForkDivider" type="StaticBody3D" parent="VoicePathOne"]
+transform = Transform3D(0.915606, 0, -0.402076, 0, 1, 0, 0.402076, 0, 0.915606, -45.4405, 6.43135, 233.173)
+
+[node name="ForkCollision" type="CollisionShape3D" parent="VoicePathOne/ForkDivider"]
+shape = SubResource("BoxShape3D_mnica")
+disabled = true
+script = ExtResource("24_6ohve")
+
+[node name="VoiceRoute" type="Area3D" parent="VoicePathOne"]
+transform = Transform3D(0.851031, 0, 0.525115, 0, 1, 0, -0.525115, 0, 0.851031, -43.7393, 6.16661, 245.263)
+script = ExtResource("27_pm1md")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VoicePathOne/VoiceRoute"]
+shape = SubResource("BoxShape3D_1rdjx")
+
+[node name="StickDropArea1" type="Area3D" parent="VoicePathOne"]
+transform = Transform3D(0.774536, 0, 0.63253, 0, 1, 0, -0.63253, 0, 0.774536, -25.9399, 10.8937, 222.712)
+script = ExtResource("27_phcf6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VoicePathOne/StickDropArea1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.231674, -3.68559, 0.306946)
+shape = SubResource("BoxShape3D_xh0eb")
+
+[node name="StickDropArea2" type="Area3D" parent="VoicePathOne"]
+transform = Transform3D(0.828334, 0, 0.560234, 0, 1, 0, -0.560234, 0, 0.828334, -20.185, 11.0201, 226.62)
+script = ExtResource("27_phcf6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VoicePathOne/StickDropArea2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.231674, -3.68559, 0.306946)
+shape = SubResource("BoxShape3D_xh0eb")
+
+[node name="StickDropArea3" type="Area3D" parent="VoicePathOne"]
+transform = Transform3D(0.16107, 1.0794e-09, 0.986943, 0.138499, 0.990105, -0.0226031, -0.977177, 0.140331, 0.159476, 6.24253, 21.4824, 115.252)
+script = ExtResource("27_phcf6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VoicePathOne/StickDropArea3"]
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, 0, 0, 1, 0.119194, -1.17736, 0.249685)
+shape = SubResource("BoxShape3D_vd00i")
+
+[node name="StickDropArea4" type="Area3D" parent="VoicePathOne"]
+transform = Transform3D(0.383494, -0.0325738, 0.922969, 0.138499, 0.990105, -0.0226031, -0.913099, 0.136498, 0.384211, 54.3134, 21.4824, 134.936)
+script = ExtResource("27_phcf6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VoicePathOne/StickDropArea4"]
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, 0, 0, 1, 0.119194, -1.17736, 0.249685)
+shape = SubResource("BoxShape3D_vd00i")
+
+[node name="AnimalTwo" type="Area3D" parent="VoicePathOne"]
+transform = Transform3D(0.903185, 0, -0.42925, 0, 1, 0, 0.42925, 0, 0.903185, 19.5623, 5.44082, 158.89)
+script = ExtResource("29_au440")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VoicePathOne/AnimalTwo"]
+shape = SubResource("BoxShape3D_ps0cm")
+
+[node name="VoicePathSticks" type="Node3D" parent="VoicePathOne"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.34856, 0, -6.35541)
+
+[node name="Stick" parent="VoicePathOne/VoicePathSticks" instance=ExtResource("8_1v5c4")]
+transform = Transform3D(0.99896, 0.0455896, 0, -0.0455896, 0.99896, 0, 0, 0, 1, -27.0138, 4.8639, 229.672)
+
+[node name="Stick2" parent="VoicePathOne/VoicePathSticks" instance=ExtResource("8_1v5c4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.118, 4.85035, 227.751)
+
+[node name="Stick3" parent="VoicePathOne/VoicePathSticks" instance=ExtResource("8_1v5c4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.5311, 4.72386, 225.716)
+
+[node name="Stick4" parent="VoicePathOne/VoicePathSticks" instance=ExtResource("8_1v5c4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7688, 4.95964, 230.076)
+
+[node name="Stick5" parent="VoicePathOne/VoicePathSticks" instance=ExtResource("8_1v5c4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.9108, 13.4981, 128.742)
+
+[node name="Stick7" parent="VoicePathOne/VoicePathSticks" instance=ExtResource("8_1v5c4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.8451, 16.3241, 118.75)
+
+[node name="Stick6" parent="VoicePathOne/VoicePathSticks" instance=ExtResource("8_1v5c4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.8223, 11.0296, 140.233)
+
+[node name="AnimalTrigger" type="Area3D" parent="VoicePathOne"]
+transform = Transform3D(0.79054, 0, 0.61241, 0, 1, 0, -0.61241, 0, 0.79054, -31.2899, 6.1182, 232.198)
+script = ExtResource("29_waprw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VoicePathOne/AnimalTrigger"]
+shape = SubResource("BoxShape3D_rfw8m")
+
+[node name="VoiceMarkers" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.2034, 6.90271, 236.126)
-stream = ExtResource("18_ebsws")
-volume_db = 5.0
-script = ExtResource("19_od4ut")
-player = NodePath("../../PlayerChild")
 
-[node name="SaifulLabel" type="Label3D" parent="VoicePathOne/DadVoice"]
-transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -0.0171356, 0, 1.26886)
-modulate = Color(1, 1, 1, 0)
-outline_modulate = Color(0, 0, 0, 0)
-text = "SAIFUL"
-font = ExtResource("20_or1ta")
-font_size = 80
+[node name="VoicePath1" type="Marker3D" parent="VoiceMarkers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.99783, -0.986709, -5.39209)
 
-[node name="SaifulTextAnim" type="AnimationPlayer" parent="VoicePathOne/DadVoice"]
-libraries = {
-"": SubResource("AnimationLibrary_dn74t")
-}
+[node name="VoicePath2" type="Marker3D" parent="VoiceMarkers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.7206, -0.558526, -19.6281)
+
+[node name="VoicePath3" type="Marker3D" parent="VoiceMarkers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.1238, 0.163966, -38.5373)
+
+[node name="Hut5" type="MeshInstance3D" parent="VoiceMarkers/VoicePath3"]
+transform = Transform3D(1, 0, 0, 0, 2.72611, 0, 0, 0, 1, 0, -5.56215, 0)
+mesh = SubResource("CapsuleMesh_cfc8h")
+skeleton = NodePath("../../..")
+
+[node name="VoicePath4" type="Marker3D" parent="VoiceMarkers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.0581, -0.35763, -75.8282)
+
+[node name="Hut4" type="MeshInstance3D" parent="VoiceMarkers/VoicePath4"]
+transform = Transform3D(1, 0, 0, 0, 2.72611, 0, 0, 0, 1, 0, -4.91091, 0)
+mesh = SubResource("CapsuleMesh_cfc8h")
+skeleton = NodePath("../../..")
+
+[node name="VoicePath5" type="Marker3D" parent="VoiceMarkers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.6241, 11.2672, -120.187)
+
+[node name="Hut3" type="MeshInstance3D" parent="VoiceMarkers/VoicePath5"]
+transform = Transform3D(1, 0, 0, 0, 2.72611, 0, 0, 0, 1, 0, -4.19088, 0)
+mesh = SubResource("CapsuleMesh_cfc8h")
+skeleton = NodePath("../../..")
+
+[node name="VoicePath6" type="Marker3D" parent="VoiceMarkers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.8148, 20.7621, -155.489)
+
+[node name="Hut2" type="MeshInstance3D" parent="VoiceMarkers/VoicePath6"]
+transform = Transform3D(1, 0, 0, 0, 2.72611, 0, 0, 0, 1, 0, -4.66539, 0)
+mesh = SubResource("CapsuleMesh_cfc8h")
+skeleton = NodePath("../../..")
 
 [node name="ChoiceFork" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 2.72611, 0, 0, 0, 1, -51.8689, 3.39052, 246.467)
@@ -758,3 +650,10 @@ mesh = SubResource("CapsuleMesh_cfc8h")
 [connection signal="body_entered" from="Ledge/ClimbedMound" to="Ledge/ClimbedMound" method="_on_body_entered"]
 [connection signal="body_entered" from="Ledge/DadSpeakArea" to="Ledge/DadSpeakArea" method="_on_body_entered"]
 [connection signal="body_entered" from="NightPath/ForkArea" to="NightPath/ForkArea" method="_on_body_entered"]
+[connection signal="body_entered" from="VoicePathOne/VoiceRoute" to="VoicePathOne/VoiceRoute" method="_on_body_entered"]
+[connection signal="body_entered" from="VoicePathOne/StickDropArea1" to="VoicePathOne/StickDropArea1" method="_on_body_entered"]
+[connection signal="body_entered" from="VoicePathOne/StickDropArea2" to="VoicePathOne/StickDropArea2" method="_on_body_entered"]
+[connection signal="body_entered" from="VoicePathOne/StickDropArea3" to="VoicePathOne/StickDropArea3" method="_on_body_entered"]
+[connection signal="body_entered" from="VoicePathOne/StickDropArea4" to="VoicePathOne/StickDropArea4" method="_on_body_entered"]
+[connection signal="body_entered" from="VoicePathOne/AnimalTwo" to="VoicePathOne/AnimalTwo" method="_on_body_entered"]
+[connection signal="body_entered" from="VoicePathOne/AnimalTrigger" to="VoicePathOne/AnimalTrigger" method="_on_body_entered"]

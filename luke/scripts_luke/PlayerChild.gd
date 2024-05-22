@@ -312,6 +312,8 @@ func throw_held_object():
 	heldObject.held = false
 	drop_held_object()
 	obj.apply_central_impulse(-camera.global_basis.z * throwForce * 10)
+	obj.angular_velocity.z = 2
+	obj.gravity_scale = 0.1
 	obj.my_collision.disabled = false
 	
 func handle_holding_objects():
