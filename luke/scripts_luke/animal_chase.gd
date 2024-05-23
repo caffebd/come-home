@@ -20,6 +20,8 @@ var homing: bool = false
 
 var stick_thrown_once: bool = false
 
+#git comment
+
 func _ready() -> void:
 	GlobalSignals.animal_trigger.connect(_start_chase)
 	GlobalSignals.stick_drop_forest.connect(_go_home)

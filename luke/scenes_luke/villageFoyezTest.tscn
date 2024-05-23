@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://luke/scripts_luke/village.gd" id="1_xj3v6"]
 [ext_resource type="PackedScene" uid="uid://uwgt08apwad6" path="res://scenes/ScreenEffect.tscn" id="2_enkdy"]
 [ext_resource type="PackedScene" uid="uid://bvvre0p6auulq" path="res://assets/world.tscn" id="3_3tc8g"]
-[ext_resource type="PackedScene" uid="uid://dplf8d8w78la4" path="res://assets/environment&lights.tscn" id="4_oae23"]
+[ext_resource type="PackedScene" uid="uid://dplf8d8w78la4" path="res://assets/environment_lights.tscn" id="4_oae23"]
 [ext_resource type="PackedScene" uid="uid://ds8jitdfn8yuj" path="res://assets/path.tscn" id="5_v30fn"]
 [ext_resource type="PackedScene" uid="uid://doxkrnuvvwqhc" path="res://luke/scenes_luke/PlayerChild.tscn" id="6_mayfm"]
 [ext_resource type="PackedScene" uid="uid://df623wi4323mu" path="res://luke/scenes_luke/father_test.tscn" id="7_lfrey"]
@@ -21,6 +21,7 @@
 [ext_resource type="AudioStream" uid="uid://tgrrdeuedo2w" path="res://luke/assets_luke/audio_luke/dad_saiful_temp.mp3" id="19_32cwd"]
 [ext_resource type="Script" path="res://luke/scripts_luke/dad_voice.gd" id="20_u1hat"]
 [ext_resource type="FontFile" uid="uid://duirhuy7klyp8" path="res://assets/fonts/alagard.ttf" id="21_da3l7"]
+
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_sr1r6"]
 height = 1.385

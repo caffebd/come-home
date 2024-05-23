@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://uwgt08apwad6" path="res://scenes/ScreenEffect.tscn" id="2_7x1u4"]
 [ext_resource type="PackedScene" uid="uid://bvvre0p6auulq" path="res://assets/world.tscn" id="2_kcl2j"]
 [ext_resource type="PackedScene" uid="uid://df623wi4323mu" path="res://luke/scenes_luke/father_test.tscn" id="4_ik3vd"]
-[ext_resource type="PackedScene" uid="uid://dplf8d8w78la4" path="res://assets/environment&lights.tscn" id="6_efe2g"]
+[ext_resource type="PackedScene" uid="uid://dplf8d8w78la4" path="res://assets/environment_lights.tscn" id="6_efe2g"]
 [ext_resource type="PackedScene" uid="uid://btdf8my7v3yqn" path="res://luke/scenes_luke/log.tscn" id="6_n54h1"]
 [ext_resource type="PackedScene" uid="uid://cgd8lcv552lbu" path="res://luke/scenes_luke/stick.tscn" id="8_1v5c4"]
 [ext_resource type="Script" path="res://luke/scripts_luke/climbed_mound.gd" id="8_4rnxs"]
