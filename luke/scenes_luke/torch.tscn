@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cahhg0aqvpmrs"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_a0fbk"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_oj54c"]
+
+[node name="Torch" type="Node3D"]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.21035, 0, 0, 0, -2.27549e-09, -0.21035, 0, 0.0520571, -9.1947e-09, 0, 0, -0.170992)
+layers = 524288
+mesh = SubResource("CylinderMesh_a0fbk")
+skeleton = NodePath("../MeshInstance3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.173826, 0, 0, 0, -7.59819e-09, -0.173826, 0, 0.173826, -7.59819e-09, 0, 0, 0)
+layers = 524288
+mesh = SubResource("CylinderMesh_oj54c")

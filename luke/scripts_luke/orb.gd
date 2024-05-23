@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 @export var clearing_markers: Array[Marker3D]
 @export var path_one_markers: Array[Marker3D]
+@export var cave_path_markers: Array[Marker3D]
 
 @export var player: CharacterBody3D
 @export var father: CharacterBody3D
@@ -14,7 +15,7 @@ extends CharacterBody3D
 
 var use_check_points: Array[Marker3D]
 
-enum {CLEARING, PATHONE}
+enum {CLEARING, PATHONE, CAVE}
 
 var  speed = 10.0
 
@@ -38,6 +39,8 @@ func _ready() -> void:
 	GlobalSignals.orb_next_position.connect(_orb_next_position)
 	GlobalSignals.night_path_set_up.connect(_night_path_set_up)
 	GlobalSignals.orb_to_night_path.connect(_night_path_set_up)
+	GlobalSignals.cave_path_set_up.connect(_cave_path_set_up)
+	GlobalSignals.cave_path_trigger.connect(_cave_path_trigger)
 	GlobalSignals.fork_set_up.connect(_fork_set_up)
 	_set_check_points(CLEARING)
 	await get_tree().create_timer(3.0).timeout
@@ -66,9 +69,27 @@ func _night_path_set_up():
 func _fork_set_up():
 	moving = false
 	global_position = path_one_markers[path_one_markers.size()-1].global_position
+	_set_check_points(CAVE)
 	check_index = 0
 	sense_player = true
 	timer_running = true
+
+func _cave_path_set_up():
+	moving = false
+	global_position = path_one_markers[path_one_markers.size()-1].global_position
+	_set_check_points(CAVE)
+	check_index = 0
+	sense_player = true
+	timer_running = true
+
+func _cave_path_trigger():
+	moving = false
+	#global_position = path_one_markers[path_one_markers.size()-1].global_position
+	_set_check_points(CAVE)
+	check_index = 0
+	sense_player = true
+	timer_running = true
+	_next_position()
 
 func _orb_sense_player(state):
 	sense_player = state
@@ -115,7 +136,8 @@ func _set_check_points(phase):
 			use_check_points = clearing_markers.duplicate()
 		PATHONE:
 			use_check_points = path_one_markers.duplicate()
-	
+		CAVE:
+			use_check_points = cave_path_markers.duplicate()
 
 
 func _next_position():
@@ -141,17 +163,15 @@ func _check_for_narration(check_point: String):
 		"OrbNight2":
 			GlobalSignals.emit_signal("time_transition_0")
 			Narration.narrate()
-		"OrbNight5":
+		"OrbNight4":
 			Narration.narrate()
 		"OrbNight6":
 			breath_1.play()
 		"OrbNight8":
+			Narration.narrate()
+		"OrbNight9":
 			breath_2.play()
 		"OrbNight10":
-			Narration.narrate()
-		"OrbNight11":
-			breath_2.play()
-		"OrbNight12":
 			Narration.narrate()
 		#"OrbNight11":
 			#moving = false

@@ -22,9 +22,11 @@ var sense_player: bool = false
 func _ready() -> void:
 	GlobalSignals.fork_set_up.connect(_fork_set_up)
 	GlobalSignals.follow_voice.connect(_follow_voice)
-	print ("hosue markers "+str(to_house_markers.size()))
+	#print ("hosue markers "+str(to_house_markers.size()))
 	#_fork_set_up()
 
+
+	
 
 func _fork_set_up():
 	_set_check_points(HOUSEPATH)
@@ -67,7 +69,7 @@ func _next_position():
 		#_check_for_narration(use_check_points[check_index].name)
 		print ("select next")
 		check_index += 1
-		GlobalSignals.emit_signal("dad_call", 4)
+		GlobalSignals.emit_signal("dad_call", 3)
 	else:
 		print ("select done")
 		moving = false

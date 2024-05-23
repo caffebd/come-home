@@ -411,7 +411,6 @@ libraries = {
 
 [node name="FPS" type="Label" parent="."]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -428,6 +427,7 @@ text = "123"
 [node name="Cover" type="ColorRect" parent="."]
 auto_translate_mode = 1
 modulate = Color(1, 1, 1, 0)
+visibility_layer = 524289
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

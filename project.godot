@@ -165,5 +165,6 @@ night_9={
 
 [rendering]
 
+environment/volumetric_fog/use_filter=0
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)
-anti_aliasing/quality/use_taa=true
+occlusion_culling/use_occlusion_culling=true

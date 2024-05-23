@@ -34,6 +34,8 @@ signal orb_sense_player(state)
 signal night_path_set_up()
 signal orb_to_night_path()
 
+signal cave_path_set_up()
+
 signal fork_set_up()
 
 signal dad_call(count)
@@ -43,6 +45,10 @@ signal follow_voice()
 signal stick_drop_forest()
 
 signal animal_trigger()
+
+signal hiding()
+
+signal cave_path_trigger()
 
 signal time_transition_0
 signal time_transition_1
