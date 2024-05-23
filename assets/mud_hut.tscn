@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://37f4h6mvwnbh"]
+
+[ext_resource type="PackedScene" uid="uid://h7xjaxa3hqim" path="res://assets/imported/mud hut.glb" id="1_w7si0"]
+[ext_resource type="Material" uid="uid://cdsvjb1vi520a" path="res://assets/materials/tin_roof.tres" id="2_yojaq"]
+[ext_resource type="Material" uid="uid://d3d0gcoq1ts65" path="res://assets/materials/shaderMat/wood_1.tres" id="3_tck8a"]
+[ext_resource type="Material" uid="uid://13g7r57fmyxr" path="res://assets/mud.tres" id="4_id7m0"]
+
+[node name="mud hut" instance=ExtResource("1_w7si0")]
+
+[node name="Plane_003" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_yojaq")
+
+[node name="Cube_012" parent="." index="1"]
+surface_material_override/0 = ExtResource("3_tck8a")
+
+[node name="Plane_001" parent="." index="2"]
+surface_material_override/0 = ExtResource("2_yojaq")
+
+[node name="Cube_001" parent="." index="3"]
+surface_material_override/0 = ExtResource("4_id7m0")
