@@ -1,7 +1,8 @@
-[gd_scene load_steps=38 format=3 uid="uid://c1s21leqfk0hx"]
+[gd_scene load_steps=39 format=3 uid="uid://c1s21leqfk0hx"]
 
 [ext_resource type="Script" path="res://luke/scripts_luke/village.gd" id="1_xj3v6"]
 [ext_resource type="PackedScene" uid="uid://uwgt08apwad6" path="res://scenes/ScreenEffect.tscn" id="2_enkdy"]
+[ext_resource type="PackedScene" uid="uid://37f4h6mvwnbh" path="res://assets/mud_hut.tscn" id="2_jjyfm"]
 [ext_resource type="PackedScene" uid="uid://bvvre0p6auulq" path="res://assets/world.tscn" id="3_3tc8g"]
 [ext_resource type="PackedScene" uid="uid://dplf8d8w78la4" path="res://assets/environment_lights.tscn" id="4_oae23"]
 [ext_resource type="PackedScene" uid="uid://ds8jitdfn8yuj" path="res://assets/path.tscn" id="5_v30fn"]
@@ -323,6 +324,9 @@ emission = Color(1, 1, 1, 1)
 
 [node name="village" type="Node3D"]
 script = ExtResource("1_xj3v6")
+
+[node name="mud hut" parent="." instance=ExtResource("2_jjyfm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.88224, 5.06954, 191.331)
 
 [node name="screenEffect" parent="." instance=ExtResource("2_enkdy")]
 
@@ -721,6 +725,12 @@ mesh = SubResource("CapsuleMesh_cfc8h")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64.7092, 10.076, 426.409)
 mesh = SubResource("SphereMesh_qk74g")
 surface_material_override/0 = SubResource("StandardMaterial3D_2guyj")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0.000471239, 0, -0.000471239, 1, 0, 0, 0, 1, -4.12886, 6.87321, 191.069)
+light_color = Color(0.843693, 0.811877, 0.750093, 1)
+light_volumetric_fog_energy = 0.0
+shadow_enabled = true
 
 [connection signal="body_entered" from="Clearing/StickDropArea" to="Clearing/StickDropArea" method="_on_body_entered"]
 [connection signal="body_entered" from="Clearing/SeeDadGoneArea" to="Clearing/SeeDadGoneArea" method="_on_body_entered"]
