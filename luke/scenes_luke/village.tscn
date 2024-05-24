@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://qgbj73vixll4"]
+[gd_scene load_steps=66 format=3 uid="uid://qgbj73vixll4"]
 
 [ext_resource type="Script" path="res://luke/scripts_luke/village.gd" id="1_52nm1"]
 [ext_resource type="PackedScene" uid="uid://ds8jitdfn8yuj" path="res://assets/path.tscn" id="2_7n3rm"]
@@ -32,6 +32,14 @@
 [ext_resource type="Script" path="res://luke/scripts_luke/cave_path_trigger.gd" id="30_ngp8k"]
 [ext_resource type="Script" path="res://luke/scripts_luke/cave_animal_trigger.gd" id="31_d8djx"]
 [ext_resource type="Script" path="res://luke/scripts_luke/hiding_place.gd" id="32_sh5eu"]
+[ext_resource type="PackedScene" uid="uid://37f4h6mvwnbh" path="res://assets/mud_hut.tscn" id="33_5k016"]
+[ext_resource type="PackedScene" uid="uid://5o2ushl2soir" path="res://luke/scenes_luke/bulb.tscn" id="33_53e88"]
+[ext_resource type="PackedScene" uid="uid://r8b5dq4t23oq" path="res://luke/scenes_luke/battery.tscn" id="35_75y21"]
+[ext_resource type="PackedScene" uid="uid://4ws1xapqydux" path="res://luke/scenes_luke/torch_item.tscn" id="35_dkv4i"]
+[ext_resource type="Script" path="res://luke/scripts_luke/too_dark.gd" id="37_drmti"]
+[ext_resource type="PackedScene" uid="uid://cwjh0l4g03ox8" path="res://luke/scenes_luke/LampBody.tscn" id="38_c0fqu"]
+[ext_resource type="PackedScene" uid="uid://bpylo35umakot" path="res://luke/scenes_luke/matches.tscn" id="39_oi60q"]
+[ext_resource type="PackedScene" uid="uid://ctoukqnmepgwf" path="res://luke/scenes_luke/LampFuel.tscn" id="40_4b6mu"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_sr1r6"]
 height = 1.385
@@ -68,13 +76,13 @@ size = Vector3(0.235, 1, 63.44)
 size = Vector3(3.58, 1, 11.235)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ps0cm"]
-size = Vector3(15.18, 1, 1)
+size = Vector3(25.28, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rfw8m"]
-size = Vector3(1.475, 1, 16.885)
+size = Vector3(2.3, 1, 26.51)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xh0eb"]
-size = Vector3(35.09, 7.14, 1)
+size = Vector3(35.09, 22.8, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rv5da"]
 size = Vector3(30.805, 36.84, 5.905)
@@ -122,6 +130,12 @@ emission = Color(1, 1, 1, 1)
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_cfc8h"]
 material = SubResource("StandardMaterial3D_tqgou")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_3tdyi"]
+size = Vector3(10.885, 2.9, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x7x2d"]
+size = Vector3(13.23, 4.64, 1)
+
 [node name="village" type="Node3D"]
 script = ExtResource("1_52nm1")
 
@@ -133,9 +147,8 @@ script = ExtResource("1_52nm1")
 
 [node name="path" parent="." instance=ExtResource("2_7n3rm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.34267, 0)
-visible = false
 
-[node name="PlayerChild" parent="." node_paths=PackedStringArray("attack_marker", "rotate_marker", "lunge_marker", "father", "start_mound_marker", "start_clearing_marker", "start_night_path_marker", "start_fork_marker") instance=ExtResource("14_k0c81")]
+[node name="PlayerChild" parent="." node_paths=PackedStringArray("attack_marker", "rotate_marker", "lunge_marker", "father", "start_mound_marker", "start_clearing_marker", "start_night_path_marker", "start_fork_marker", "start_house_marker", "in_cave_marker") instance=ExtResource("14_k0c81")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.3924, 2.08273, 522.872)
 attack_marker = NodePath("Head/PlayerCam/AttackMarker")
 rotate_marker = NodePath("RotateMarker")
@@ -145,6 +158,8 @@ start_mound_marker = NodePath("../Ledge/PlayerToMound")
 start_clearing_marker = NodePath("../Clearing/PlayerClearing")
 start_night_path_marker = NodePath("../NightPath/PlayerNightPath")
 start_fork_marker = NodePath("../NightPath/PlayerFork")
+start_house_marker = NodePath("../House/PlayerHouse")
+in_cave_marker = NodePath("../Cave3/PlayerCaveMarker")
 
 [node name="Father" parent="." node_paths=PackedStringArray("check_points", "clearing_check_points", "player", "top_mound_marker", "sitting_log") instance=ExtResource("4_ik3vd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.9337, 0.885342, 525.887)
@@ -154,7 +169,7 @@ player = NodePath("../PlayerChild")
 top_mound_marker = NodePath("../Ledge/DadTopMound")
 sitting_log = NodePath("../Clearing/SittingLog")
 
-[node name="Orb" parent="." node_paths=PackedStringArray("clearing_markers", "path_one_markers", "cave_path_markers", "player", "father", "breath_1", "breath_2", "breath_3") instance=ExtResource("8_5d4jk")]
+[node name="Orb" parent="." node_paths=PackedStringArray("clearing_markers", "path_one_markers", "cave_path_markers", "player", "father", "breath_1", "breath_2") instance=ExtResource("8_5d4jk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.575, 4.72011, 452.751)
 clearing_markers = [NodePath("../Clearing/OrbClearingMarkers/OrbC1"), NodePath("../Clearing/OrbClearingMarkers/OrbCPath")]
 path_one_markers = [NodePath("../NightPath/PathNight/OrbNight1"), NodePath("../NightPath/PathNight/OrbNight2"), NodePath("../NightPath/PathNight/OrbNight3"), NodePath("../NightPath/PathNight/OrbNight4"), NodePath("../NightPath/PathNight/OrbNight5"), NodePath("../NightPath/PathNight/OrbNight6"), NodePath("../NightPath/PathNight/OrbNight7"), NodePath("../NightPath/PathNight/OrbNight8"), NodePath("../NightPath/PathNight/OrbNight9"), NodePath("../NightPath/PathNight/OrbNight10")]
@@ -163,7 +178,6 @@ player = NodePath("../PlayerChild")
 father = NodePath("../Father")
 breath_1 = NodePath("../NightPath/PathNight/OrbNight6/Breath")
 breath_2 = NodePath("../NightPath/PathNight/OrbNight9/Breath2")
-breath_3 = NodePath("")
 
 [node name="AnimalChase" parent="." node_paths=PackedStringArray("player", "animal_markers", "cave_markers") instance=ExtResource("9_vjlsi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.2412, 8.24444, 251.641)
@@ -594,10 +608,11 @@ script = ExtResource("27_pm1md")
 shape = SubResource("BoxShape3D_1rdjx")
 
 [node name="AnimalTwo" type="Area3D" parent="VoicePathOne"]
-transform = Transform3D(0.903185, 0, -0.42925, 0, 1, 0, 0.42925, 0, 0.903185, 12.448, 2.15294, 158.89)
+transform = Transform3D(0.903185, 0, -0.42925, 0, 1, 0, 0.42925, 0, 0.903185, 15.6107, 2.15294, 165.167)
 script = ExtResource("29_au440")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="VoicePathOne/AnimalTwo"]
+transform = Transform3D(0.978148, 0.00279126, -0.207893, -0.00516175, 0.999928, -0.0108608, 0.207847, 0.0116966, 0.978091, 0, 0, 0)
 shape = SubResource("BoxShape3D_ps0cm")
 
 [node name="VoicePathSticks" type="Node3D" parent="VoicePathOne"]
@@ -625,7 +640,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.4985, 13.4535, 128.993)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.8829, 15.8097, 121.474)
 
 [node name="AnimalTrigger" type="Area3D" parent="VoicePathOne"]
-transform = Transform3D(0.79054, 0, 0.61241, 0, 1, 0, -0.61241, 0, 0.79054, -26.98, 2.35617, 230.76)
+transform = Transform3D(0.549723, 0, 0.835347, 0, 1, 0, -0.835347, 0, 0.549723, -27.4756, 2.35617, 229.184)
 script = ExtResource("29_waprw")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="VoicePathOne/AnimalTrigger"]
@@ -634,11 +649,11 @@ shape = SubResource("BoxShape3D_rfw8m")
 [node name="StickDropAreas" type="Node3D" parent="VoicePathOne"]
 
 [node name="StickDropArea1" type="Area3D" parent="VoicePathOne/StickDropAreas"]
-transform = Transform3D(0.774536, 0, 0.63253, 0, 1, 0, -0.63253, 0, 0.774536, -26.048, 8.80078, 220.622)
+transform = Transform3D(0.573462, 0, 0.819232, 0, 1, 0, -0.819232, 0, 0.573462, -32.4934, 15.7698, 220.622)
 script = ExtResource("27_phcf6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="VoicePathOne/StickDropAreas/StickDropArea1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.231674, -3.68559, 0.306946)
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 7.54073, -3.68559, -2.25737)
 shape = SubResource("BoxShape3D_xh0eb")
 
 [node name="StickDropArea2" type="Area3D" parent="VoicePathOne/StickDropAreas"]
@@ -650,7 +665,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.231674, -3.68559, 0.306946
 shape = SubResource("BoxShape3D_xh0eb")
 
 [node name="StickDropArea5" type="Area3D" parent="VoicePathOne/StickDropAreas"]
-transform = Transform3D(0.32852, 0, 0.944497, 0, 1, 0, -0.944497, 0, 0.32852, -1.78447, 8.34466, 198.909)
+transform = Transform3D(0.636791, 0, 0.771036, 0, 1, 0, -0.771036, 0, 0.636791, -1.78447, 22.8348, 198.909)
 script = ExtResource("27_phcf6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="VoicePathOne/StickDropAreas/StickDropArea5"]
@@ -658,7 +673,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.231674, -3.68559, 0.306946
 shape = SubResource("BoxShape3D_xh0eb")
 
 [node name="StickDropArea10" type="Area3D" parent="VoicePathOne/StickDropAreas"]
-transform = Transform3D(0.221668, 0, 0.975122, 0, 1, 0, -0.975122, 0, 0.221668, -10.6088, 8.34466, 190.767)
+transform = Transform3D(0.617956, 0, 0.786213, 0, 1, 0, -0.786213, 0, 0.617956, -14.5687, 16.9601, 187.153)
 script = ExtResource("27_phcf6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="VoicePathOne/StickDropAreas/StickDropArea10"]
@@ -666,7 +681,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.231674, -3.68559, 0.306946
 shape = SubResource("BoxShape3D_xh0eb")
 
 [node name="StickDropArea6" type="Area3D" parent="VoicePathOne/StickDropAreas"]
-transform = Transform3D(0.60793, 0, 0.79399, 0, 1, 0, -0.79399, 0, 0.60793, 12.4846, 9.42113, 170.378)
+transform = Transform3D(0.60793, 0, 0.79399, 0, 1, 0, -0.79399, 0, 0.60793, 19.181, 9.42113, 173.927)
 script = ExtResource("27_phcf6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="VoicePathOne/StickDropAreas/StickDropArea6"]
@@ -674,7 +689,7 @@ transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -1.46104
 shape = SubResource("BoxShape3D_rv5da")
 
 [node name="StickDropArea11" type="Area3D" parent="VoicePathOne/StickDropAreas"]
-transform = Transform3D(0.60793, 0, 0.79399, 0, 1, 0, -0.79399, 0, 0.60793, 1.7548, 9.56168, 159.553)
+transform = Transform3D(0.60793, 0, 0.79399, 0, 1, 0, -0.79399, 0, 0.60793, 5.75734, 9.56168, 159.553)
 script = ExtResource("27_phcf6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="VoicePathOne/StickDropAreas/StickDropArea11"]
@@ -761,6 +776,7 @@ transform = Transform3D(0.988618, 0, 0.15045, 0, 1, 0, -0.15045, 0, 0.988618, 8.
 script = ExtResource("30_ngp8k")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PathToCave/CavePathTrigger"]
+transform = Transform3D(1, 0, -1.49012e-08, 0, 1, 0, 1.49012e-08, 0, 1, 1.03123, 0, 0.156921)
 shape = SubResource("BoxShape3D_7cr53")
 
 [node name="OrbCaveMarkers" type="Node3D" parent="PathToCave"]
@@ -772,49 +788,49 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3627, -2.38016, 27.7706)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.601, -3.00241, 23.4509)
 
 [node name="OrbC3" type="Marker3D" parent="PathToCave/OrbCaveMarkers"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.20481, -3.28439, 20.2714)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.50172, -3.28439, 17.1772)
 
 [node name="OrbC4" type="Marker3D" parent="PathToCave/OrbCaveMarkers"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.45317, -3.52712, 17.675)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.55833, -3.52712, 9.58281)
 
 [node name="OrbC5" type="Marker3D" parent="PathToCave/OrbCaveMarkers"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.45481, -4.24029, 8.23575)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.35658, -4.24029, 3.37877)
 
 [node name="OrbC6" type="Marker3D" parent="PathToCave/OrbCaveMarkers"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.947182, -4.57028, 4.70689)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.792198, -4.92222, -4.44344)
 
 [node name="OrbC7" type="Marker3D" parent="PathToCave/OrbCaveMarkers"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.99729, -5.62139, -1.24078)
+transform = Transform3D(-0.969385, 0.245544, 0, -0.245544, -0.969385, 0, 0, 0, 1, -3.28973, -6.08589, -11.8353)
 
 [node name="OrbC8" type="Marker3D" parent="PathToCave/OrbCaveMarkers"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.27943, -7.00775, -11.5638)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.49677, -6.01983, -17.0446)
 
 [node name="OrbC9" type="Marker3D" parent="PathToCave/OrbCaveMarkers"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.846, -7.63115, -26.0128)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.7932, -5.43557, -31.7598)
 
 [node name="OrbC10" type="Marker3D" parent="PathToCave/OrbCaveMarkers"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.7066, -7.41739, -34.7175)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.7038, -3.81974, -41.716)
 
 [node name="OrbC11" type="Marker3D" parent="PathToCave/OrbCaveMarkers"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.2717, -7.55702, -43.4136)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.3289, -2.18738, -48.9955)
 
 [node name="OrbC12" type="Marker3D" parent="PathToCave/OrbCaveMarkers"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.4454, -8.47404, -56.6344)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.6996, -1.80203, -62.0569)
 
 [node name="OrbC13" type="Marker3D" parent="PathToCave/OrbCaveMarkers"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.2211, -6.56194, -93.4536)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.8434, -1.36263, -64.1912)
 
 [node name="OrbC14" type="Marker3D" parent="PathToCave/OrbCaveMarkers"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.5845, -6.33143, -112.358)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.1385, -0.680239, -79.8931)
 
 [node name="OrbC15" type="Marker3D" parent="PathToCave/OrbCaveMarkers"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.2001, -5.66818, -146.41)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.2839, -1.40287, -92.5325)
 
 [node name="OrbC16" type="Marker3D" parent="PathToCave/OrbCaveMarkers"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.6421, -4.79365, -174.027)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.3868, -1.97872, -118.332)
 
 [node name="OrbC17" type="Marker3D" parent="PathToCave/OrbCaveMarkers"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67.9515, -4.24398, -188.393)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.503, 0.226832, -134.523)
 
 [node name="CaveAnimals" type="Node3D" parent="PathToCave"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.91276, -2.0716, 5.59982)
@@ -837,6 +853,15 @@ transform = Transform3D(0.872487, 0, 0.488636, 0, 1, 0, -0.488636, 0, 0.872487, 
 script = ExtResource("29_au440")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PathToCave/CaveAnimalTrigger2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.16534, 0.612119, -0.903412)
+shape = SubResource("BoxShape3D_o1sdk")
+
+[node name="CaveAnimalTrigger3" type="Area3D" parent="PathToCave"]
+transform = Transform3D(0.872487, 0, 0.488636, 0, 1, 0, -0.488636, 0, 0.872487, -43.2204, -2.20713, -52.8429)
+script = ExtResource("29_au440")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PathToCave/CaveAnimalTrigger3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.16534, 0.612119, -0.903412)
 shape = SubResource("BoxShape3D_o1sdk")
 
 [node name="HidingPlace" type="Area3D" parent="PathToCave"]
@@ -851,7 +876,7 @@ transform = Transform3D(0.547387, 0, 0, 0, 0.547387, 0, 0, 0, 0.547387, 0, 0, 0)
 mesh = SubResource("SphereMesh_1mwdf")
 
 [node name="HidingPlace2" type="Area3D" parent="PathToCave"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.8599, -7.6304, -27.1106)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.1785, -5.89263, -29.8054)
 script = ExtResource("32_sh5eu")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PathToCave/HidingPlace2"]
@@ -859,6 +884,17 @@ shape = SubResource("BoxShape3D_emej2")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="PathToCave/HidingPlace2"]
 transform = Transform3D(0.547387, 0, 0, 0, 0.547387, 0, 0, 0, 0.547387, 0, 0, 0)
+mesh = SubResource("SphereMesh_1mwdf")
+
+[node name="HidingPlace3" type="Area3D" parent="PathToCave"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.7401, -1.57984, -58.3777)
+script = ExtResource("32_sh5eu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PathToCave/HidingPlace3"]
+shape = SubResource("BoxShape3D_emej2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PathToCave/HidingPlace3"]
+transform = Transform3D(0.547387, 0, 0, 0, 0.547387, 0, 0, 0, 0.547387, -11.0326, 0.0910082, -14.69)
 mesh = SubResource("SphereMesh_1mwdf")
 
 [node name="ChoiceFork" type="MeshInstance3D" parent="."]
@@ -906,6 +942,68 @@ mesh = SubResource("CapsuleMesh_cfc8h")
 transform = Transform3D(1, 0, 0, 0, 2.72611, 0, 0, 0, 1, 55.5583, -17.8029, -747.058)
 mesh = SubResource("CapsuleMesh_cfc8h")
 
+[node name="House" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.2905, 29.8736, 39.7666)
+
+[node name="mud hut" parent="House" instance=ExtResource("33_5k016")]
+
+[node name="PlayerHouse" type="Marker3D" parent="House"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.01878, -0.416012, 0.0352516)
+
+[node name="Testing" type="Node3D" parent="House"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.609146, 0.430868, 0)
+
+[node name="Battery" parent="House/Testing" instance=ExtResource("35_75y21")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.01448, -0.566084, 2.85403)
+
+[node name="Bulb" parent="House/Testing" instance=ExtResource("33_53e88")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.10939, -1.5703, -1.31954)
+
+[node name="TorchItem" parent="House/Testing" instance=ExtResource("35_dkv4i")]
+transform = Transform3D(0.435797, 0, -0.900045, 0, 1, 0, 0.900045, 0, 0.435797, 0.114071, -0.81679, -3.01499)
+
+[node name="TooDark" type="Area3D" parent="House"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.65371, 0, -6.37872)
+script = ExtResource("37_drmti")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="House/TooDark"]
+shape = SubResource("BoxShape3D_3tdyi")
+
+[node name="BlockDarkPath" type="StaticBody3D" parent="House/TooDark"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.329599, -1.5752)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="House/TooDark/BlockDarkPath"]
+shape = SubResource("BoxShape3D_x7x2d")
+
+[node name="Cave3" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -127.551, 11.6284, -8.40217)
+
+[node name="LampBody" parent="Cave3" instance=ExtResource("38_c0fqu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.92411, -3.19133, -5.15025)
+
+[node name="Matches" parent="Cave3" instance=ExtResource("39_oi60q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.15783, -3.33428, 0)
+
+[node name="LampFuel" parent="Cave3" instance=ExtResource("40_4b6mu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.75408, -3.20511, -7.20113)
+
+[node name="PlayerCaveMarker" type="Marker3D" parent="Cave3"]
+unique_name_in_owner = true
+
+[node name="TooDark2" type="Area3D" parent="Cave3"]
+transform = Transform3D(0.991067, 0, -0.133364, 0, 1, 0, 0.133364, 0, 0.991067, 0, -1.77982, -11.5647)
+script = ExtResource("37_drmti")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cave3/TooDark2"]
+shape = SubResource("BoxShape3D_3tdyi")
+
+[node name="BlockDarkPath" type="StaticBody3D" parent="Cave3/TooDark2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.329599, -1.5752)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cave3/TooDark2/BlockDarkPath"]
+shape = SubResource("BoxShape3D_x7x2d")
+
 [connection signal="body_entered" from="Clearing/StickDropArea" to="Clearing/StickDropArea" method="_on_body_entered"]
 [connection signal="body_entered" from="Clearing/SeeDadGoneArea" to="Clearing/SeeDadGoneArea" method="_on_body_entered"]
 [connection signal="body_entered" from="Clearing/ExitPathTrigger" to="Clearing/ExitPathTrigger" method="_on_body_entered"]
@@ -930,5 +1028,9 @@ mesh = SubResource("CapsuleMesh_cfc8h")
 [connection signal="body_entered" from="PathToCave/CavePathTrigger" to="PathToCave/CavePathTrigger" method="_on_body_entered"]
 [connection signal="body_entered" from="PathToCave/CaveAnimalTrigger" to="PathToCave/CaveAnimalTrigger" method="_on_body_entered"]
 [connection signal="body_entered" from="PathToCave/CaveAnimalTrigger2" to="PathToCave/CaveAnimalTrigger2" method="_on_body_entered"]
+[connection signal="body_entered" from="PathToCave/CaveAnimalTrigger3" to="PathToCave/CaveAnimalTrigger3" method="_on_body_entered"]
 [connection signal="body_entered" from="PathToCave/HidingPlace" to="PathToCave/HidingPlace" method="_on_body_entered"]
 [connection signal="body_entered" from="PathToCave/HidingPlace2" to="PathToCave/HidingPlace2" method="_on_body_entered"]
+[connection signal="body_entered" from="PathToCave/HidingPlace3" to="PathToCave/HidingPlace3" method="_on_body_entered"]
+[connection signal="body_entered" from="House/TooDark" to="House/TooDark" method="_on_body_entered"]
+[connection signal="body_entered" from="Cave3/TooDark2" to="Cave3/TooDark2" method="_on_body_entered"]

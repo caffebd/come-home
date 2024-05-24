@@ -1,18 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://cahhg0aqvpmrs"]
+[gd_scene load_steps=6 format=3 uid="uid://cahhg0aqvpmrs"]
+
+[ext_resource type="Script" path="res://luke/scripts_luke/torch.gd" id="1_e1okl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1f6yw"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_a0fbk"]
+material = SubResource("StandardMaterial3D_1f6yw")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wamto"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_oj54c"]
+material = SubResource("StandardMaterial3D_wamto")
 
 [node name="Torch" type="Node3D"]
+script = ExtResource("1_e1okl")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+[node name="Body1" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.21035, 0, 0, 0, -2.27549e-09, -0.21035, 0, 0.0520571, -9.1947e-09, 0, 0, -0.170992)
 layers = 524288
 mesh = SubResource("CylinderMesh_a0fbk")
-skeleton = NodePath("../MeshInstance3D")
+skeleton = NodePath("../Body2")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="Body2" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.173826, 0, 0, 0, -7.59819e-09, -0.173826, 0, 0.173826, -7.59819e-09, 0, 0, 0)
 layers = 524288
 mesh = SubResource("CylinderMesh_oj54c")

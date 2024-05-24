@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://ctoukqnmepgwf"]
+
+[ext_resource type="Script" path="res://luke/scripts_luke/collect_item.gd" id="1_cgkc3"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_sdy4e"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_im5jr"]
+height = 0.41
+radius = 0.095
+
+[node name="LampFuel" type="Node3D"]
+script = ExtResource("1_cgkc3")
+item_name = "fuel"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.192213, 0, 0, 0, 0.192213, 0, 0, 0, 0.192213, 0, 0, 0)
+mesh = SubResource("CylinderMesh_sdy4e")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." groups=["collect_item", "highlight"]]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("CylinderShape3D_im5jr")
