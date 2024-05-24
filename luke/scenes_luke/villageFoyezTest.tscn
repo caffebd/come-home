@@ -22,7 +22,6 @@
 [ext_resource type="Script" path="res://luke/scripts_luke/dad_voice.gd" id="20_u1hat"]
 [ext_resource type="FontFile" uid="uid://duirhuy7klyp8" path="res://assets/fonts/alagard.ttf" id="21_da3l7"]
 
-
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_sr1r6"]
 height = 1.385
 radius = 0.905
@@ -655,12 +654,11 @@ shape = SubResource("CylinderShape3D_l7tdc")
 
 [node name="VoicePathOne" type="Node3D" parent="."]
 
-[node name="DadVoice" type="AudioStreamPlayer3D" parent="VoicePathOne" node_paths=PackedStringArray("player")]
+[node name="DadVoice" type="AudioStreamPlayer3D" parent="VoicePathOne"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.2034, 6.90271, 236.126)
 stream = ExtResource("19_32cwd")
 volume_db = 5.0
 script = ExtResource("20_u1hat")
-player = NodePath("../../PlayerChild")
 
 [node name="SaifulLabel" type="Label3D" parent="VoicePathOne/DadVoice"]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -0.0171356, 0, 1.26886)
