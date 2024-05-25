@@ -26,6 +26,8 @@ var stick_thrown_once: bool = false
 var voice_route: bool = false
 var cave_route: bool = false
 
+var can_go_home: bool = true
+
 #git comment
 
 func _ready() -> void:
@@ -58,9 +60,11 @@ func _start_chase():
 	chasing = true
 	homing = false
 	moving = true
+	can_go_home = true
 	
 
 func _go_home():
+	if not can_go_home: return
 	if voice_route:
 		_stick_feedback()
 	
@@ -73,6 +77,7 @@ func _go_home():
 	chasing = false
 	homing = true
 	moving = true
+	can_go_home = false
 	print ("GO MARKER INDEX "+str(marker_index))
 
 func _stick_feedback():
@@ -109,7 +114,6 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 	
 	else:
-		
 		moving = false
 
 

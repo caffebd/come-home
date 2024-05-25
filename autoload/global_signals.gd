@@ -5,9 +5,13 @@ signal start_game()
 signal dad_to_mound()
 signal dad_to_clearing()
 
+
 signal start_clearing()
 
-signal  stick_drop()
+signal stick_drop()
+
+signal start_house()
+signal start_in_cave()
 
 signal show_speech(text)
 signal hide_speech()
@@ -49,6 +53,8 @@ signal animal_trigger()
 signal hiding()
 
 signal cave_path_trigger()
+
+signal item_collected(item)
 
 signal time_transition_0
 signal time_transition_1

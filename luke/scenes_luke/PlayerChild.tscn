@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://doxkrnuvvwqhc"]
+[gd_scene load_steps=6 format=3 uid="uid://doxkrnuvvwqhc"]
 
 [ext_resource type="Script" path="res://luke/scripts_luke/PlayerChild.gd" id="1_ofowk"]
 [ext_resource type="PackedScene" uid="uid://cm3d1u3ihuwtd" path="res://luke/scenes_luke/hud.tscn" id="2_g6opo"]
-[ext_resource type="PackedScene" uid="uid://cahhg0aqvpmrs" path="res://luke/scenes_luke/torch.tscn" id="2_iey7y"]
 [ext_resource type="AudioStream" uid="uid://bd4trkkqkw1h0" path="res://luke/assets_luke/audio_luke/jump_short.mp3" id="3_okxv4"]
 [ext_resource type="AudioStream" uid="uid://oy0gvh16kvly" path="res://luke/assets_luke/audio_luke/grass_footsteps.mp3" id="3_r2ww0"]
 
@@ -24,7 +23,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00149998, 0.45512, -0.3265
 
 [node name="Head" type="Node3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.402157, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
 
 [node name="PlayerCam" type="Camera3D" parent="Head"]
 unique_name_in_owner = true
@@ -99,9 +98,6 @@ omni_range = 0.915
 [node name="Hand" type="Node3D" parent="CanvasLayer/SubViewportContainer/SubViewport/HandCam"]
 unique_name_in_owner = true
 transform = Transform3D(0.931907, -0.362698, -1.49001e-09, 0.359617, 0.923991, -0.130058, 0.0471723, 0.121203, 0.991506, 0.358857, -0.469255, -0.8357)
-
-[node name="Torch" parent="CanvasLayer/SubViewportContainer/SubViewport/HandCam/Hand" instance=ExtResource("2_iey7y")]
-transform = Transform3D(0.998666, -0.00342782, -0.0515244, -0.0034279, 0.991192, -0.132386, 0.0515244, 0.132385, 0.989858, 0.234216, -0.164366, 0.0540037)
 
 [node name="Hud" parent="CanvasLayer" instance=ExtResource("2_g6opo")]
 unique_name_in_owner = true

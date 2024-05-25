@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://4ws1xapqydux"]
+
+[ext_resource type="Script" path="res://luke/scripts_luke/collect_item.gd" id="1_umdaf"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_a0fbk"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_oj54c"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gnk3k"]
+radius = 0.095
+height = 0.455
+
+[node name="TorchItem" type="Node3D"]
+script = ExtResource("1_umdaf")
+item_name = "torch_body"
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.21035, 0, 0, 0, -2.27549e-09, -0.21035, 0, 0.0520571, -9.1947e-09, 0, 0, -0.170992)
+mesh = SubResource("CylinderMesh_a0fbk")
+skeleton = NodePath("../MeshInstance3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.173826, 0, 0, 0, -7.59819e-09, -0.173826, 0, 0.173826, -7.59819e-09, 0, 0, 0)
+mesh = SubResource("CylinderMesh_oj54c")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." groups=["collect_item", "highlight"]]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("CapsuleShape3D_gnk3k")

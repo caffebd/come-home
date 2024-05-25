@@ -27,6 +27,10 @@ var constant_wobble:bool = false
 @onready var player_hand = %Hand
 @onready var head = %Head
 @onready var hud = %Hud
+@onready var hand = %Hand
+
+var torch_scene = preload("res://luke/scenes_luke/torch.tscn")
+var lamp_scene = preload("res://luke/scenes_luke/Lamp.tscn")
 
 @export var father: CharacterBody3D
 
@@ -37,6 +41,9 @@ var constant_wobble:bool = false
 @export var start_clearing_marker: Marker3D
 @export var start_night_path_marker: Marker3D
 @export var start_fork_marker: Marker3D
+@export var start_house_marker: Marker3D
+@export var start_cave_maker: Marker3D
+@export var in_cave_marker: Marker3D
 
 @export var throwForce = 0.3
 @export var followSpeed = 10.0
@@ -74,7 +81,18 @@ var following_dad: bool = true
 
 var can_trigger_orb: bool = true
 
+var crouching: bool = false
+
+var ready_to_hide: bool = false
+
+var torch_parts: Array[String]
+var lamp_parts: Array[String]
 #end head wobble settings
+
+var torch: Node3D
+var lamp: Node3D
+
+var has_light: bool = false
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -84,6 +102,10 @@ func _ready():
 	GlobalSignals.father_gone.connect(_father_gone)
 	GlobalSignals.night_path_set_up.connect(_night_path_set_up)
 	GlobalSignals.fork_set_up.connect(_fork_set_up)
+	GlobalSignals.item_collected.connect(_item_collected)
+	GlobalSignals.start_house.connect(_start_house)
+	GlobalSignals.start_in_cave.connect(_start_in_cave)
+	%SpotLight3D.visible = false
 	#GlobalSignals.dad_to_mound.connect(_start_mound)
 	head.rotation_degrees.y = 0.0
 	last_distance = global_position.distance_to(father.global_position)
@@ -114,7 +136,72 @@ func _fork_set_up():
 	can_trigger_orb = false
 	GlobalSignals.emit_signal("father_gone")
 	global_position = start_fork_marker.global_position
-							
+
+func _start_house():
+	following_dad = false
+	can_trigger_orb = false
+	GlobalSignals.emit_signal("father_gone")
+	global_position = start_house_marker.global_position	
+
+func _start_in_cave():
+	following_dad = false
+	can_trigger_orb = false
+	GlobalSignals.emit_signal("father_gone")
+	global_position = in_cave_marker.global_position	
+
+func _item_collected(item):
+	match item:
+		"torch_body":
+			if not torch_parts.has(item):
+				torch_parts.append(item)
+				_check_torch_status()
+		"bulb":
+			if not torch_parts.has(item):
+				torch_parts.append(item)
+				_check_torch_status()
+		"battery":
+			if not torch_parts.has(item):
+				torch_parts.append(item)
+				_check_torch_status()	
+		"lamp_body":
+			if not lamp_parts.has(item):
+				lamp_parts.append(item)
+				_check_lamp_status()
+		"fuel":
+			if not lamp_parts.has(item):
+				lamp_parts.append(item)
+				_check_lamp_status()
+		"matches":
+			if not lamp_parts.has(item):
+				lamp_parts.append(item)		
+				_check_lamp_status()
+
+func _check_torch_status():
+	match torch_parts.size():
+		1:
+			torch = torch_scene.instantiate()
+			hand.add_child(torch)
+			torch.collected_state(1)
+		2:
+			torch.collected_state(2)
+		3:
+			torch.collected_state(3)
+			has_light = true	
+			GlobalSignals.emit_signal("show_player_info", "Press 'f' to use.")	
+
+func _check_lamp_status():
+	match lamp_parts.size():
+		1:
+			lamp = lamp_scene.instantiate()
+			hand.add_child(lamp)
+			lamp.collected_state(1)
+		2:
+			lamp.collected_state(2)
+		3:
+			lamp.collected_state(3)
+			has_light = true
+			GlobalSignals.emit_signal("show_player_info", "Press 'f' to use.")
+			
 func _input(event):
 	if event is InputEventMouseMotion:
 		if use_cursor:
@@ -132,12 +219,25 @@ func _input(event):
 		else:
 			use_cursor = true
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	if Input.is_action_just_pressed("torch"):
+	if Input.is_action_just_pressed("torch") and has_light:
 		%SpotLight3D.visible = !%SpotLight3D.visible
-	if Input.is_action_just_pressed("dad_call"):
-		GlobalSignals.emit_signal("dad_call")
+	if Input.is_action_just_pressed("use"):
+		_take_action()
 
-
+	if Input.is_action_pressed("crouch"):
+		if not crouching:
+			GlobalSignals.emit_signal("hide_player_info")			
+			var tween = create_tween()
+			tween.tween_property(head, "position:y", 0.2, 0.5)
+			crouching = true
+			if ready_to_hide:
+				await get_tree().create_timer(2.0).timeout
+				GlobalSignals.emit_signal("hiding")
+	if Input.is_action_just_released("crouch"):
+		var tween = create_tween()
+		tween.tween_property(head, "position:y", 0.5, 0.5)
+		crouching = false
+		
 func _controller_support():
 	
 	if Input.is_action_pressed("joy_left"):
@@ -161,6 +261,10 @@ func _controller_support():
 func _take_action():
 	var collider = ray.get_collider()
 	if collider != null:
+		print (collider.name)
+		if collider.is_in_group("collect_item"):
+			if collider.get_parent().has_method("item_collected"):
+				collider.get_parent().item_collected()
 		print ("clicked")
 
 func _change_dad_max_dist(dist):
@@ -219,7 +323,7 @@ func _physics_process(delta):
 	var result = space_state.intersect_ray(query)
 	
 	
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and is_on_floor() and not crouching:
 		%Jump.play()
 		velocity.y = JUMP_VELOCITY
 	
@@ -234,6 +338,7 @@ func _physics_process(delta):
 				#object.global_position.x = attack_marker.global_position.x
 	
 	var input_dir = Input.get_vector("left", "right", "forward", "back")
+	if crouching: return
 	if input_dir != Vector2(0,0) and is_on_floor() and speed >= 1.5:
 		if not %Footsteps.playing:
 			%Footsteps.play()

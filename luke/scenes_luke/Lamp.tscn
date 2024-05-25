@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bua2airgg0xo6"]
+
+[ext_resource type="Script" path="res://luke/scripts_luke/lamp.gd" id="1_ixhd8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rgowf"]
+transparency = 1
+albedo_color = Color(0.690196, 0.682353, 0, 0)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ylqfs"]
+material = SubResource("StandardMaterial3D_rgowf")
+
+[node name="Lamp" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 0.966654, 0.256087, 0, -0.256087, 0.966654, 0.284994, 0, -0.102422)
+script = ExtResource("1_ixhd8")
+
+[node name="Body1" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.240093, 0, 0, 0, 0.198728, 0, 0, 0, 0.229577, 0, 0, 0)
+layers = 524288
+mesh = SubResource("CapsuleMesh_ylqfs")
