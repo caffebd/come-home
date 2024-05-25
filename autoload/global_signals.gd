@@ -69,6 +69,11 @@ signal dark_place(state)
 signal send_back_to_cave()
 signal send_back_to_house()
 
+signal buzz_off()
+
+signal orb_to_clearing_two()
+signal voice_to_clearing_two()
+
 signal time_transition_0
 signal time_transition_1
 signal time_transition_2

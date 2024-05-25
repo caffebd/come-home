@@ -156,6 +156,8 @@ func _start_in_cave():
 
 func _dark_place(state):
 	in_dark = state
+	if not in_dark:
+		speed = 2.0
 
 func _item_collected(item):
 	match item:
@@ -314,7 +316,7 @@ func _physics_process(delta):
 	
 	if in_dark:
 		if light_on:
-			speed = 2.0
+			speed = 20.0
 		else:
 			speed = 0.5
 	

@@ -4,6 +4,8 @@ extends CharacterBody3D
 @export var path_one_markers: Array[Marker3D]
 @export var cave_path_markers: Array[Marker3D]
 
+@export var ghost_markers: Array[Marker3D]
+
 @export var player: CharacterBody3D
 @export var father: CharacterBody3D
 
@@ -15,7 +17,7 @@ extends CharacterBody3D
 
 var use_check_points: Array[Marker3D]
 
-enum {CLEARING, PATHONE, CAVE}
+enum {CLEARING, PATHONE, CAVE, GHOST}
 
 var  speed = 10.0
 
@@ -42,6 +44,7 @@ func _ready() -> void:
 	GlobalSignals.cave_path_set_up.connect(_cave_path_set_up)
 	GlobalSignals.cave_path_trigger.connect(_cave_path_trigger)
 	GlobalSignals.fork_set_up.connect(_fork_set_up)
+	GlobalSignals.orb_to_clearing_two.connect(_clearing_two)
 	_set_check_points(CLEARING)
 	await get_tree().create_timer(3.0).timeout
 	moving = false
@@ -90,6 +93,15 @@ func _cave_path_trigger():
 	sense_player = true
 	timer_running = true
 	_next_position()
+
+func _clearing_two():
+	moving = false
+	#global_position = path_one_markers[path_one_markers.size()-1].global_position
+	_set_check_points(GHOST)
+	check_index = 0
+	sense_player = true
+	timer_running = true
+	global_position = ghost_markers[0].global_position
 
 func _orb_sense_player(state):
 	sense_player = state
@@ -142,7 +154,8 @@ func _set_check_points(phase):
 			use_check_points = path_one_markers.duplicate()
 		CAVE:
 			use_check_points = cave_path_markers.duplicate()
-
+		GHOST:
+			use_check_points = ghost_markers.duplicate()
 
 func _next_position():
 	print (use_check_points.size())

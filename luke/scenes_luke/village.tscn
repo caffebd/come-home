@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://qgbj73vixll4"]
+[gd_scene load_steps=75 format=3 uid="uid://qgbj73vixll4"]
 
 [ext_resource type="Script" path="res://luke/scripts_luke/village.gd" id="1_52nm1"]
 [ext_resource type="PackedScene" uid="uid://ds8jitdfn8yuj" path="res://assets/path.tscn" id="2_7n3rm"]
@@ -38,10 +38,12 @@
 [ext_resource type="PackedScene" uid="uid://4ws1xapqydux" path="res://luke/scenes_luke/torch_item.tscn" id="35_dkv4i"]
 [ext_resource type="Script" path="res://luke/scripts_luke/too_dark.gd" id="37_drmti"]
 [ext_resource type="PackedScene" uid="uid://cwjh0l4g03ox8" path="res://luke/scenes_luke/LampBody.tscn" id="38_c0fqu"]
+[ext_resource type="Script" path="res://luke/scripts_luke/trigger_dad_call.gd" id="39_iw7lx"]
 [ext_resource type="PackedScene" uid="uid://bpylo35umakot" path="res://luke/scenes_luke/matches.tscn" id="39_oi60q"]
 [ext_resource type="PackedScene" uid="uid://ctoukqnmepgwf" path="res://luke/scenes_luke/LampFuel.tscn" id="40_4b6mu"]
 [ext_resource type="PackedScene" uid="uid://c3e8vsx4cw4ik" path="res://luke/scenes_luke/BuzzEnemy.tscn" id="41_2a6bb"]
 [ext_resource type="Script" path="res://luke/scripts_luke/trigger_buzz.gd" id="41_3v2ll"]
+[ext_resource type="Script" path="res://luke/scripts_luke/cave_exit.gd" id="42_60gxn"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_sr1r6"]
 height = 1.385
@@ -138,8 +140,20 @@ size = Vector3(10.885, 2.9, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_x7x2d"]
 size = Vector3(13.23, 4.64, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_x5hji"]
+size = Vector3(13.29, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s6w6v"]
+size = Vector3(29.945, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wb8eg"]
+size = Vector3(14.895, 1, 1)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_ggi5j"]
 size = Vector3(3.02, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_22xi7"]
+size = Vector3(2.32, 1, 1)
 
 [node name="village" type="Node3D"]
 script = ExtResource("1_52nm1")
@@ -174,11 +188,12 @@ player = NodePath("../PlayerChild")
 top_mound_marker = NodePath("../Ledge/DadTopMound")
 sitting_log = NodePath("../Clearing/SittingLog")
 
-[node name="Orb" parent="." node_paths=PackedStringArray("clearing_markers", "path_one_markers", "cave_path_markers", "player", "father", "breath_1", "breath_2") instance=ExtResource("8_5d4jk")]
+[node name="Orb" parent="." node_paths=PackedStringArray("clearing_markers", "path_one_markers", "cave_path_markers", "ghost_markers", "player", "father", "breath_1", "breath_2") instance=ExtResource("8_5d4jk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.575, 6.20956, 452.751)
 clearing_markers = [NodePath("../Clearing/OrbClearingMarkers/OrbC1"), NodePath("../Clearing/OrbClearingMarkers/OrbCPath")]
 path_one_markers = [NodePath("../NightPath/PathNight/OrbNight1"), NodePath("../NightPath/PathNight/OrbNight2"), NodePath("../NightPath/PathNight/OrbNight3"), NodePath("../NightPath/PathNight/OrbNight4"), NodePath("../NightPath/PathNight/OrbNight5"), NodePath("../NightPath/PathNight/OrbNight6"), NodePath("../NightPath/PathNight/OrbNight7"), NodePath("../NightPath/PathNight/OrbNight8"), NodePath("../NightPath/PathNight/OrbNight9"), NodePath("../NightPath/PathNight/OrbNight10")]
 cave_path_markers = [NodePath("../PathToCave/OrbCaveMarkers/OrbC1"), NodePath("../PathToCave/OrbCaveMarkers/OrbC2"), NodePath("../PathToCave/OrbCaveMarkers/OrbC3"), NodePath("../PathToCave/OrbCaveMarkers/OrbC4"), NodePath("../PathToCave/OrbCaveMarkers/OrbC5"), NodePath("../PathToCave/OrbCaveMarkers/OrbC6"), NodePath("../PathToCave/OrbCaveMarkers/OrbC7"), NodePath("../PathToCave/OrbCaveMarkers/OrbC8"), NodePath("../PathToCave/OrbCaveMarkers/OrbC9"), NodePath("../PathToCave/OrbCaveMarkers/OrbC10"), NodePath("../PathToCave/OrbCaveMarkers/OrbC11"), NodePath("../PathToCave/OrbCaveMarkers/OrbC12"), NodePath("../PathToCave/OrbCaveMarkers/OrbC13"), NodePath("../PathToCave/OrbCaveMarkers/OrbC14"), NodePath("../PathToCave/OrbCaveMarkers/OrbC15"), NodePath("../PathToCave/OrbCaveMarkers/OrbC16"), NodePath("../PathToCave/OrbCaveMarkers/OrbC17")]
+ghost_markers = [NodePath("../ClearingTwo/GhostMarkers/GhostMarker1"), NodePath("../ClearingTwo/GhostMarkers/GhostMarker2"), NodePath("../ClearingTwo/GhostMarkers/GhostMarker3"), NodePath("../ClearingTwo/GhostMarkers/GhostMarker4")]
 player = NodePath("../PlayerChild")
 father = NodePath("../Father")
 breath_1 = NodePath("../NightPath/PathNight/OrbNight6/Breath")
@@ -190,10 +205,11 @@ player = NodePath("../PlayerChild")
 animal_markers = [NodePath("../VoicePathOne/AnimalMarkers/Animal1"), NodePath("../VoicePathOne/AnimalMarkers/Animal2")]
 cave_markers = [NodePath("../PathToCave/CaveAnimals/CaveAnimal1"), NodePath("../PathToCave/CaveAnimals/CaveAnimal2")]
 
-[node name="DadVoiceCharacter" parent="." node_paths=PackedStringArray("player", "to_house_markers") instance=ExtResource("26_gfgx6")]
+[node name="DadVoiceCharacter" parent="." node_paths=PackedStringArray("player", "to_house_markers", "ghost_markers") instance=ExtResource("26_gfgx6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.5814, 6.73283, 231.818)
 player = NodePath("../PlayerChild")
 to_house_markers = [NodePath("../VoicePathOne/VoiceMarkers/VoicePath1"), NodePath("../VoicePathOne/VoiceMarkers/VoicePath2"), NodePath("../VoicePathOne/VoiceMarkers/VoicePath3"), NodePath("../VoicePathOne/VoiceMarkers/VoicePath4"), NodePath("../VoicePathOne/VoiceMarkers/VoicePath5"), NodePath("../VoicePathOne/VoiceMarkers/VoicePath6"), NodePath("../VoicePathOne/VoiceMarkers/VoicePath7")]
+ghost_markers = [NodePath("../ClearingTwo/GhostMarkers/GhostMarker1"), NodePath("../ClearingTwo/GhostMarkers/GhostMarker2"), NodePath("../ClearingTwo/GhostMarkers/GhostMarker3"), NodePath("../ClearingTwo/GhostMarkers/GhostMarker4")]
 
 [node name="Clearing" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.3117, -10.6451, 404.4)
@@ -917,11 +933,11 @@ transform = Transform3D(-0.999775, 0, -0.0212042, 0, 2.72611, 0, 0.0212042, 0, -
 mesh = SubResource("CapsuleMesh_cfc8h")
 
 [node name="Hut" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 2.72611, 0, 0, 0, 1, 55.1641, 32.772, 53.6591)
+transform = Transform3D(1, 0, 0, 0, 2.72611, 0, 0, 0, 1, 54.5666, 27.4455, -9.00586)
 mesh = SubResource("CapsuleMesh_cfc8h")
 
 [node name="Clearing2 Exit" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 2.72611, 0, 0, 0, 1, -38.3304, 9.13956, -220.345)
+transform = Transform3D(1, 0, 0, 0, 2.72611, 0, 0, 0, 1, -43.1886, 9.13956, -226.75)
 mesh = SubResource("CapsuleMesh_cfc8h")
 
 [node name="ClearinCaveENtry" type="MeshInstance3D" parent="."]
@@ -929,7 +945,7 @@ transform = Transform3D(1, 0, 0, 0, 2.72611, 0, 0, 0, 1, -95.3823, 12.0491, -157
 mesh = SubResource("CapsuleMesh_cfc8h")
 
 [node name="ClearingHutEntry" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 2.72611, 0, 0, 0, 1, -3.07234, 19.481, -121.304)
+transform = Transform3D(1, 0, 0, 0, 2.72611, 0, 0, 0, 1, 1.2153, 14.3445, -142.784)
 mesh = SubResource("CapsuleMesh_cfc8h")
 
 [node name="Bend" type="MeshInstance3D" parent="."]
@@ -982,6 +998,31 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.329599, -1.5752)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="House/TooDark/BlockDarkPath"]
 shape = SubResource("BoxShape3D_x7x2d")
 
+[node name="HousePath" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.62939e-06, 0, 1.52588e-05)
+
+[node name="TriggerBuzz2" type="Area3D" parent="HousePath"]
+transform = Transform3D(0.95741, 0, 0.288731, 0, 1, 0, -0.288731, 0, 0.95741, 53.3425, 29.2877, -8.38162)
+script = ExtResource("41_3v2ll")
+buzz_home = "house"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HousePath/TriggerBuzz2"]
+shape = SubResource("BoxShape3D_x5hji")
+
+[node name="TriggerDadCall" type="Area3D" parent="HousePath"]
+transform = Transform3D(0.882882, 0, 0.469595, 0, 1, 0, -0.469595, 0, 0.882882, -5.60099, 13.1703, -151.891)
+script = ExtResource("39_iw7lx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HousePath/TriggerDadCall"]
+shape = SubResource("BoxShape3D_s6w6v")
+
+[node name="HousePathExit" type="Area3D" parent="HousePath"]
+transform = Transform3D(0.874188, 0, 0.485588, 0, 1, 0, -0.485588, 0, 0.874188, 1.27746, 15.1538, -140.155)
+script = ExtResource("42_60gxn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HousePath/HousePathExit"]
+shape = SubResource("BoxShape3D_wb8eg")
+
 [node name="Cave3" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -127.551, 11.6284, -8.40217)
 
@@ -1018,6 +1059,13 @@ buzz_home = "cave"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cave3/TriggerBuzz"]
 shape = SubResource("BoxShape3D_ggi5j")
 
+[node name="CaveExit" type="Area3D" parent="Cave3"]
+transform = Transform3D(0.92398, 0, -0.382442, 0, 1, 0, 0.382442, 0, 0.92398, 12.3704, -0.0380545, -118.135)
+script = ExtResource("42_60gxn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cave3/CaveExit"]
+shape = SubResource("BoxShape3D_22xi7")
+
 [node name="BuzzNode" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.1671, 33.8757, -23.3701)
 
@@ -1032,6 +1080,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -97.1917, -18.4284, 0.91259)
 
 [node name="BuzzHouseHomeMarker" type="Marker3D" parent="BuzzNode"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.5653, -2.00992, 34.1458)
+
+[node name="ClearingTwo" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.3636, 11.2344, -223.256)
+
+[node name="GhostMarkers" type="Node3D" parent="ClearingTwo"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00688934, -4.04906, 5.34531)
+
+[node name="GhostMarker1" type="Marker3D" parent="ClearingTwo/GhostMarkers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.539009, 0.190169, -3.2227)
+
+[node name="GhostMarker2" type="Marker3D" parent="ClearingTwo/GhostMarkers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.12428, -0.347435, -22.2825)
+
+[node name="GhostMarker3" type="Marker3D" parent="ClearingTwo/GhostMarkers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.24954, -0.7467, -29.7206)
+
+[node name="GhostMarker4" type="Marker3D" parent="ClearingTwo/GhostMarkers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.52456, -0.99185, -39.8291)
 
 [connection signal="body_entered" from="Clearing/StickDropArea" to="Clearing/StickDropArea" method="_on_body_entered"]
 [connection signal="body_entered" from="Clearing/SeeDadGoneArea" to="Clearing/SeeDadGoneArea" method="_on_body_entered"]
@@ -1062,5 +1128,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.5653, -2.00992, 34.1458)
 [connection signal="body_entered" from="PathToCave/HidingPlace2" to="PathToCave/HidingPlace2" method="_on_body_entered"]
 [connection signal="body_entered" from="PathToCave/HidingPlace3" to="PathToCave/HidingPlace3" method="_on_body_entered"]
 [connection signal="body_entered" from="House/TooDark" to="House/TooDark" method="_on_body_entered"]
+[connection signal="body_entered" from="HousePath/TriggerBuzz2" to="HousePath/TriggerBuzz2" method="_on_body_entered"]
+[connection signal="body_entered" from="HousePath/TriggerDadCall" to="HousePath/TriggerDadCall" method="_on_body_entered"]
+[connection signal="body_entered" from="HousePath/HousePathExit" to="HousePath/HousePathExit" method="_on_body_entered"]
 [connection signal="body_entered" from="Cave3/TooDark2" to="Cave3/TooDark2" method="_on_body_entered"]
 [connection signal="body_entered" from="Cave3/TriggerBuzz" to="Cave3/TriggerBuzz" method="_on_body_entered"]
+[connection signal="body_entered" from="Cave3/CaveExit" to="Cave3/CaveExit" method="_on_body_entered"]

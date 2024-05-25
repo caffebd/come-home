@@ -37,6 +37,7 @@ func _ready():
 	GlobalSignals.buzz_active.connect(_set_buzz_active)
 	GlobalSignals.buzz_home_set.connect(_buzz_home_set)
 	GlobalSignals.light_state.connect(_light_state)
+	GlobalSignals.buzz_off.connect(_buzz_off)
 
 func _buzz_home_set(home:String):
 	if home == "cave":
@@ -55,6 +56,11 @@ func _light_state(state):
 	if buzz_active:
 		_buzz_attack(state)
 
+func _buzz_off():
+	attack_player = false
+	use_speed = start_speed
+	buzz_active = false
+	
 func _buzz_attack(state):
 	if buzz_active:
 		print ("buzz attack! "+str(state))

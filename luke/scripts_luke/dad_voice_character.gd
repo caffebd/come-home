@@ -4,9 +4,11 @@ extends CharacterBody3D
 
 @export var to_house_markers: Array[Marker3D]
 
+@export var ghost_markers: Array[Marker3D]
+
 var use_check_points: Array[Marker3D]
 
-enum {HOUSEPATH}
+enum {HOUSEPATH, GHOST}
 
 var  speed = 10.0
 
@@ -22,6 +24,7 @@ var sense_player: bool = false
 func _ready() -> void:
 	GlobalSignals.fork_set_up.connect(_fork_set_up)
 	GlobalSignals.follow_voice.connect(_follow_voice)
+	GlobalSignals.voice_to_clearing_two.connect(_clearing_two)
 	#print ("hosue markers "+str(to_house_markers.size()))
 	#_fork_set_up()
 
@@ -30,6 +33,14 @@ func _ready() -> void:
 
 func _fork_set_up():
 	_set_check_points(HOUSEPATH)
+
+func _clearing_two():
+	moving = false
+	#global_position = path_one_markers[path_one_markers.size()-1].global_position
+	_set_check_points(GHOST)
+	check_index = 0
+	sense_player = true
+	global_position = ghost_markers[0].global_position
 
 func _follow_voice():
 	print ("follwo dad voice")
@@ -82,4 +93,6 @@ func _set_check_points(phase):
 	match phase:
 		HOUSEPATH:
 			use_check_points = to_house_markers.duplicate()
+		GHOST:
+			use_check_points = ghost_markers.duplicate()
 	
