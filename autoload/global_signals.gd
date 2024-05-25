@@ -56,6 +56,19 @@ signal cave_path_trigger()
 
 signal item_collected(item)
 
+signal light_state(state)
+
+signal buzz_home_set(home)
+
+signal buzz_active(state)
+
+signal buzz_attack(state)
+
+signal dark_place(state)
+
+signal send_back_to_cave()
+signal send_back_to_house()
+
 signal time_transition_0
 signal time_transition_1
 signal time_transition_2

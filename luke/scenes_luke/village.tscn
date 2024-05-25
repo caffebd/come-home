@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://qgbj73vixll4"]
+[gd_scene load_steps=69 format=3 uid="uid://qgbj73vixll4"]
 
 [ext_resource type="Script" path="res://luke/scripts_luke/village.gd" id="1_52nm1"]
 [ext_resource type="PackedScene" uid="uid://ds8jitdfn8yuj" path="res://assets/path.tscn" id="2_7n3rm"]
@@ -40,6 +40,8 @@
 [ext_resource type="PackedScene" uid="uid://cwjh0l4g03ox8" path="res://luke/scenes_luke/LampBody.tscn" id="38_c0fqu"]
 [ext_resource type="PackedScene" uid="uid://bpylo35umakot" path="res://luke/scenes_luke/matches.tscn" id="39_oi60q"]
 [ext_resource type="PackedScene" uid="uid://ctoukqnmepgwf" path="res://luke/scenes_luke/LampFuel.tscn" id="40_4b6mu"]
+[ext_resource type="PackedScene" uid="uid://c3e8vsx4cw4ik" path="res://luke/scenes_luke/BuzzEnemy.tscn" id="41_2a6bb"]
+[ext_resource type="Script" path="res://luke/scripts_luke/trigger_buzz.gd" id="41_3v2ll"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_sr1r6"]
 height = 1.385
@@ -136,6 +138,9 @@ size = Vector3(10.885, 2.9, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_x7x2d"]
 size = Vector3(13.23, 4.64, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ggi5j"]
+size = Vector3(3.02, 1, 1)
+
 [node name="village" type="Node3D"]
 script = ExtResource("1_52nm1")
 
@@ -170,7 +175,7 @@ top_mound_marker = NodePath("../Ledge/DadTopMound")
 sitting_log = NodePath("../Clearing/SittingLog")
 
 [node name="Orb" parent="." node_paths=PackedStringArray("clearing_markers", "path_one_markers", "cave_path_markers", "player", "father", "breath_1", "breath_2") instance=ExtResource("8_5d4jk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.575, 4.72011, 452.751)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.575, 6.20956, 452.751)
 clearing_markers = [NodePath("../Clearing/OrbClearingMarkers/OrbC1"), NodePath("../Clearing/OrbClearingMarkers/OrbCPath")]
 path_one_markers = [NodePath("../NightPath/PathNight/OrbNight1"), NodePath("../NightPath/PathNight/OrbNight2"), NodePath("../NightPath/PathNight/OrbNight3"), NodePath("../NightPath/PathNight/OrbNight4"), NodePath("../NightPath/PathNight/OrbNight5"), NodePath("../NightPath/PathNight/OrbNight6"), NodePath("../NightPath/PathNight/OrbNight7"), NodePath("../NightPath/PathNight/OrbNight8"), NodePath("../NightPath/PathNight/OrbNight9"), NodePath("../NightPath/PathNight/OrbNight10")]
 cave_path_markers = [NodePath("../PathToCave/OrbCaveMarkers/OrbC1"), NodePath("../PathToCave/OrbCaveMarkers/OrbC2"), NodePath("../PathToCave/OrbCaveMarkers/OrbC3"), NodePath("../PathToCave/OrbCaveMarkers/OrbC4"), NodePath("../PathToCave/OrbCaveMarkers/OrbC5"), NodePath("../PathToCave/OrbCaveMarkers/OrbC6"), NodePath("../PathToCave/OrbCaveMarkers/OrbC7"), NodePath("../PathToCave/OrbCaveMarkers/OrbC8"), NodePath("../PathToCave/OrbCaveMarkers/OrbC9"), NodePath("../PathToCave/OrbCaveMarkers/OrbC10"), NodePath("../PathToCave/OrbCaveMarkers/OrbC11"), NodePath("../PathToCave/OrbCaveMarkers/OrbC12"), NodePath("../PathToCave/OrbCaveMarkers/OrbC13"), NodePath("../PathToCave/OrbCaveMarkers/OrbC14"), NodePath("../PathToCave/OrbCaveMarkers/OrbC15"), NodePath("../PathToCave/OrbCaveMarkers/OrbC16"), NodePath("../PathToCave/OrbCaveMarkers/OrbC17")]
@@ -314,6 +319,7 @@ shape = SubResource("BoxShape3D_1fo8h")
 
 [node name="Log" parent="Ledge" instance=ExtResource("6_n54h1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.35236, 0.0889686, 0.566498)
+visible = false
 
 [node name="DadSpeakArea" type="Area3D" parent="Ledge"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00111389, 0.272748, 3.77676)
@@ -1004,6 +1010,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.329599, -1.5752)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cave3/TooDark2/BlockDarkPath"]
 shape = SubResource("BoxShape3D_x7x2d")
 
+[node name="TriggerBuzz" type="Area3D" parent="Cave3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.53728, -2.58817, -22.7783)
+script = ExtResource("41_3v2ll")
+buzz_home = "cave"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cave3/TriggerBuzz"]
+shape = SubResource("BoxShape3D_ggi5j")
+
+[node name="BuzzNode" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.1671, 33.8757, -23.3701)
+
+[node name="BuzzEnemy" parent="BuzzNode" node_paths=PackedStringArray("player", "buzz_cave_home", "buzz_house_home") instance=ExtResource("41_2a6bb")]
+player = NodePath("../../PlayerChild")
+using_navmesh = false
+buzz_cave_home = NodePath("../BuzzCaveHomeMarker")
+buzz_house_home = NodePath("../BuzzHouseHomeMarker")
+
+[node name="BuzzCaveHomeMarker" type="Marker3D" parent="BuzzNode"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -97.1917, -18.4284, 0.91259)
+
+[node name="BuzzHouseHomeMarker" type="Marker3D" parent="BuzzNode"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.5653, -2.00992, 34.1458)
+
 [connection signal="body_entered" from="Clearing/StickDropArea" to="Clearing/StickDropArea" method="_on_body_entered"]
 [connection signal="body_entered" from="Clearing/SeeDadGoneArea" to="Clearing/SeeDadGoneArea" method="_on_body_entered"]
 [connection signal="body_entered" from="Clearing/ExitPathTrigger" to="Clearing/ExitPathTrigger" method="_on_body_entered"]
@@ -1034,3 +1063,4 @@ shape = SubResource("BoxShape3D_x7x2d")
 [connection signal="body_entered" from="PathToCave/HidingPlace3" to="PathToCave/HidingPlace3" method="_on_body_entered"]
 [connection signal="body_entered" from="House/TooDark" to="House/TooDark" method="_on_body_entered"]
 [connection signal="body_entered" from="Cave3/TooDark2" to="Cave3/TooDark2" method="_on_body_entered"]
+[connection signal="body_entered" from="Cave3/TriggerBuzz" to="Cave3/TriggerBuzz" method="_on_body_entered"]

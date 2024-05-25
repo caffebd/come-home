@@ -115,7 +115,7 @@ func _physics_process(delta: float) -> void:
 
 	var direction = global_position.direction_to(target_position)
 	if global_position.distance_to(target_position) > 0.2:
-		rotation.y=lerp_angle(rotation.y,atan2(velocity.x,velocity.z),.1)
+		#rotation.y=lerp_angle(rotation.y,atan2(velocity.x,velocity.z),.1)
 		#speed = lerp(10, speed, 0.5)
 		if speed > 2:
 			speed *= 0.95
@@ -124,10 +124,14 @@ func _physics_process(delta: float) -> void:
 		moving = false
 		if not father.visible:
 			sense_player = true
-
+	_face_direction(player.position)
+	
 	move_and_slide()
 
 
+func _face_direction(direction: Vector3):
+	look_at(Vector3(direction.x, global_position.y, direction.z), Vector3.UP)
+	
 
 func _set_check_points(phase):
 	use_check_points.clear()
