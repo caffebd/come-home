@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://db87n7ficjs4r"]
+
+[ext_resource type="PackedScene" uid="uid://c415gkbmwtyjl" path="res://assets/imported/battery.glb" id="1_ac2xu"]
+[ext_resource type="Material" uid="uid://bmt5al08qxhcg" path="res://assets/battery.tres" id="2_plvrj"]
+
+[node name="battery" instance=ExtResource("1_ac2xu")]
+
+[node name="Cylinder_002" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_plvrj")

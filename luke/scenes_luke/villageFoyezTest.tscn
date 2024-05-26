@@ -1,8 +1,9 @@
-[gd_scene load_steps=39 format=3 uid="uid://c1s21leqfk0hx"]
+[gd_scene load_steps=40 format=3 uid="uid://c1s21leqfk0hx"]
 
 [ext_resource type="Script" path="res://luke/scripts_luke/village.gd" id="1_xj3v6"]
 [ext_resource type="PackedScene" uid="uid://uwgt08apwad6" path="res://scenes/ScreenEffect.tscn" id="2_enkdy"]
 [ext_resource type="PackedScene" uid="uid://37f4h6mvwnbh" path="res://assets/mud_hut.tscn" id="2_jjyfm"]
+[ext_resource type="PackedScene" uid="uid://vpn5x5qaq4su" path="res://assets/envParticles.tscn" id="2_p70b6"]
 [ext_resource type="PackedScene" uid="uid://bvvre0p6auulq" path="res://assets/world.tscn" id="3_3tc8g"]
 [ext_resource type="PackedScene" uid="uid://dplf8d8w78la4" path="res://assets/environment_lights.tscn" id="4_oae23"]
 [ext_resource type="PackedScene" uid="uid://ds8jitdfn8yuj" path="res://assets/path.tscn" id="5_v30fn"]
@@ -325,12 +326,17 @@ emission = Color(1, 1, 1, 1)
 [node name="village" type="Node3D"]
 script = ExtResource("1_xj3v6")
 
+[node name="envParticles" parent="." instance=ExtResource("2_p70b6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.46314, 2.79362, 190.319)
+visible = false
+
 [node name="mud hut" parent="." instance=ExtResource("2_jjyfm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.88224, 5.06954, 191.331)
 
 [node name="screenEffect" parent="." instance=ExtResource("2_enkdy")]
 
 [node name="World" parent="." instance=ExtResource("3_3tc8g")]
+visible = false
 
 [node name="environment" parent="." instance=ExtResource("4_oae23")]
 

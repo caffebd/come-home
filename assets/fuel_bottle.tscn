@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cplkiadbja4ue"]
+
+[ext_resource type="PackedScene" uid="uid://c40wjlx2drvqk" path="res://assets/imported/fuelBottle.glb" id="1_4e5ru"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d3wh7"]
+albedo_color = Color(0.786347, 0.786347, 0.786347, 1)
+roughness = 0.47
+
+[node name="fuelBottle" instance=ExtResource("1_4e5ru")]
+
+[node name="oil bottle" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_d3wh7")

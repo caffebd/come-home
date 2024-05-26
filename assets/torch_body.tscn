@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnqkko1fnc5oe"]
+
+[ext_resource type="PackedScene" uid="uid://ccoklv1fkyca8" path="res://assets/imported/torchBody.glb" id="1_x7yd2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1dpjh"]
+cull_mode = 2
+albedo_color = Color(0.202723, 0.202723, 0.202723, 1)
+roughness = 0.72
+
+[node name="torchBody" instance=ExtResource("1_x7yd2")]
+
+[node name="Cylinder" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_1dpjh")
