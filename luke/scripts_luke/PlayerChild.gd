@@ -94,6 +94,10 @@ var lamp: Node3D
 
 var has_light: bool = false
 
+var light_on: bool = false
+
+var in_dark: bool = false
+
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	GlobalSignals.start_clearing.connect(_start_clearing)
@@ -105,6 +109,7 @@ func _ready():
 	GlobalSignals.item_collected.connect(_item_collected)
 	GlobalSignals.start_house.connect(_start_house)
 	GlobalSignals.start_in_cave.connect(_start_in_cave)
+	GlobalSignals.dark_place.connect(_dark_place)
 	%SpotLight3D.visible = false
 	#GlobalSignals.dad_to_mound.connect(_start_mound)
 	head.rotation_degrees.y = 0.0
@@ -149,6 +154,11 @@ func _start_in_cave():
 	GlobalSignals.emit_signal("father_gone")
 	global_position = in_cave_marker.global_position	
 
+func _dark_place(state):
+	in_dark = state
+	if not in_dark:
+		speed = 2.0
+
 func _item_collected(item):
 	match item:
 		"torch_body":
@@ -188,6 +198,7 @@ func _check_torch_status():
 			torch.collected_state(3)
 			has_light = true	
 			GlobalSignals.emit_signal("show_player_info", "Press 'f' to use.")	
+			
 
 func _check_lamp_status():
 	match lamp_parts.size():
@@ -201,6 +212,7 @@ func _check_lamp_status():
 			lamp.collected_state(3)
 			has_light = true
 			GlobalSignals.emit_signal("show_player_info", "Press 'f' to use.")
+			
 			
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -221,6 +233,13 @@ func _input(event):
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	if Input.is_action_just_pressed("torch") and has_light:
 		%SpotLight3D.visible = !%SpotLight3D.visible
+		light_on = %SpotLight3D.visible
+		GlobalSignals.emit_signal("light_state", %SpotLight3D.visible)
+		if in_dark:
+			if not light_on:
+				GlobalSignals.emit_signal("show_player_info", "It was so dark I had to walk slowly.")
+			else:
+				GlobalSignals.emit_signal("hide_player_info")
 	if Input.is_action_just_pressed("use"):
 		_take_action()
 
@@ -294,6 +313,12 @@ func _physics_process(delta):
 		
 		
 		last_distance = dist
+	
+	if in_dark:
+		if light_on:
+			speed = 20.0
+		else:
+			speed = 0.5
 	
 	handle_holding_objects()
 	

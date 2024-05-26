@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://djwe3ra6fh80c"]
+[gd_scene load_steps=10 format=3 uid="uid://djwe3ra6fh80c"]
 
 [ext_resource type="Script" path="res://luke/scripts_luke/orb.gd" id="1_7rnqk"]
+[ext_resource type="Material" uid="uid://bylldmihjg34q" path="res://assets/materials/orb.tres" id="2_fb1n4"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_xbmpw"]
 
@@ -91,6 +92,10 @@ _data = {
 "hover": SubResource("Animation_4drgr")
 }
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_ejtrp"]
+material = ExtResource("2_fb1n4")
+orientation = 2
+
 [node name="Orb" type="CharacterBody3D" groups=["orb"]]
 collision_layer = 2
 collision_mask = 2
@@ -102,6 +107,7 @@ shape = SubResource("SphereShape3D_xbmpw")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.569662, 0, 0, 0, 0.569662, 0, 0, 0, 0.569662, 0, 0, 0)
+visible = false
 mesh = SubResource("SphereMesh_wt2ko")
 
 [node name="SenseTimer" type="Timer" parent="."]
@@ -113,5 +119,8 @@ one_shot = true
 libraries = {
 "": SubResource("AnimationLibrary_o1mau")
 }
+
+[node name="orbplane" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_ejtrp")
 
 [connection signal="timeout" from="SenseTimer" to="." method="_on_sense_timer_timeout"]
