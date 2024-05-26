@@ -5,4 +5,5 @@
 [resource]
 transparency = 1
 cull_mode = 2
+albedo_color = Color(0.466181, 0.466181, 0.466181, 1)
 albedo_texture = ExtResource("1_4dil8")

@@ -1,13 +1,11 @@
-[gd_scene load_steps=40 format=3 uid="uid://c1s21leqfk0hx"]
+[gd_scene load_steps=38 format=3 uid="uid://c1s21leqfk0hx"]
 
 [ext_resource type="Script" path="res://luke/scripts_luke/village.gd" id="1_xj3v6"]
-[ext_resource type="PackedScene" uid="uid://uwgt08apwad6" path="res://scenes/ScreenEffect.tscn" id="2_enkdy"]
 [ext_resource type="PackedScene" uid="uid://37f4h6mvwnbh" path="res://assets/mud_hut.tscn" id="2_jjyfm"]
 [ext_resource type="PackedScene" uid="uid://vpn5x5qaq4su" path="res://assets/envParticles.tscn" id="2_p70b6"]
 [ext_resource type="PackedScene" uid="uid://bvvre0p6auulq" path="res://assets/world.tscn" id="3_3tc8g"]
 [ext_resource type="PackedScene" uid="uid://dplf8d8w78la4" path="res://assets/environment_lights.tscn" id="4_oae23"]
 [ext_resource type="PackedScene" uid="uid://ds8jitdfn8yuj" path="res://assets/path.tscn" id="5_v30fn"]
-[ext_resource type="PackedScene" uid="uid://doxkrnuvvwqhc" path="res://luke/scenes_luke/PlayerChild.tscn" id="6_mayfm"]
 [ext_resource type="PackedScene" uid="uid://df623wi4323mu" path="res://luke/scenes_luke/father_test.tscn" id="7_lfrey"]
 [ext_resource type="PackedScene" uid="uid://djwe3ra6fh80c" path="res://luke/scenes_luke/orb.tscn" id="8_qq75y"]
 [ext_resource type="PackedScene" uid="uid://cgd8lcv552lbu" path="res://luke/scenes_luke/stick.tscn" id="9_2sprj"]
@@ -331,12 +329,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.46314, 2.79362, 190.319)
 visible = false
 
 [node name="mud hut" parent="." instance=ExtResource("2_jjyfm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.88224, 5.06954, 191.331)
-
-[node name="screenEffect" parent="." instance=ExtResource("2_enkdy")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 63.3889, 30.9513, 14.9023)
 
 [node name="World" parent="." instance=ExtResource("3_3tc8g")]
-visible = false
 
 [node name="environment" parent="." instance=ExtResource("4_oae23")]
 
@@ -344,22 +339,11 @@ visible = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.34267, 0)
 visible = false
 
-[node name="PlayerChild" parent="." node_paths=PackedStringArray("attack_marker", "rotate_marker", "lunge_marker", "father", "start_mound_marker", "start_clearing_marker", "start_night_path_marker", "start_fork_marker") instance=ExtResource("6_mayfm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7541, 2.08273, 592.364)
-attack_marker = NodePath("Head/PlayerCam/AttackMarker")
-rotate_marker = NodePath("RotateMarker")
-lunge_marker = NodePath("Head/PlayerCam/LungeMarker")
-father = NodePath("../Father")
-start_mound_marker = NodePath("../Ledge/PlayerToMound")
-start_clearing_marker = NodePath("../Clearing/PlayerClearing")
-start_night_path_marker = NodePath("../NightPath/PlayerNightPath")
-start_fork_marker = NodePath("../NightPath/PlayerFork")
-
 [node name="Father" parent="." node_paths=PackedStringArray("check_points", "clearing_check_points", "player", "top_mound_marker", "sitting_log") instance=ExtResource("7_lfrey")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.8218, 0.885342, 584.845)
 check_points = [NodePath("../FatherCheckPoints/Check9"), NodePath("../FatherCheckPoints/Check10"), NodePath("../FatherCheckPoints/Check11"), NodePath("../FatherCheckPoints/Check12"), NodePath("../FatherCheckPoints/Check13"), NodePath("../FatherCheckPoints/Check14"), NodePath("../FatherCheckPoints/Check15"), NodePath("../FatherCheckPoints/Check16"), NodePath("../FatherCheckPoints/Check17"), NodePath("../FatherCheckPoints/Check18"), NodePath("../FatherCheckPoints/Check19"), NodePath("../FatherCheckPoints/Check20"), NodePath("../FatherCheckPoints/Check21"), NodePath("../FatherCheckPoints/Check22"), NodePath("../FatherCheckPoints/Check23"), NodePath("../FatherCheckPoints/CheckEnd")]
 clearing_check_points = [NodePath("../FatherCheckPointsClearing/CheckM0"), NodePath("../FatherCheckPointsClearing/CheckM1"), NodePath("../FatherCheckPointsClearing/CheckM2"), NodePath("../FatherCheckPointsClearing/CheckM3"), NodePath("../FatherCheckPointsClearing/CheckM4"), NodePath("../FatherCheckPointsClearing/CheckM5"), NodePath("../FatherCheckPointsClearing/CheckM6"), NodePath("../FatherCheckPointsClearing/CheckM7"), NodePath("../FatherCheckPointsClearing/CheckM8"), NodePath("../FatherCheckPointsClearing/CheckM9")]
-player = NodePath("../PlayerChild")
+player = NodePath("")
 top_mound_marker = NodePath("../Ledge/DadTopMound")
 sitting_log = NodePath("../Clearing/SittingLog")
 
@@ -367,7 +351,7 @@ sitting_log = NodePath("../Clearing/SittingLog")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.575, 4.72011, 452.751)
 clearing_markers = [NodePath("../Clearing/OrbClearingMarkers/OrbC1"), NodePath("../Clearing/OrbClearingMarkers/OrbCPath")]
 path_one_markers = [NodePath("../NightPath/PathNight/OrbNight1"), NodePath("../NightPath/PathNight/OrbNight2"), NodePath("../NightPath/PathNight/OrbNight3"), NodePath("../NightPath/PathNight/OrbNight4"), NodePath("../NightPath/PathNight/OrbNight5"), NodePath("../NightPath/PathNight/OrbNight6"), NodePath("../NightPath/PathNight/OrbNight7"), NodePath("../NightPath/PathNight/OrbNight8"), NodePath("../NightPath/PathNight/OrbNight9"), NodePath("../NightPath/PathNight/OrbNight10"), NodePath("../NightPath/PathNight/OrbNight11")]
-player = NodePath("../PlayerChild")
+player = NodePath("")
 
 [node name="Clearing" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.3117, -10.9828, 475.86)

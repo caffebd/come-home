@@ -44,3 +44,19 @@ surface_material_override/1 = ExtResource("6_rn1yf")
 surface_material_override/0 = ExtResource("7_8ffsm")
 surface_material_override/1 = ExtResource("5_8rqus")
 surface_material_override/2 = ExtResource("6_rn1yf")
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="." index="10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.396118, 1.10129, 1.97898)
+light_color = Color(0.562522, 0.688625, 0.618668, 1)
+light_energy = 0.4
+light_volumetric_fog_energy = 0.0
+shadow_enabled = true
+omni_range = 7.88613
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="." index="11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.396118, 1.10129, -2.75876)
+light_color = Color(0.562522, 0.688625, 0.618668, 1)
+light_energy = 0.4
+light_volumetric_fog_energy = 0.0
+shadow_enabled = true
+omni_range = 7.88613
