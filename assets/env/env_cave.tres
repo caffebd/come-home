@@ -1,0 +1,18 @@
+[gd_resource type="Environment" load_steps=2 format=3 uid="uid://6x8t8eds3sfe"]
+
+[ext_resource type="Sky" uid="uid://cn20kns3xnvf6" path="res://assets/env/night_sky.tres" id="1_btydg"]
+
+[resource]
+background_mode = 2
+sky = ExtResource("1_btydg")
+reflected_light_source = 1
+tonemap_mode = 3
+ssao_enabled = true
+ssao_radius = 1.5
+ssil_radius = 16.0
+fog_mode = 1
+fog_light_color = Color(0.134474, 0.278237, 0.28454, 1)
+fog_density = 0.5426
+fog_depth_begin = -27.0
+volumetric_fog_enabled = true
+volumetric_fog_ambient_inject = 0.5

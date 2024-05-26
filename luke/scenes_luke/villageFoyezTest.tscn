@@ -339,19 +339,17 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 63.388
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.34267, 0)
 visible = false
 
-[node name="Father" parent="." node_paths=PackedStringArray("check_points", "clearing_check_points", "player", "top_mound_marker", "sitting_log") instance=ExtResource("7_lfrey")]
+[node name="Father" parent="." node_paths=PackedStringArray("check_points", "clearing_check_points", "top_mound_marker", "sitting_log") instance=ExtResource("7_lfrey")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.8218, 0.885342, 584.845)
 check_points = [NodePath("../FatherCheckPoints/Check9"), NodePath("../FatherCheckPoints/Check10"), NodePath("../FatherCheckPoints/Check11"), NodePath("../FatherCheckPoints/Check12"), NodePath("../FatherCheckPoints/Check13"), NodePath("../FatherCheckPoints/Check14"), NodePath("../FatherCheckPoints/Check15"), NodePath("../FatherCheckPoints/Check16"), NodePath("../FatherCheckPoints/Check17"), NodePath("../FatherCheckPoints/Check18"), NodePath("../FatherCheckPoints/Check19"), NodePath("../FatherCheckPoints/Check20"), NodePath("../FatherCheckPoints/Check21"), NodePath("../FatherCheckPoints/Check22"), NodePath("../FatherCheckPoints/Check23"), NodePath("../FatherCheckPoints/CheckEnd")]
 clearing_check_points = [NodePath("../FatherCheckPointsClearing/CheckM0"), NodePath("../FatherCheckPointsClearing/CheckM1"), NodePath("../FatherCheckPointsClearing/CheckM2"), NodePath("../FatherCheckPointsClearing/CheckM3"), NodePath("../FatherCheckPointsClearing/CheckM4"), NodePath("../FatherCheckPointsClearing/CheckM5"), NodePath("../FatherCheckPointsClearing/CheckM6"), NodePath("../FatherCheckPointsClearing/CheckM7"), NodePath("../FatherCheckPointsClearing/CheckM8"), NodePath("../FatherCheckPointsClearing/CheckM9")]
-player = NodePath("")
 top_mound_marker = NodePath("../Ledge/DadTopMound")
 sitting_log = NodePath("../Clearing/SittingLog")
 
-[node name="Orb" parent="." node_paths=PackedStringArray("clearing_markers", "path_one_markers", "player") instance=ExtResource("8_qq75y")]
+[node name="Orb" parent="." node_paths=PackedStringArray("clearing_markers", "path_one_markers") instance=ExtResource("8_qq75y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.575, 4.72011, 452.751)
 clearing_markers = [NodePath("../Clearing/OrbClearingMarkers/OrbC1"), NodePath("../Clearing/OrbClearingMarkers/OrbCPath")]
 path_one_markers = [NodePath("../NightPath/PathNight/OrbNight1"), NodePath("../NightPath/PathNight/OrbNight2"), NodePath("../NightPath/PathNight/OrbNight3"), NodePath("../NightPath/PathNight/OrbNight4"), NodePath("../NightPath/PathNight/OrbNight5"), NodePath("../NightPath/PathNight/OrbNight6"), NodePath("../NightPath/PathNight/OrbNight7"), NodePath("../NightPath/PathNight/OrbNight8"), NodePath("../NightPath/PathNight/OrbNight9"), NodePath("../NightPath/PathNight/OrbNight10"), NodePath("../NightPath/PathNight/OrbNight11")]
-player = NodePath("")
 
 [node name="Clearing" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.3117, -10.9828, 475.86)
