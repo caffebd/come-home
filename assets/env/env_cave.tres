@@ -8,4 +8,4 @@ tonemap_mode = 3
 ssao_enabled = true
 volumetric_fog_enabled = true
 volumetric_fog_albedo = Color(0, 0, 0, 1)
-volumetric_fog_emission = Color(0.156187, 0.141705, 0.0690692, 1)
+volumetric_fog_emission = Color(0.150379, 0.116051, 0.0441103, 1)

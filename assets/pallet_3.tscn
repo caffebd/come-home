@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1wbhp6lbhpu5"]
+
+[ext_resource type="PackedScene" uid="uid://c2gogivkgp7ik" path="res://assets/imported/pallet3.glb" id="1_sj571"]
+[ext_resource type="Material" uid="uid://d3d0gcoq1ts65" path="res://assets/materials/wood_1.tres" id="2_8qa4g"]
+
+[node name="pallet3" instance=ExtResource("1_sj571")]
+
+[node name="pallet4" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_8qa4g")
