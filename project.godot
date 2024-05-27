@@ -168,6 +168,10 @@ crouch={
 ]
 }
 
+[physics]
+
+common/physics_jitter_fix=0.0
+
 [rendering]
 
 environment/volumetric_fog/use_filter=0

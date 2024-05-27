@@ -1,0 +1,88 @@
+[gd_scene load_steps=9 format=3 uid="uid://cec4i4xem7qhw"]
+
+[ext_resource type="Script" path="res://luke/scripts_luke/pull_item.gd" id="1_5u3xx"]
+[ext_resource type="Material" uid="uid://b7dd71aryuxcc" path="res://assets/materials/bookCover_2.tres" id="2_kb556"]
+[ext_resource type="Material" uid="uid://c1mi72dkkfr3s" path="res://assets/materials/bookPages.tres" id="3_5u8c7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ehfwu"]
+size = Vector3(0.09, 0.5, 0.33)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ud0wj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3hubi"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_kndrx"]
+_surfaces = [{
+"aabb": AABB(-0.0465759, -0.694161, -0.5, 0.12102, 0.694161, 1.00001),
+"format": 34896613377,
+"index_count": 18,
+"index_data": PackedByteArray(0, 0, 6, 0, 5, 0, 0, 0, 2, 0, 6, 0, 4, 0, 6, 0, 7, 0, 4, 0, 5, 0, 6, 0, 4, 0, 3, 0, 1, 0, 4, 0, 7, 0, 3, 0),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 254, 255, 0, 0, 255, 255, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 254, 255, 0, 0, 0, 0, 255, 255, 254, 255, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0)
+}, {
+"aabb": AABB(-0.0463717, -0.61239, -0.427511, 0.120612, 0.611611, 0.847063),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray(4, 0, 7, 0, 5, 0, 4, 0, 6, 0, 7, 0, 2, 0, 1, 0, 3, 0, 2, 0, 0, 0, 1, 0, 0, 0, 5, 0, 1, 0, 0, 0, 4, 0, 5, 0, 6, 0, 3, 0, 7, 0, 6, 0, 2, 0, 3, 0, 7, 0, 1, 0, 5, 0, 7, 0, 3, 0, 1, 0, 6, 0, 0, 0, 2, 0, 6, 0, 4, 0, 0, 0),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(0, 0, 253, 255, 254, 255, 0, 0, 0, 0, 253, 255, 0, 0, 0, 0, 255, 255, 253, 255, 254, 255, 0, 0, 255, 255, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 254, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_vhil2"]
+resource_name = "book2_TexturesCom_BookCovers0136_6_masked_S"
+_surfaces = [{
+"aabb": AABB(-0.0465759, -0.694161, -0.5, 0.12102, 0.694161, 1.00001),
+"attribute_data": PackedByteArray(0, 0, 255, 255, 255, 255, 255, 255, 0, 0, 0, 0, 255, 255, 0, 0, 16, 141, 255, 255, 16, 141, 255, 255, 210, 119, 255, 255, 210, 119, 255, 255, 210, 119, 0, 0, 210, 119, 0, 0, 16, 141, 0, 0, 16, 141, 0, 0),
+"format": 34896613399,
+"index_count": 18,
+"index_data": PackedByteArray(0, 0, 8, 0, 6, 0, 0, 0, 2, 0, 8, 0, 4, 0, 9, 0, 10, 0, 4, 0, 7, 0, 9, 0, 5, 0, 3, 0, 1, 0, 5, 0, 11, 0, 3, 0),
+"material": SubResource("StandardMaterial3D_ud0wj"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 254, 255, 84, 213, 255, 255, 0, 0, 254, 255, 84, 213, 0, 0, 0, 0, 0, 0, 84, 213, 255, 255, 0, 0, 0, 0, 84, 213, 255, 255, 255, 255, 254, 255, 255, 191, 255, 255, 255, 255, 254, 255, 84, 213, 0, 0, 255, 255, 254, 255, 84, 213, 0, 0, 255, 255, 254, 255, 255, 191, 0, 0, 255, 255, 0, 0, 84, 213, 0, 0, 255, 255, 0, 0, 255, 191, 255, 255, 255, 255, 0, 0, 255, 191, 255, 255, 255, 255, 0, 0, 84, 213, 84, 213, 84, 213, 170, 170, 84, 85, 84, 213, 84, 213, 170, 170, 84, 85, 255, 255, 255, 127, 170, 170, 84, 85, 84, 213, 84, 213, 255, 255, 255, 127, 84, 213, 84, 213, 255, 255, 255, 127, 255, 255, 255, 127, 170, 170, 84, 85)
+}, {
+"aabb": AABB(-0.0463717, -0.61239, -0.427511, 0.120612, 0.611611, 0.847063),
+"attribute_data": PackedByteArray(255, 95, 255, 255, 27, 170, 173, 141, 255, 95, 0, 0, 255, 159, 255, 255, 22, 170, 173, 141, 255, 159, 0, 0, 234, 193, 173, 141, 255, 95, 255, 63, 255, 95, 255, 63, 71, 146, 173, 141, 255, 159, 255, 63, 255, 159, 255, 63, 148, 96, 255, 191, 240, 116, 254, 236, 240, 116, 254, 236, 106, 159, 255, 191, 240, 116, 119, 136, 240, 116, 119, 136, 242, 100, 254, 236, 242, 100, 254, 236, 148, 96, 255, 127, 242, 100, 119, 136, 242, 100, 119, 136, 106, 159, 255, 127),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray(13, 0, 21, 0, 16, 0, 13, 0, 18, 0, 21, 0, 7, 0, 5, 0, 10, 0, 7, 0, 2, 0, 5, 0, 0, 0, 15, 0, 3, 0, 0, 0, 12, 0, 15, 0, 20, 0, 11, 0, 23, 0, 20, 0, 8, 0, 11, 0, 22, 0, 4, 0, 17, 0, 22, 0, 9, 0, 4, 0, 19, 0, 1, 0, 6, 0, 19, 0, 14, 0, 1, 0),
+"material": SubResource("StandardMaterial3D_3hubi"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray(0, 0, 253, 255, 254, 255, 255, 255, 0, 0, 253, 255, 254, 255, 0, 0, 0, 0, 253, 255, 254, 255, 84, 213, 0, 0, 253, 255, 0, 0, 255, 255, 0, 0, 253, 255, 0, 0, 0, 0, 0, 0, 253, 255, 0, 0, 84, 213, 255, 255, 253, 255, 254, 255, 0, 128, 255, 255, 253, 255, 254, 255, 84, 213, 255, 255, 253, 255, 254, 255, 255, 191, 255, 255, 253, 255, 0, 0, 0, 0, 255, 255, 253, 255, 0, 0, 84, 213, 255, 255, 253, 255, 0, 0, 255, 191, 0, 0, 0, 0, 254, 255, 255, 255, 0, 0, 0, 0, 254, 255, 255, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 254, 255, 255, 255, 255, 255, 0, 0, 254, 255, 0, 0, 255, 255, 0, 0, 254, 255, 255, 191, 255, 255, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 255, 191, 255, 63, 255, 127, 255, 127, 255, 127, 84, 213, 170, 42, 255, 63, 255, 127, 255, 127, 255, 255, 84, 213, 170, 42, 255, 127, 255, 255, 84, 213, 170, 42, 255, 127, 0, 0, 255, 127, 255, 255, 84, 213, 170, 42, 255, 127, 0, 0, 255, 63, 255, 127, 255, 127, 255, 63, 255, 127, 255, 127, 255, 63, 255, 127, 255, 127, 255, 63, 255, 127, 255, 255, 255, 127, 255, 63, 255, 127, 255, 127, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 255, 255, 255, 127, 0, 0)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_kndrx")
+
+[node name="BookB" type="RigidBody3D" groups=["highlight", "pull_item"]]
+collision_layer = 3
+mass = 0.5
+script = ExtResource("1_5u3xx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0427734)
+shape = SubResource("BoxShape3D_ehfwu")
+
+[node name="RayA" type="RayCast3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.00376679, 0.00905339, 0.0232754)
+target_position = Vector3(0, -0.05, 0)
+collision_mask = 256
+
+[node name="RayA2" type="RayCast3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -0.016454, 0, 0)
+target_position = Vector3(0, -0.05, 0)
+collision_mask = 256
+
+[node name="TexturesCom_BookCovers0136_6_masked_S" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.460742, 0, 0, 0, 0, -0.460742, 0, 0.460742, 0, -0.00468673, 0, 0.190277)
+mesh = SubResource("ArrayMesh_vhil2")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_kb556")
+surface_material_override/1 = ExtResource("3_5u8c7")

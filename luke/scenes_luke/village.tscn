@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://qgbj73vixll4"]
+[gd_scene load_steps=83 format=3 uid="uid://qgbj73vixll4"]
 
 [ext_resource type="Script" path="res://luke/scripts_luke/village.gd" id="1_52nm1"]
 [ext_resource type="PackedScene" uid="uid://ds8jitdfn8yuj" path="res://assets/path.tscn" id="2_7n3rm"]
@@ -39,7 +39,9 @@
 [ext_resource type="PackedScene" uid="uid://ctf3d4b0fy1hd" path="res://luke/scenes_luke/OpenBook.tscn" id="34_p338w"]
 [ext_resource type="PackedScene" uid="uid://r8b5dq4t23oq" path="res://luke/scenes_luke/battery.tscn" id="35_75y21"]
 [ext_resource type="PackedScene" uid="uid://4ws1xapqydux" path="res://luke/scenes_luke/torch_item.tscn" id="35_dkv4i"]
+[ext_resource type="PackedScene" uid="uid://c3uthfo4rkkv7" path="res://luke/scenes_luke/BookA.tscn" id="36_jowfx"]
 [ext_resource type="Script" path="res://luke/scripts_luke/too_dark.gd" id="37_drmti"]
+[ext_resource type="PackedScene" uid="uid://cec4i4xem7qhw" path="res://luke/scenes_luke/BookB.tscn" id="37_elmu3"]
 [ext_resource type="PackedScene" uid="uid://cwjh0l4g03ox8" path="res://luke/scenes_luke/LampBody.tscn" id="38_c0fqu"]
 [ext_resource type="Script" path="res://luke/scripts_luke/trigger_dad_call.gd" id="39_iw7lx"]
 [ext_resource type="PackedScene" uid="uid://bpylo35umakot" path="res://luke/scenes_luke/matches.tscn" id="39_oi60q"]
@@ -47,6 +49,8 @@
 [ext_resource type="PackedScene" uid="uid://c3e8vsx4cw4ik" path="res://luke/scenes_luke/BuzzEnemy.tscn" id="41_2a6bb"]
 [ext_resource type="Script" path="res://luke/scripts_luke/trigger_buzz.gd" id="41_3v2ll"]
 [ext_resource type="Script" path="res://luke/scripts_luke/cave_exit.gd" id="42_60gxn"]
+[ext_resource type="PackedScene" uid="uid://c75w3mkr14ont" path="res://luke/scenes_luke/Crate1.tscn" id="48_a180n"]
+[ext_resource type="PackedScene" uid="uid://bwrl1ecvr2xm3" path="res://luke/scenes_luke/CaveBox.tscn" id="49_g3ecf"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_sr1r6"]
 height = 1.385
@@ -981,29 +985,60 @@ mesh = SubResource("CapsuleMesh_cfc8h")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.2905, 29.8736, 39.7666)
 
 [node name="mud hut" parent="House" instance=ExtResource("33_5k016")]
+transform = Transform3D(-0.998472, 0, 0.0552638, 0, 1, 0, -0.0552638, 0, -0.998472, 11.8483, 0.830179, -22.4744)
 
 [node name="BookHouse" parent="House/mud hut" instance=ExtResource("34_p338w")]
-transform = Transform3D(1, 0, 0, 0, 0.99616, 0.0875556, 0, -0.0875556, 0.99616, 1.62815, -0.995863, 3.14615)
+transform = Transform3D(-0.566406, 0, 0.824126, 0, 1, 0, -0.824126, 0, -0.566406, 1.30755, -0.460417, -3.07484)
 book_text = "voice"
+
+[node name="BookHouse2" parent="House/mud hut" instance=ExtResource("34_p338w")]
+transform = Transform3D(-0.566406, 0, 0.824126, 0, 1, 0, -0.824126, 0, -0.566406, -1.29813, -0.833212, -2.24939)
+book_text = "nishi"
+
+[node name="BookHouse3" parent="House/mud hut" instance=ExtResource("34_p338w")]
+transform = Transform3D(0.0123391, 0, 0.999925, 0, 1, 0, -0.999924, 0, 0.0123391, 1.60535, -1.23076, 3.08199)
+book_text = "nishi2"
+
+[node name="BookHouse4" parent="House/mud hut" instance=ExtResource("34_p338w")]
+transform = Transform3D(0.012339, 0, 0.999926, 0, 1, 0, -0.999925, 0, 0.012339, 1.01692, -1.27166, -3.23477)
+book_text = "gone"
+
+[node name="BookA" parent="House/mud hut" instance=ExtResource("36_jowfx")]
+transform = Transform3D(0.164858, 0, -0.986317, 0, 1, 0, 0.986317, 0, 0.164858, 1.72869, -0.184008, 3.64759)
+
+[node name="BookA3" parent="House/mud hut" instance=ExtResource("36_jowfx")]
+transform = Transform3D(-0.0233469, -0.132974, -0.990845, -0.93566, 0.352002, -0.0251928, 0.352129, 0.926506, -0.132637, 1.67392, -0.18885, 2.80127)
+
+[node name="BookA2" parent="House/mud hut" instance=ExtResource("36_jowfx")]
+transform = Transform3D(0.117728, -0.0547041, -0.991538, 0.983855, 0.141955, 0.108984, 0.134792, -0.98836, 0.0705331, 1.72496, -0.351433, 3.11735)
+
+[node name="BookB" parent="House/mud hut" instance=ExtResource("37_elmu3")]
+transform = Transform3D(0.0168416, 0, -0.999858, 0, 1, 0, 0.999858, 0, 0.0168416, 1.69924, -0.191496, 3.49197)
+
+[node name="BookB3" parent="House/mud hut" instance=ExtResource("37_elmu3")]
+transform = Transform3D(0.0168416, 0, -0.999859, 0, 1, 0, 0.999859, 0, 0.0168416, 1.76077, -0.0854645, 2.40387)
+
+[node name="BookB2" parent="House/mud hut" instance=ExtResource("37_elmu3")]
+transform = Transform3D(0.0854071, -0.0390141, -0.995583, 0.987869, 0.133385, 0.0795185, 0.129694, -0.990296, 0.0499329, 1.68027, -0.286219, 3.14912)
 
 [node name="PlayerHouse" type="Marker3D" parent="House"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.01878, -0.416012, 0.0352516)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.0414, -0.416012, -19.6137)
 
 [node name="Testing" type="Node3D" parent="House"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.609146, 0.430868, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.4444, 1.20679, -22.6975)
 
 [node name="Battery" parent="House/Testing" instance=ExtResource("35_75y21")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.01448, -1.34839, 2.85403)
+transform = Transform3D(0.99974, -0.0228096, 9.96986e-10, 0, -4.37114e-08, -1, 0.0228096, 0.99974, -4.37e-08, -1.29047, -0.718149, -3.08818)
 
 [node name="Bulb" parent="House/Testing" instance=ExtResource("33_53e88")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.74676, -1.5703, -0.754295)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.77934, -1.58379, 1.6619)
 
 [node name="TorchItem" parent="House/Testing" instance=ExtResource("35_dkv4i")]
-transform = Transform3D(0.435797, 0, -0.900045, 0, 1, 0, 0.900045, 0, 0.435797, 0.0357056, -0.879995, -3.11691)
+transform = Transform3D(0.435797, 0, -0.900045, 0, 1, 0, 0.900045, 0, 0.435797, -0.470272, -0.82452, 3.36117)
 
 [node name="TooDark" type="Area3D" parent="House"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.65371, 0, -6.37872)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.65371, 0, -29.8498)
 script = ExtResource("37_drmti")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="House/TooDark"]
@@ -1019,7 +1054,7 @@ shape = SubResource("BoxShape3D_x7x2d")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.62939e-06, 0, 1.52588e-05)
 
 [node name="TriggerBuzz2" type="Area3D" parent="HousePath"]
-transform = Transform3D(0.95741, 0, 0.288731, 0, 1, 0, -0.288731, 0, 0.95741, 53.3425, 29.2877, -8.38162)
+transform = Transform3D(0.95741, 0, 0.288731, 0, 1, 0, -0.288731, 0, 0.95741, 53.3425, 29.2877, -13.115)
 script = ExtResource("41_3v2ll")
 buzz_home = "house"
 
@@ -1044,16 +1079,17 @@ shape = SubResource("BoxShape3D_wb8eg")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -127.551, 11.6284, -8.40217)
 
 [node name="LampBody" parent="Cave3" instance=ExtResource("38_c0fqu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.92411, -3.19133, -5.15025)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.81168, -2.10189, -8.9992)
 
 [node name="Matches" parent="Cave3" instance=ExtResource("39_oi60q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.15783, -3.33428, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.69209, -2.19169, 1.87865)
 
 [node name="LampFuel" parent="Cave3" instance=ExtResource("40_4b6mu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.75408, -3.20511, -7.20113)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.67199, -3.10795, -9.58857)
 
 [node name="PlayerCaveMarker" type="Marker3D" parent="Cave3"]
 unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.18331, -2.39733, -0.600243)
 
 [node name="TooDark2" type="Area3D" parent="Cave3"]
 transform = Transform3D(0.991067, 0, -0.133364, 0, 1, 0, 0.133364, 0, 0.991067, 0, -1.77982, -11.5647)
@@ -1082,6 +1118,21 @@ script = ExtResource("42_60gxn")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cave3/CaveExit"]
 shape = SubResource("BoxShape3D_22xi7")
+
+[node name="Crate1" parent="Cave3" instance=ExtResource("48_a180n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.12748, -2.91158, -0.461131)
+
+[node name="Crate3" parent="Cave3" instance=ExtResource("48_a180n")]
+transform = Transform3D(0.000226931, 0, 1, 0, 1, 0, -1, 0, 0.000226931, -5.12748, -2.62084, -0.486725)
+
+[node name="Crate2" parent="Cave3" instance=ExtResource("48_a180n")]
+transform = Transform3D(0.83145, 0, -0.555599, 0, 1, 0, 0.555599, 0, 0.83145, -5.37406, -2.91134, -1.5036)
+
+[node name="CaveBox" parent="Cave3" instance=ExtResource("49_g3ecf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.499199, -3.16306, -1.27827)
+
+[node name="CaveBox2" parent="Cave3" instance=ExtResource("49_g3ecf")]
+transform = Transform3D(0.495979, -0.399068, 0.7712, 0.660288, 0.750125, -0.0364866, -0.563936, 0.527311, 0.635547, 4.30813, -2.63889, -9.40283)
 
 [node name="BuzzNode" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.1671, 33.8757, -23.3701)

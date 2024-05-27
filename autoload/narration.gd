@@ -48,12 +48,18 @@ var all_narration = [
 ]
 
 var book_text_en = {
-	"voice": "Every night I hear the voice calling my name. I know it can't be her but what if it is?\n\nWhat if she is still lost out there and is calling for help."
+	"voice": "Every night I hear her voice calling my name. I know it can't be her but what if it is?\n\nWhat if she is still out there and is calling for help.",
+	"nishi": "Beware the call of the Nishir Daak, it cannot be trusted.",
+	"gone": "I only went out for a few minutes and when I came back she was gone. That was two weeks ago.",
+	"nishi2": "The Nishir Daak: an evil entity that will lure you to your death.\n\nListen carefully for your ears may deceive you."
 }
 
 var book_text_bn = {
 	"voice": "
-প্রতি রাতে আমি আমার নাম ডাকার আওয়াজ শুনতে পাই। আমি জানি এটা তার হতে পারে না কিন্তু এটা হলে কি হবে?\n\nকি হবে যদি সে এখনও সেখানে হারিয়ে যায় এবং সাহায্যের জন্য ডাকছে।"
+প্রতি রাতে আমি আমার নাম ডাকার আওয়াজ শুনতে পাই। আমি জানি এটা তার হতে পারে না কিন্তু এটা হলে কি হবে?\n\nকি হবে যদি সে এখনও সেখানে হারিয়ে যায় এবং সাহায্যের জন্য ডাকছে।",
+"nishi": "নিশির ডাকের ডাকে সাবধান, বিশ্বাস করা যায় না।",
+"gone":"আমি মাত্র কয়েক মিনিটের জন্য বাইরে গিয়েছিলাম এবং যখন আমি ফিরে আসি তখন সে চলে গেছে। সেটা দুই সপ্তাহ আগের কথা।",
+"nishi2":"নিশির ডাক: একটি দুষ্ট সত্তা যা আপনাকে আপনার মৃত্যুর দিকে প্রলুব্ধ করবে।\n\nমনোযোগ দিয়ে শুনুন আপনার কান আপনাকে প্রতারিত করতে পারে।"
 }
 
 var languages = {

@@ -50,6 +50,8 @@ var lamp_scene = preload("res://luke/scenes_luke/Lamp.tscn")
 @export var followDistance = 0.8
 @export var maxDistanceFromCamera = 5.0
 
+var current_dragged_item
+
 var use_cursor: bool = false
 
 var too_far: bool = false
@@ -369,6 +371,15 @@ func _physics_process(delta):
 				object.dragged(attack_marker)
 				#object.global_position.z = attack_marker.global_position.z
 				#object.global_position.x = attack_marker.global_position.x
+			if collider.is_in_group("pull_item"):
+				#print ("pull item")
+				current_dragged_item = collider
+				collider.dragged(attack_marker)
+	
+	if Input.is_action_just_released("use"):
+		if current_dragged_item != null:
+			current_dragged_item.dropped()
+			current_dragged_item = null
 	
 	var input_dir = Input.get_vector("left", "right", "forward", "back")
 	if crouching: return

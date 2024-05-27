@@ -1,8 +1,8 @@
 [gd_scene load_steps=11 format=3 uid="uid://y7sq7qpgkdo8"]
 
 [ext_resource type="Script" path="res://luke/scripts_luke/dad_voice_character.gd" id="1_0s6oc"]
-[ext_resource type="AudioStream" uid="uid://tgrrdeuedo2w" path="res://luke/assets_luke/audio_luke/dad_saiful_temp.mp3" id="1_ilrp5"]
 [ext_resource type="Script" path="res://luke/scripts_luke/dad_voice.gd" id="2_43wvp"]
+[ext_resource type="AudioStream" uid="uid://c51j23gh8xvas" path="res://luke/assets_luke/audio_luke/saiful_whisper.mp3" id="2_sf3xu"]
 [ext_resource type="FontFile" uid="uid://duirhuy7klyp8" path="res://assets/fonts/alagard.ttf" id="3_anmua"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_u4jcm"]
@@ -276,7 +276,7 @@ script = ExtResource("1_0s6oc")
 shape = SubResource("SphereShape3D_u4jcm")
 
 [node name="DadVoice" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("1_ilrp5")
+stream = ExtResource("2_sf3xu")
 volume_db = 5.0
 script = ExtResource("2_43wvp")
 

@@ -38,6 +38,8 @@ var blend_speed_two :float = 2.0
 
 var to_mound: bool = true
 
+var disable_dad: bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GlobalSignals.start_game.connect(_start_game)
@@ -46,6 +48,10 @@ func _ready() -> void:
 	GlobalSignals.start_clearing.connect(_start_clearing)
 	GlobalSignals.dad_repeat_log.connect(_dad_repeat_log)
 	GlobalSignals.father_gone.connect(_dad_gone)
+	GlobalSignals.night_path_set_up.connect(_dad_gone)
+	GlobalSignals.fork_set_up.connect(_dad_gone)
+	GlobalSignals.start_house.connect(_dad_gone)
+	GlobalSignals.start_in_cave.connect(_dad_gone)
 	use_check_points = check_points
 	#$AnimationPlayer.play("Armature|mixamo_com|Layer0")
 	#$AnimationPlayer.pause()
@@ -53,12 +59,13 @@ func _ready() -> void:
 	#GlobalSignals.emit_signal("dad_to_mound")
 
 func _start_game():
-	print ("dad start")
-	await get_tree().create_timer(4.0).timeout
-	print ("dad psot timer")
-	$AnimationPlayer.play("walk")
-	_next_position()
-	#_update_tree()
+	if not disable_dad:
+		print ("dad start")
+		await get_tree().create_timer(4.0).timeout
+		print ("dad psot timer")
+		$AnimationPlayer.play("walk")
+		_next_position()
+		#_update_tree()
 	
 func _start_clearing():
 	walking = false
@@ -89,6 +96,7 @@ func _dad_repeat_log(state):
 
 
 func _dad_gone():
+	disable_dad = true
 	visible = false
 	walking = false
 	
