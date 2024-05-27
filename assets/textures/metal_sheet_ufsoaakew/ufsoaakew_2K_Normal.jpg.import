@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8s04yf3krem6"
-path.s3tc="res://.godot/imported/Metal024_2K-JPG_NormalGL.jpg-054058a31e7543baafa8ba2a64beca60.s3tc.ctex"
+uid="uid://cblbcuhkfiny1"
+path.s3tc="res://.godot/imported/ufsoaakew_2K_Normal.jpg-bb87cc219c75710e62606ab842577998.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/Metal024_2K-JPG/Metal024_2K-JPG_NormalGL.jpg"
-dest_files=["res://.godot/imported/Metal024_2K-JPG_NormalGL.jpg-054058a31e7543baafa8ba2a64beca60.s3tc.ctex"]
+source_file="res://assets/textures/metal_sheet_ufsoaakew/ufsoaakew_2K_Normal.jpg"
+dest_files=["res://.godot/imported/ufsoaakew_2K_Normal.jpg-bb87cc219c75710e62606ab842577998.s3tc.ctex"]
 
 [params]
 
@@ -25,7 +25,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://assets/Metal024_2K-JPG/Metal024_2K-JPG_NormalGL.jpg"
+roughness/src_normal="res://assets/textures/metal_sheet_ufsoaakew/ufsoaakew_2K_Normal.jpg"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

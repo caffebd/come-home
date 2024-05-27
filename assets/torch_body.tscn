@@ -1,13 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://cnqkko1fnc5oe"]
+[gd_scene load_steps=6 format=3 uid="uid://cnqkko1fnc5oe"]
 
-[ext_resource type="PackedScene" uid="uid://ccoklv1fkyca8" path="res://assets/imported/torchBody.glb" id="1_x7yd2"]
+[ext_resource type="PackedScene" uid="uid://ccoklv1fkyca8" path="res://assets/imported/torchBody.glb" id="1_7kh51"]
+[ext_resource type="Material" uid="uid://bh8wl2s4b88ey" path="res://assets/materials/torch_body.tres" id="2_p1bpg"]
+[ext_resource type="Material" uid="uid://b6x0v0a6264hv" path="res://assets/materials/bulbMetal.tres" id="3_17xes"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1dpjh"]
-cull_mode = 2
-albedo_color = Color(0.202723, 0.202723, 0.202723, 1)
-roughness = 0.72
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8y7vv"]
+albedo_color = Color(0.414704, 0.414704, 0.414704, 1)
+roughness = 0.41
 
-[node name="torchBody" instance=ExtResource("1_x7yd2")]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k1r30"]
+albedo_color = Color(0.999314, 1.60997e-05, 7.31587e-06, 1)
+emission = Color(1, 0, 0, 1)
 
-[node name="Cylinder" parent="." index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_1dpjh")
+[node name="torchBody" instance=ExtResource("1_7kh51")]
+
+[node name="Cube_006" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_p1bpg")
+surface_material_override/1 = SubResource("StandardMaterial3D_8y7vv")
+surface_material_override/2 = ExtResource("3_17xes")
+surface_material_override/3 = SubResource("StandardMaterial3D_k1r30")

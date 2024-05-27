@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://c1s21leqfk0hx"]
+[gd_scene load_steps=40 format=3 uid="uid://c1s21leqfk0hx"]
 
 [ext_resource type="Script" path="res://luke/scripts_luke/village.gd" id="1_xj3v6"]
 [ext_resource type="PackedScene" uid="uid://37f4h6mvwnbh" path="res://assets/mud_hut.tscn" id="2_jjyfm"]
@@ -21,6 +21,8 @@
 [ext_resource type="AudioStream" uid="uid://tgrrdeuedo2w" path="res://luke/assets_luke/audio_luke/dad_saiful_temp.mp3" id="19_32cwd"]
 [ext_resource type="Script" path="res://luke/scripts_luke/dad_voice.gd" id="20_u1hat"]
 [ext_resource type="FontFile" uid="uid://duirhuy7klyp8" path="res://assets/fonts/alagard.ttf" id="21_da3l7"]
+[ext_resource type="PackedScene" uid="uid://cnqkko1fnc5oe" path="res://assets/torch_body.tscn" id="22_tcfqp"]
+[ext_resource type="PackedScene" uid="uid://bo6f6uapqjqdy" path="res://assets/torch_bulb.tscn" id="23_7g3rl"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_sr1r6"]
 height = 1.385
@@ -719,6 +721,12 @@ transform = Transform3D(1, 0.000471239, 0, -0.000471239, 1, 0, 0, 0, 1, -4.12886
 light_color = Color(0.843693, 0.811877, 0.750093, 1)
 light_volumetric_fog_energy = 0.0
 shadow_enabled = true
+
+[node name="torchBody" parent="." instance=ExtResource("22_tcfqp")]
+transform = Transform3D(0.3069, 0, 0, 0, 0.3069, 0, 0, 0, 0.3069, 63.853, 30.4046, 15.0484)
+
+[node name="torchBulb" parent="." instance=ExtResource("23_7g3rl")]
+transform = Transform3D(0.3069, 0, 0, 0, 0.3069, 0, 0, 0, 0.3069, 64.0113, 30.3615, 14.9459)
 
 [connection signal="body_entered" from="Clearing/StickDropArea" to="Clearing/StickDropArea" method="_on_body_entered"]
 [connection signal="body_entered" from="Clearing/SeeDadGoneArea" to="Clearing/SeeDadGoneArea" method="_on_body_entered"]
