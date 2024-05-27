@@ -1000,7 +1000,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.01448, -1.34839, 2.85403)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.74676, -1.5703, -0.754295)
 
 [node name="TorchItem" parent="House/Testing" instance=ExtResource("35_dkv4i")]
-transform = Transform3D(0.435797, 0, -0.900045, 0, 1, 0, 0.900045, 0, 0.435797, 0.114071, -0.81679, -3.01499)
+transform = Transform3D(0.435797, 0, -0.900045, 0, 1, 0, 0.900045, 0, 0.435797, 0.0357056, -0.879995, -3.11691)
 
 [node name="TooDark" type="Area3D" parent="House"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.65371, 0, -6.37872)

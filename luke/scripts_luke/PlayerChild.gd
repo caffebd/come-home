@@ -165,15 +165,15 @@ func _item_collected(item):
 		"torch_body":
 			if not torch_parts.has(item):
 				torch_parts.append(item)
-				_check_torch_status()
+				_check_torch_status("torch_body")
 		"bulb":
 			if not torch_parts.has(item):
 				torch_parts.append(item)
-				_check_torch_status()
+				_check_torch_status("bulb")
 		"battery":
 			if not torch_parts.has(item):
 				torch_parts.append(item)
-				_check_torch_status()	
+				_check_torch_status("battery")	
 		"lamp_body":
 			if not lamp_parts.has(item):
 				lamp_parts.append(item)
@@ -187,19 +187,17 @@ func _item_collected(item):
 				lamp_parts.append(item)		
 				_check_lamp_status()
 
-func _check_torch_status():
+func _check_torch_status(part: String):
 	match torch_parts.size():
 		1:
 			torch = torch_scene.instantiate()
-			hand.add_child(torch)
-			torch.collected_state(1)
+			hand.add_child(torch)		
 		2:
-			torch.collected_state(2)
+			pass
 		3:
-			torch.collected_state(3)
 			has_light = true	
 			GlobalSignals.emit_signal("show_player_info", "Press 'f' to use.")	
-			
+	torch.collected_state(part)		
 
 func _check_lamp_status():
 	match lamp_parts.size():

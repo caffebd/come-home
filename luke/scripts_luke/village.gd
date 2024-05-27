@@ -19,7 +19,7 @@ func _ready() -> void:
 	#GlobalSignals.emit_signal("start_clearing")
 	#GlobalSignals.emit_signal("night_path_set_up")
 	#GlobalSignals.emit_signal("fork_set_up")
-	#GlobalSignals.emit_signal("start_house")
+	GlobalSignals.emit_signal("start_house")
 	#GlobalSignals.emit_signal("start_in_cave")
 	#var tween = create_tween().parallel()
 	#tween.tween_property($WorldEnvironment, "environment:sky:sky_material:sky_top_color", Color("327085"), 2.0)
