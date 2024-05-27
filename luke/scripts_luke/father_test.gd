@@ -20,7 +20,7 @@ var walking: = false
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-@onready var anim_tree = %AnimationTree
+#@onready var anim_tree = %AnimationTree
 
 var turn_value :float = 0
 var sitting_value: float = 0
@@ -47,8 +47,8 @@ func _ready() -> void:
 	GlobalSignals.dad_repeat_log.connect(_dad_repeat_log)
 	GlobalSignals.father_gone.connect(_dad_gone)
 	use_check_points = check_points
-	$AnimationPlayer.play("mixamo_com")
-	$AnimationPlayer.pause()
+	#$AnimationPlayer.play("Armature|mixamo_com|Layer0")
+	#$AnimationPlayer.pause()
 
 	#GlobalSignals.emit_signal("dad_to_mound")
 
@@ -56,8 +56,9 @@ func _start_game():
 	print ("dad start")
 	await get_tree().create_timer(4.0).timeout
 	print ("dad psot timer")
+	$AnimationPlayer.play("walk")
 	_next_position()
-	_update_tree()
+	#_update_tree()
 	
 func _start_clearing():
 	walking = false
@@ -91,49 +92,49 @@ func _dad_gone():
 	visible = false
 	walking = false
 	
-func _update_tree():
-	anim_tree["parameters/BlendTurn/blend_amount"] = turn_value
-	anim_tree["parameters/SitDown/blend_amount"] = sit_down_value
-	anim_tree["parameters/Sitting/blend_amount"] = sitting_value
-	anim_tree["parameters/StandingIdle/blend_amount"] = standing_value
+#func _update_tree():
+	#anim_tree["parameters/BlendTurn/blend_amount"] = turn_value
+	#anim_tree["parameters/SitDown/blend_amount"] = sit_down_value
+	#anim_tree["parameters/Sitting/blend_amount"] = sitting_value
+	#anim_tree["parameters/StandingIdle/blend_amount"] = standing_value
 	
-func _handle_animation(delta):
-	match curr_anim:
-		
-		WALK:
-			turn_value = lerp(turn_value, 0.0, blend_speed_two*delta)
-			sit_down_value = lerp(sit_down_value, 0.0, blend_speed*delta)
-			sitting_value = lerp(sitting_value, 0.0, blend_speed*delta)
-			standing_value = lerp(standing_value, 0.0, blend_speed*delta)
-			_update_tree()
-		TURN:
-			turn_value = lerp(turn_value, 1.0, blend_speed*delta)
-			sit_down_value = lerp(sit_down_value, 0.0, blend_speed*delta)
-			sitting_value = lerp(sitting_value, 0.0, blend_speed*delta)
-			standing_value = lerp(standing_value, 0.0, blend_speed*delta)
-			_update_tree()
-		SITDOWN:
-			sit_down_value = lerp(sit_down_value, 1.0, blend_speed*delta)
-			turn_value = lerp(turn_value, 0.0, blend_speed*delta)
-			sitting_value = lerp(sitting_value, 0.0, blend_speed*delta)
-			standing_value = lerp(standing_value, 0.0, blend_speed*delta)
-			_update_tree()
-		SITTING:
-			sit_down_value = lerp(sit_down_value, 0.0, blend_speed*delta)
-			turn_value = lerp(turn_value, 0.0, blend_speed*delta)
-			sitting_value = lerp(sitting_value, 1.0, blend_speed*delta)
-			standing_value = lerp(standing_value, 0.0, blend_speed*delta)
-			_update_tree()
-		STANDING:
-			standing_value = lerp(standing_value, 1.0, blend_speed*delta)
-			sit_down_value = lerp(sit_down_value, 0.0, blend_speed*delta)
-			turn_value = lerp(turn_value, 0.0, blend_speed*delta)
-			sitting_value = lerp(sitting_value, 0.0, blend_speed*delta)
-			_update_tree()
+#func _handle_animation(delta):
+	#match curr_anim:
+		#
+		#WALK:
+			#turn_value = lerp(turn_value, 0.0, blend_speed_two*delta)
+			#sit_down_value = lerp(sit_down_value, 0.0, blend_speed*delta)
+			#sitting_value = lerp(sitting_value, 0.0, blend_speed*delta)
+			#standing_value = lerp(standing_value, 0.0, blend_speed*delta)
+			#_update_tree()
+		#TURN:
+			#turn_value = lerp(turn_value, 1.0, blend_speed*delta)
+			#sit_down_value = lerp(sit_down_value, 0.0, blend_speed*delta)
+			#sitting_value = lerp(sitting_value, 0.0, blend_speed*delta)
+			#standing_value = lerp(standing_value, 0.0, blend_speed*delta)
+			#_update_tree()
+		#SITDOWN:
+			#sit_down_value = lerp(sit_down_value, 1.0, blend_speed*delta)
+			#turn_value = lerp(turn_value, 0.0, blend_speed*delta)
+			#sitting_value = lerp(sitting_value, 0.0, blend_speed*delta)
+			#standing_value = lerp(standing_value, 0.0, blend_speed*delta)
+			#_update_tree()
+		#SITTING:
+			#sit_down_value = lerp(sit_down_value, 0.0, blend_speed*delta)
+			#turn_value = lerp(turn_value, 0.0, blend_speed*delta)
+			#sitting_value = lerp(sitting_value, 1.0, blend_speed*delta)
+			#standing_value = lerp(standing_value, 0.0, blend_speed*delta)
+			#_update_tree()
+		#STANDING:
+			#standing_value = lerp(standing_value, 1.0, blend_speed*delta)
+			#sit_down_value = lerp(sit_down_value, 0.0, blend_speed*delta)
+			#turn_value = lerp(turn_value, 0.0, blend_speed*delta)
+			#sitting_value = lerp(sitting_value, 0.0, blend_speed*delta)
+			#_update_tree()
 			
 func _physics_process(delta: float) -> void:
 	
-	_handle_animation(delta)
+	#_handle_animation(delta)
 	
 
 	
@@ -154,7 +155,8 @@ func _physics_process(delta: float) -> void:
 				rotation.y=lerp_angle(rotation.y,atan2(velocity.x,velocity.z),.1)
 				speed = lerp(speed, 4.0, 0.5)
 				velocity = direction * speed
-				curr_anim = WALK
+				#curr_anim = WALK
+				$AnimationPlayer.speed_scale = lerp($AnimationPlayer.speed_scale, 0.8, 1.0)
 				GlobalSignals.emit_signal("hide_speech")
 				$SpeechTimer.stop()
 				if not is_on_floor():
@@ -164,7 +166,8 @@ func _physics_process(delta: float) -> void:
 				if can_turn:
 					#print ("turn")
 					can_turn = false
-					curr_anim = TURN
+					#curr_anim = TURN
+					$AnimationPlayer.speed_scale = lerp($AnimationPlayer.speed_scale, 0.0, 1.0)
 					$SpeechTimer.start()
 					speed = lerp(speed, 0.0, 1.0)
 					velocity = direction * speed
