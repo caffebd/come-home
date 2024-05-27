@@ -110,6 +110,7 @@ func _ready():
 	GlobalSignals.start_house.connect(_start_house)
 	GlobalSignals.start_in_cave.connect(_start_in_cave)
 	GlobalSignals.dark_place.connect(_dark_place)
+	GlobalSignals.mouse_capture.connect(_mouse_capture)
 	%SpotLight3D.visible = false
 	#GlobalSignals.dad_to_mound.connect(_start_mound)
 	head.rotation_degrees.y = 0.0
@@ -212,7 +213,13 @@ func _check_lamp_status():
 			lamp.collected_state(3)
 			has_light = true
 			GlobalSignals.emit_signal("show_player_info", "Press 'f' to use.")
-			
+
+func _mouse_capture(state):
+	use_cursor = state
+	if use_cursor:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	else:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -224,13 +231,12 @@ func _input(event):
 	
 	_controller_support()
 	
-	if Input.is_action_just_pressed("ui_cancel"):
+	if Input.is_action_just_pressed("ui_cancel") and not hud.reading_panel.visible:
 		if use_cursor:
-			use_cursor = false
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			_mouse_capture(false)
 		else:
-			use_cursor = true
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			_mouse_capture(true)
+
 	if Input.is_action_just_pressed("torch") and has_light:
 		%SpotLight3D.visible = !%SpotLight3D.visible
 		light_on = %SpotLight3D.visible
@@ -250,9 +256,10 @@ func _input(event):
 			tween.tween_property(head, "position:y", 0.2, 0.5)
 			crouching = true
 			if ready_to_hide:
-				await get_tree().create_timer(2.0).timeout
-				GlobalSignals.emit_signal("hiding")
+				%CrouchTimer.start()
+				
 	if Input.is_action_just_released("crouch"):
+		%CrouchTimer.stop()
 		var tween = create_tween()
 		tween.tween_property(head, "position:y", 0.5, 0.5)
 		crouching = false
@@ -284,6 +291,9 @@ func _take_action():
 		if collider.is_in_group("collect_item"):
 			if collider.get_parent().has_method("item_collected"):
 				collider.get_parent().item_collected()
+		if collider.is_in_group("reading_material"):
+			var text = collider.get_parent().book_text
+			GlobalSignals.emit_signal("read", text)
 		print ("clicked")
 
 func _change_dad_max_dist(dist):
@@ -316,7 +326,7 @@ func _physics_process(delta):
 	
 	if in_dark:
 		if light_on:
-			speed = 20.0
+			speed = 2.0
 		else:
 			speed = 0.5
 	
@@ -480,3 +490,7 @@ func _headbob(time)->Vector3:
 func _to_menu():
 	get_tree().change_scene_to_file("res://scenes/Menu.tscn")
 
+
+
+func _on_crouch_timer_timeout() -> void:
+	GlobalSignals.emit_signal("hiding")

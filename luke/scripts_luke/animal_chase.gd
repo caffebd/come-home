@@ -68,7 +68,7 @@ func _go_home():
 	if voice_route:
 		_stick_feedback()
 	
-	if marker_index < use_markers.size():
+	if marker_index < use_markers.size()-1:
 		marker_index += 1
 	else:
 		marker_index = 0
@@ -102,7 +102,10 @@ func _physics_process(delta: float) -> void:
 		target_position = player.global_position
 		
 	if homing:
-		direction = global_position.direction_to(use_markers[marker_index].global_position)
+		var go_index = use_markers.size()-1
+		if marker_index < use_markers.size():
+			go_index = marker_index
+		direction = global_position.direction_to(use_markers[go_index].global_position)
 		target_position = use_markers[marker_index].global_position
 	
 	if global_position.distance_to(target_position) > 0.1:

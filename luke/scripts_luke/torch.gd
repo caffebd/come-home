@@ -1,6 +1,6 @@
 extends Node3D
 
-@onready var mesh_one := $Body1
+@onready var mesh_one := $Cylinder
 @onready var mesh_two := $Body2
 
 var collect_state_one: float = 0.15
@@ -19,14 +19,17 @@ func _process(delta: float) -> void:
 func collected_state(parts: int):
 	match parts:
 		1:
-			var tween = create_tween().set_parallel()
-			tween.tween_property(mesh_one, "mesh:material:albedo_color:a", collect_state_one, 1.0)
-			tween.tween_property(mesh_two, "mesh:material:albedo_color:a", collect_state_one, 1.0)
+			var mat = mesh_one.get_surface_override_material(0)
+			var tween = create_tween()
+			tween.tween_property(mat, "albedo_color:a", collect_state_one, 1.0)
+			#tween.tween_property(mesh_two, "mesh:material:albedo_color:a", collect_state_one, 1.0)
 		2:
-			var tween = create_tween().set_parallel()
-			tween.tween_property(mesh_one, "mesh:material:albedo_color:a", collect_state_two, 1.0)
-			tween.tween_property(mesh_two, "mesh:material:albedo_color:a", collect_state_two, 1.0)
+			var mat = mesh_one.get_surface_override_material(0)
+			var tween = create_tween()
+			tween.tween_property(mat, "albedo_color:a", collect_state_two, 1.0)
+			#tween.tween_property(mesh_two, "mesh:material:albedo_color:a", collect_state_two, 1.0)
 		3:
-			var tween = create_tween().set_parallel()
-			tween.tween_property(mesh_one, "mesh:material:albedo_color:a", collect_state_three, 1.0)
-			tween.tween_property(mesh_two, "mesh:material:albedo_color:a", collect_state_three, 1.0)
+			var mat = mesh_one.get_surface_override_material(0)
+			var tween = create_tween()
+			tween.tween_property(mat, "albedo_color:a", collect_state_three, 1.0)
+			#tween.tween_property(mesh_two, "mesh:material:albedo_color:a", collect_state_three, 1.0)

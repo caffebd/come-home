@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=3 uid="uid://qgbj73vixll4"]
+[gd_scene load_steps=79 format=3 uid="uid://qgbj73vixll4"]
 
 [ext_resource type="Script" path="res://luke/scripts_luke/village.gd" id="1_52nm1"]
 [ext_resource type="PackedScene" uid="uid://ds8jitdfn8yuj" path="res://assets/path.tscn" id="2_7n3rm"]
@@ -23,6 +23,7 @@
 [ext_resource type="AudioStream" uid="uid://bl8vkh25bmpku" path="res://luke/assets_luke/audio_luke/monster_breath_1.mp3" id="18_j7org"]
 [ext_resource type="Script" path="res://luke/scripts_luke/fork_area.gd" id="18_xmxnm"]
 [ext_resource type="AudioStream" uid="uid://c0y4er8tiyw6x" path="res://luke/assets_luke/audio_luke/monster_breath_2.mp3" id="19_y7sh4"]
+[ext_resource type="PackedScene" uid="uid://cmkod0u0ct3lk" path="res://assets/stick_1.tscn" id="20_fo1yl"]
 [ext_resource type="Script" path="res://luke/scripts_luke/fork_collision.gd" id="24_6ohve"]
 [ext_resource type="PackedScene" uid="uid://y7sq7qpgkdo8" path="res://luke/scenes_luke/DadVoiceCharacter.tscn" id="26_gfgx6"]
 [ext_resource type="Script" path="res://luke/scripts_luke/stick_drop_area_forest.gd" id="27_phcf6"]
@@ -34,6 +35,8 @@
 [ext_resource type="Script" path="res://luke/scripts_luke/hiding_place.gd" id="32_sh5eu"]
 [ext_resource type="PackedScene" uid="uid://37f4h6mvwnbh" path="res://assets/mud_hut.tscn" id="33_5k016"]
 [ext_resource type="PackedScene" uid="uid://5o2ushl2soir" path="res://luke/scenes_luke/bulb.tscn" id="33_53e88"]
+[ext_resource type="Script" path="res://luke/scripts_luke/enter_cave.gd" id="33_lfo5s"]
+[ext_resource type="PackedScene" uid="uid://ctf3d4b0fy1hd" path="res://luke/scenes_luke/OpenBook.tscn" id="34_p338w"]
 [ext_resource type="PackedScene" uid="uid://r8b5dq4t23oq" path="res://luke/scenes_luke/battery.tscn" id="35_75y21"]
 [ext_resource type="PackedScene" uid="uid://4ws1xapqydux" path="res://luke/scenes_luke/torch_item.tscn" id="35_dkv4i"]
 [ext_resource type="Script" path="res://luke/scripts_luke/too_dark.gd" id="37_drmti"]
@@ -126,6 +129,9 @@ albedo_color = Color(0, 0.485579, 3.85046e-07, 1)
 [sub_resource type="SphereMesh" id="SphereMesh_1mwdf"]
 material = SubResource("StandardMaterial3D_38t34")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_idyt5"]
+size = Vector3(2.065, 0.775, 0.58)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tqgou"]
 albedo_color = Color(0, 1, 1, 1)
 emission_enabled = true
@@ -161,8 +167,6 @@ script = ExtResource("1_52nm1")
 [node name="screenEffect" parent="." instance=ExtResource("2_7x1u4")]
 
 [node name="environment" parent="." instance=ExtResource("6_efe2g")]
-
-[node name="World" parent="." instance=ExtResource("4_matdt")]
 
 [node name="path" parent="." instance=ExtResource("2_7n3rm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.34267, 0)
@@ -215,10 +219,10 @@ ghost_markers = [NodePath("../ClearingTwo/GhostMarkers/GhostMarker1"), NodePath(
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.3117, -10.6451, 404.4)
 
 [node name="Stick1" parent="Clearing" instance=ExtResource("8_1v5c4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.6687, 18.77, -31.1327)
+transform = Transform3D(1, 0, 0, 0, 0.999636, 0.026997, 0, -0.026997, 0.999636, -34.4519, 18.8336, -25.7639)
 
 [node name="Stick2" parent="Clearing" instance=ExtResource("8_1v5c4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.7572, 18.8828, -23.5384)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.3937, 18.8768, -26.0441)
 
 [node name="Stick3" parent="Clearing" instance=ExtResource("8_1v5c4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.4885, 18.8482, -26.3063)
@@ -334,8 +338,10 @@ script = ExtResource("8_4rnxs")
 shape = SubResource("BoxShape3D_1fo8h")
 
 [node name="Log" parent="Ledge" instance=ExtResource("6_n54h1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.35236, 0.0889686, 0.566498)
-visible = false
+transform = Transform3D(1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, 1, 2.35236, 0.353869, 0.566498)
+
+[node name="stick1" parent="Ledge/Log" instance=ExtResource("20_fo1yl")]
+transform = Transform3D(0.962065, 0, -0.272818, 0, 1, 0, 0.272818, 0, 0.962065, 7.60727, 6.79834, -44.7537)
 
 [node name="DadSpeakArea" type="Area3D" parent="Ledge"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00111389, 0.272748, 3.77676)
@@ -916,8 +922,15 @@ script = ExtResource("32_sh5eu")
 shape = SubResource("BoxShape3D_emej2")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="PathToCave/HidingPlace3"]
-transform = Transform3D(0.547387, 0, 0, 0, 0.547387, 0, 0, 0, 0.547387, -11.0326, 0.0910082, -14.69)
+transform = Transform3D(0.547387, 0, 0, 0, 0.547387, 0, 0, 0, 0.547387, -13.6984, 1.74343, -14.69)
 mesh = SubResource("SphereMesh_1mwdf")
+
+[node name="EnterCave" type="Area3D" parent="PathToCave"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.9789, 9.33827, -144.832)
+script = ExtResource("33_lfo5s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PathToCave/EnterCave"]
+shape = SubResource("BoxShape3D_idyt5")
 
 [node name="ChoiceFork" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 2.72611, 0, 0, 0, 1, -51.8689, 3.39052, 246.467)
@@ -969,6 +982,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.2905, 29.8736, 39.7666)
 
 [node name="mud hut" parent="House" instance=ExtResource("33_5k016")]
 
+[node name="BookHouse" parent="House/mud hut" instance=ExtResource("34_p338w")]
+transform = Transform3D(1, 0, 0, 0, 0.99616, 0.0875556, 0, -0.0875556, 0.99616, 1.62815, -0.995863, 3.14615)
+book_text = "voice"
+
 [node name="PlayerHouse" type="Marker3D" parent="House"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.01878, -0.416012, 0.0352516)
@@ -977,10 +994,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.01878, -0.416012, 0.0352516
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.609146, 0.430868, 0)
 
 [node name="Battery" parent="House/Testing" instance=ExtResource("35_75y21")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.01448, -0.566084, 2.85403)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.01448, -1.34839, 2.85403)
 
 [node name="Bulb" parent="House/Testing" instance=ExtResource("33_53e88")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.10939, -1.5703, -1.31954)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.74676, -1.5703, -0.754295)
 
 [node name="TorchItem" parent="House/Testing" instance=ExtResource("35_dkv4i")]
 transform = Transform3D(0.435797, 0, -0.900045, 0, 1, 0, 0.900045, 0, 0.435797, 0.114071, -0.81679, -3.01499)
@@ -1099,6 +1116,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.24954, -0.7467, -29.7206)
 [node name="GhostMarker4" type="Marker3D" parent="ClearingTwo/GhostMarkers"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.52456, -0.99185, -39.8291)
 
+[node name="World" parent="." instance=ExtResource("4_matdt")]
+
 [connection signal="body_entered" from="Clearing/StickDropArea" to="Clearing/StickDropArea" method="_on_body_entered"]
 [connection signal="body_entered" from="Clearing/SeeDadGoneArea" to="Clearing/SeeDadGoneArea" method="_on_body_entered"]
 [connection signal="body_entered" from="Clearing/ExitPathTrigger" to="Clearing/ExitPathTrigger" method="_on_body_entered"]
@@ -1127,10 +1146,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.52456, -0.99185, -39.8291)
 [connection signal="body_entered" from="PathToCave/HidingPlace" to="PathToCave/HidingPlace" method="_on_body_entered"]
 [connection signal="body_entered" from="PathToCave/HidingPlace2" to="PathToCave/HidingPlace2" method="_on_body_entered"]
 [connection signal="body_entered" from="PathToCave/HidingPlace3" to="PathToCave/HidingPlace3" method="_on_body_entered"]
+[connection signal="body_entered" from="PathToCave/EnterCave" to="PathToCave/EnterCave" method="_on_body_entered"]
 [connection signal="body_entered" from="House/TooDark" to="House/TooDark" method="_on_body_entered"]
+[connection signal="body_exited" from="House/TooDark" to="House/TooDark" method="_on_body_exited"]
 [connection signal="body_entered" from="HousePath/TriggerBuzz2" to="HousePath/TriggerBuzz2" method="_on_body_entered"]
 [connection signal="body_entered" from="HousePath/TriggerDadCall" to="HousePath/TriggerDadCall" method="_on_body_entered"]
 [connection signal="body_entered" from="HousePath/HousePathExit" to="HousePath/HousePathExit" method="_on_body_entered"]
 [connection signal="body_entered" from="Cave3/TooDark2" to="Cave3/TooDark2" method="_on_body_entered"]
+[connection signal="body_exited" from="Cave3/TooDark2" to="Cave3/TooDark2" method="_on_body_exited"]
 [connection signal="body_entered" from="Cave3/TriggerBuzz" to="Cave3/TriggerBuzz" method="_on_body_entered"]
 [connection signal="body_entered" from="Cave3/CaveExit" to="Cave3/CaveExit" method="_on_body_entered"]

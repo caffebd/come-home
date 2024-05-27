@@ -53,7 +53,9 @@ func _ready() -> void:
 	#GlobalSignals.emit_signal("dad_to_mound")
 
 func _start_game():
-	get_tree().create_timer(4.0).timeout
+	print ("dad start")
+	await get_tree().create_timer(4.0).timeout
+	print ("dad psot timer")
 	_next_position()
 	_update_tree()
 	

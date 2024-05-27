@@ -3,6 +3,8 @@ extends Control
 @onready var text_box: ColorRect = %TextBackground
 @onready var narration_box: ColorRect = %NarrationBackground
 @onready var info_to_player: ColorRect = %InfoToPlayer
+@onready var reading_panel: Panel = %ReadingPage
+@onready var text_area: RichTextLabel = %BookText
 
 @export var use_fade: bool = true
 
@@ -10,6 +12,10 @@ var target_mode = "off"
 
 var narration_showing: bool = false
 var player_info_showing: bool = false
+
+var language: String = "en"
+
+var using_text: String
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -21,6 +27,7 @@ func _ready() -> void:
 	GlobalSignals.hide_player_info.connect(_hide_player_info)
 	GlobalSignals.start_game.connect(_start_game)
 	GlobalSignals.send_back_to_cave.connect(_back_to_cave)
+	GlobalSignals.read.connect(_read)
 	%TextBackground.modulate.a = 0.0
 	if use_fade:
 		$Cover.modulate.a = 1.0
@@ -89,6 +96,14 @@ func _hide_player_info():
 	var tween = create_tween()
 	tween.tween_property(info_to_player, "modulate:a", 0.0, 1.0)
 
+func _read(text:String):
+	using_text = text
+	var text_language = Narration.languages[language]
+	var show_text = text_language[using_text]
+	text_area.text = show_text
+	reading_panel.visible = true
+	GlobalSignals.emit_signal("mouse_capture", true)
+	
 func _use_fade_in():
 	var tween = create_tween()
 	tween.tween_property($Cover, "modulate:a", 0.0, 3.0)
@@ -118,3 +133,27 @@ func set_target_mode(mode:String):
 		target.modulate.a = 145.0
 	elif target_mode == "interact":
 		target.modulate.a = 255.0
+
+
+
+func _on_close_btn_pressed() -> void:
+	reading_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	text_area.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	reading_panel.visible = false
+	GlobalSignals.emit_signal("mouse_capture", false)
+
+
+func _on_en_button_pressed() -> void:
+	language = "en"
+	var text_language = Narration.languages[language]
+	var show_text = text_language[using_text]
+	text_area.add_theme_font_size_override("normal_font_size", 60)
+	text_area.text = show_text
+
+
+func _on_bn_button_pressed() -> void:
+	language = "bn"
+	var text_language = Narration.languages[language]
+	var show_text = text_language[using_text]
+	text_area.add_theme_font_size_override("normal_font_size", 40)
+	text_area.text = show_text

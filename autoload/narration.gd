@@ -42,9 +42,24 @@ var all_narration = [
 	["Follow the glowing light, or follow my dad's voice?"],
 	["I heared footsteps. Then I rememberd a trick my dad had taught me.", "Throw a stick into the forest as a distraction."],
 	["It worked!"],
-	["I heared footsteps. I needed to find a place to hide."]
-	
+	["I heared footsteps. I needed to find a place to hide."],
+	["I never found out what happened to my dad in the forest that day. And now I never will. 
+	He passed away yesterday just a few hours after I spoke to him on the phone. It had been a short converation but his final words will haunt me forever. 'Saif, come home' "]	
 ]
+
+var book_text_en = {
+	"voice": "Every night I hear the voice calling my name. I know it can't be her but what if it is?\n\nWhat if she is still lost out there and is calling for help."
+}
+
+var book_text_bn = {
+	"voice": "
+প্রতি রাতে আমি আমার নাম ডাকার আওয়াজ শুনতে পাই। আমি জানি এটা তার হতে পারে না কিন্তু এটা হলে কি হবে?\n\nকি হবে যদি সে এখনও সেখানে হারিয়ে যায় এবং সাহায্যের জন্য ডাকছে।"
+}
+
+var languages = {
+	"en": book_text_en,
+	"bn": book_text_bn
+}
 
 func narrate():
 	if main_index < all_narration.size():

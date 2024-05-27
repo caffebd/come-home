@@ -74,6 +74,11 @@ signal buzz_off()
 signal orb_to_clearing_two()
 signal voice_to_clearing_two()
 
+
+signal read(text)
+
+signal mouse_capture(state)
+
 signal time_transition_0
 signal time_transition_1
 signal time_transition_2

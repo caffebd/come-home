@@ -111,3 +111,9 @@ volume_db = -5.0
 unique_name_in_owner = true
 stream = ExtResource("3_r2ww0")
 volume_db = -12.0
+
+[node name="CrouchTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 2.0
+
+[connection signal="timeout" from="CrouchTimer" to="." method="_on_crouch_timer_timeout"]
