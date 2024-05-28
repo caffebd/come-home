@@ -5,7 +5,6 @@
 [resource]
 background_mode = 2
 sky = ExtResource("1_d7bc7")
-reflected_light_source = 1
 tonemap_mode = 3
 ssao_enabled = true
 ssao_radius = 1.5
