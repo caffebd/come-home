@@ -3,7 +3,9 @@
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kmdm5"]
 sky_top_color = Color(0.148881, 0.24128, 0.243741, 1)
 sky_horizon_color = Color(0.3591, 0.57, 0.545395, 1)
-ground_horizon_color = Color(0.25117, 0.478511, 0.490482, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0.360784, 0.568627, 0.545098, 1)
+ground_curve = 0.085742
 
 [resource]
 sky_material = SubResource("ProceduralSkyMaterial_kmdm5")

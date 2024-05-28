@@ -6,7 +6,6 @@
 background_mode = 2
 sky = ExtResource("1_d7bc7")
 tonemap_mode = 3
-ssao_enabled = true
 ssao_radius = 1.5
 ssil_radius = 16.0
 fog_mode = 1

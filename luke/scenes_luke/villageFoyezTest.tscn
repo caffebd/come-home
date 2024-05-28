@@ -732,6 +732,18 @@ transform = Transform3D(0.3069, 0, 0, 0, 0.3069, 0, 0, 0, 0.3069, 63.853, 30.404
 [node name="torchBulb" parent="." instance=ExtResource("23_7g3rl")]
 transform = Transform3D(0.3069, 0, 0, 0, 0.3069, 0, 0, 0, 0.3069, 64.0113, 30.3615, 14.9459)
 
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.180519, 0, -0.983571, 0, 1, 0, 0.983571, 0, -0.180519, -16.588, 2.758, 459.17)
+
+[node name="sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.9827, -0.0917609, -0.160874, -1.66582e-09, -0.868631, 0.495459, -0.185204, -0.486887, -0.853604, -6.678, 2.75738, -2.17394)
+light_color = Color(0.849231, 0.717222, 0.557243, 1)
+light_energy = 0.395
+light_bake_mode = 1
+shadow_enabled = true
+shadow_bias = 0.012
+directional_shadow_mode = 0
+
 [connection signal="body_entered" from="Clearing/StickDropArea" to="Clearing/StickDropArea" method="_on_body_entered"]
 [connection signal="body_entered" from="Clearing/SeeDadGoneArea" to="Clearing/SeeDadGoneArea" method="_on_body_entered"]
 [connection signal="body_entered" from="Clearing/ExitPathTrigger" to="Clearing/ExitPathTrigger" method="_on_body_entered"]
