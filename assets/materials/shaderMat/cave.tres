@@ -12,7 +12,7 @@ texture = ExtResource("2_7fmgp")
 texture_type = 2
 
 [sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_ifqfr"]
-default_input_values = [1, Vector2(30, 30), 2, Vector2(0, 0)]
+default_input_values = [1, Vector2(20, 20), 2, Vector2(0, 0)]
 function = 1
 
 [resource]
@@ -26,7 +26,7 @@ uniform sampler2D tex_frg_3 : hint_normal;
 
 void fragment() {
 // UVFunc:4
-	vec2 n_in4p1 = vec2(30.00000, 30.00000);
+	vec2 n_in4p1 = vec2(20.00000, 20.00000);
 	vec2 n_in4p2 = vec2(0.00000, 0.00000);
 	vec2 n_out4p0 = (UV - n_in4p2) * n_in4p1 + n_in4p2;
 

@@ -1,11 +1,11 @@
 [gd_scene load_steps=2 format=3 uid="uid://dplf8d8w78la4"]
 
-[ext_resource type="Environment" uid="uid://d1um8j0el0l65" path="res://assets/env/env_cave.tres" id="1_3uuca"]
+[ext_resource type="Environment" uid="uid://d1um8j0el0l65" path="res://assets/env/env_cave.tres" id="1_fsv54"]
 
 [node name="environment" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("1_3uuca")
+environment = ExtResource("1_fsv54")
 
 [node name="sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.9827, -0.0917609, -0.160874, -1.66582e-09, -0.868631, 0.495459, -0.185204, -0.486887, -0.853604, -6.678, 2.75738, -2.17394)

@@ -1,9 +1,10 @@
-[gd_scene load_steps=40 format=3 uid="uid://c1s21leqfk0hx"]
+[gd_scene load_steps=41 format=3 uid="uid://c1s21leqfk0hx"]
 
 [ext_resource type="Script" path="res://luke/scripts_luke/village.gd" id="1_xj3v6"]
 [ext_resource type="PackedScene" uid="uid://37f4h6mvwnbh" path="res://assets/mud_hut.tscn" id="2_jjyfm"]
 [ext_resource type="PackedScene" uid="uid://vpn5x5qaq4su" path="res://assets/envParticles.tscn" id="2_p70b6"]
 [ext_resource type="PackedScene" uid="uid://bvvre0p6auulq" path="res://assets/world.tscn" id="3_3tc8g"]
+[ext_resource type="PackedScene" uid="uid://ja6l726ijpr7" path="res://assets/oil_lantern.tscn" id="4_dkvqk"]
 [ext_resource type="PackedScene" uid="uid://dplf8d8w78la4" path="res://assets/environment_lights.tscn" id="4_oae23"]
 [ext_resource type="PackedScene" uid="uid://ds8jitdfn8yuj" path="res://assets/path.tscn" id="5_v30fn"]
 [ext_resource type="PackedScene" uid="uid://df623wi4323mu" path="res://luke/scenes_luke/father_test.tscn" id="7_lfrey"]
@@ -332,6 +333,9 @@ visible = false
 
 [node name="mud hut" parent="." instance=ExtResource("2_jjyfm")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 63.3889, 30.9513, 14.9023)
+
+[node name="oilLantern" parent="mud hut" instance=ExtResource("4_dkvqk")]
+transform = Transform3D(-0.382275, 0, 3.34196e-08, 0, 0.382275, 0, -3.34196e-08, 0, -0.382275, 190.903, -20.8784, 41.3486)
 
 [node name="World" parent="." instance=ExtResource("3_3tc8g")]
 
