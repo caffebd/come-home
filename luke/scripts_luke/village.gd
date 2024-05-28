@@ -13,8 +13,8 @@ var app_id = "480"
 func _ready() -> void:
 	#steam_init()
 	$path.visible = false
-	GlobalSignals.emit_signal("start_house")
-	#GlobalSignals.emit_signal("start_in_cave")
+	#GlobalSignals.emit_signal("start_house")
+	GlobalSignals.emit_signal("start_in_cave")
 	await get_tree().create_timer(8.0).timeout
 	GlobalSignals.emit_signal("start_game")
 	#GlobalSignals.emit_signal("dad_to_mound")

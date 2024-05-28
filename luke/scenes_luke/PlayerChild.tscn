@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://doxkrnuvvwqhc"]
+[gd_scene load_steps=8 format=3 uid="uid://doxkrnuvvwqhc"]
 
 [ext_resource type="Script" path="res://luke/scripts_luke/PlayerChild.gd" id="1_ofowk"]
+[ext_resource type="PackedScene" uid="uid://bua2airgg0xo6" path="res://luke/scenes_luke/Lamp.tscn" id="2_ajc2d"]
 [ext_resource type="PackedScene" uid="uid://cm3d1u3ihuwtd" path="res://luke/scenes_luke/hud.tscn" id="2_g6opo"]
 [ext_resource type="AudioStream" uid="uid://bd4trkkqkw1h0" path="res://luke/assets_luke/audio_luke/jump_short.mp3" id="3_okxv4"]
+[ext_resource type="PackedScene" uid="uid://cahhg0aqvpmrs" path="res://luke/scenes_luke/torch.tscn" id="3_p5kv6"]
 [ext_resource type="AudioStream" uid="uid://oy0gvh16kvly" path="res://luke/assets_luke/audio_luke/grass_footsteps.mp3" id="3_r2ww0"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0ogxy"]
@@ -36,6 +38,7 @@ far = 1000.0
 [node name="SpotLight3D" type="SpotLight3D" parent="Head/PlayerCam"]
 unique_name_in_owner = true
 transform = Transform3D(0.999667, 0, 0.0258105, 0, 1, 0, -0.0258105, 0, 0.999667, 0.00186288, 0.00689521, 0)
+visible = false
 light_color = Color(0.85578, 0.893093, 0.888796, 1)
 light_volumetric_fog_energy = 0.0
 spot_range = 37.5842
@@ -88,7 +91,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.656383, 0)
 cull_mask = 524288
 
 [node name="OmniLight3D" type="OmniLight3D" parent="CanvasLayer/SubViewportContainer/SubViewport/HandCam"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.129993, 0.195266, -0.786708)
+transform = Transform3D(1, -7.45058e-09, 7.45058e-08, 7.45058e-09, 1, -1.11759e-08, -7.45058e-08, 1.11759e-08, 1, 1.70596, -0.618276, -1.4345)
 layers = 524288
 light_color = Color(0.957333, 1, 0.68, 1)
 light_energy = 2.0
@@ -98,6 +101,16 @@ omni_range = 0.915
 [node name="Hand" type="Node3D" parent="CanvasLayer/SubViewportContainer/SubViewport/HandCam"]
 unique_name_in_owner = true
 transform = Transform3D(0.931907, -0.362698, -1.49001e-09, 0.359617, 0.923991, -0.130058, 0.0471723, 0.121203, 0.991506, 0.358857, -0.469255, -0.8357)
+
+[node name="Lamp" parent="CanvasLayer/SubViewportContainer/SubViewport/HandCam/Hand" instance=ExtResource("2_ajc2d")]
+unique_name_in_owner = true
+transform = Transform3D(0.945878, 0.312564, 0.0872926, -0.322579, 0.934965, 0.1476, -0.0354812, -0.16777, 0.985188, 1.22512, -1.27771, -1.87942)
+visible = false
+
+[node name="Torch" parent="CanvasLayer/SubViewportContainer/SubViewport/HandCam/Hand" instance=ExtResource("3_p5kv6")]
+unique_name_in_owner = true
+transform = Transform3D(1, -3.25963e-09, 0, 1.11759e-08, 1, 0, -1.11759e-08, -2.23517e-08, 1, 0.0154047, 0.0395804, 0.323792)
+visible = false
 
 [node name="Hud" parent="CanvasLayer" instance=ExtResource("2_g6opo")]
 unique_name_in_owner = true

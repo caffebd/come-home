@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3 uid="uid://qgbj73vixll4"]
+[gd_scene load_steps=85 format=3 uid="uid://qgbj73vixll4"]
 
 [ext_resource type="Script" path="res://luke/scripts_luke/village.gd" id="1_52nm1"]
 [ext_resource type="PackedScene" uid="uid://ds8jitdfn8yuj" path="res://assets/path.tscn" id="2_7n3rm"]
@@ -51,6 +51,7 @@
 [ext_resource type="Script" path="res://luke/scripts_luke/cave_exit.gd" id="42_60gxn"]
 [ext_resource type="PackedScene" uid="uid://c75w3mkr14ont" path="res://luke/scenes_luke/Crate1.tscn" id="48_a180n"]
 [ext_resource type="PackedScene" uid="uid://bwrl1ecvr2xm3" path="res://luke/scenes_luke/CaveBox.tscn" id="49_g3ecf"]
+[ext_resource type="ArrayOccluder3D" uid="uid://bw1ntv1e67724" path="res://luke/resources_luke/village.occ" id="52_7qlnj"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_sr1r6"]
 height = 1.385
@@ -164,6 +165,9 @@ size = Vector3(3.02, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_22xi7"]
 size = Vector3(2.32, 1, 1)
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_i06oe"]
+size = Vector3(200, 50, 200)
 
 [node name="village" type="Node3D"]
 script = ExtResource("1_52nm1")
@@ -1079,13 +1083,13 @@ shape = SubResource("BoxShape3D_wb8eg")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -127.551, 11.6284, -8.40217)
 
 [node name="LampBody" parent="Cave3" instance=ExtResource("38_c0fqu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.81168, -2.10189, -8.9992)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.47282, -2.06992, 1.64236)
 
 [node name="Matches" parent="Cave3" instance=ExtResource("39_oi60q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.69209, -2.19169, 1.87865)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2253, -2.18156, -8.88954)
 
 [node name="LampFuel" parent="Cave3" instance=ExtResource("40_4b6mu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.67199, -3.10795, -9.58857)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.580345, -3.10795, -7.35452)
 
 [node name="PlayerCaveMarker" type="Marker3D" parent="Cave3"]
 unique_name_in_owner = true
@@ -1168,6 +1172,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.24954, -0.7467, -29.7206)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.52456, -0.99185, -39.8291)
 
 [node name="World" parent="." instance=ExtResource("4_matdt")]
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
+transform = Transform3D(0.999601, 0, -0.0282531, 0, 1, 0, 0.0282531, 0, 0.999601, -53.5042, 2.54259, 515.863)
+occluder = ExtResource("52_7qlnj")
+
+[node name="OccluderInstance3D2" type="OccluderInstance3D" parent="."]
+transform = Transform3D(0.999601, 0, -0.0282531, 0, 1, 0, 0.0282531, 0, 0.999601, -53.5042, 2.54259, 316.352)
+occluder = SubResource("BoxOccluder3D_i06oe")
+
+[node name="OccluderInstance3D3" type="OccluderInstance3D" parent="."]
+transform = Transform3D(0.999601, 0, -0.0282531, 0, 1, 0, 0.0282531, 0, 0.999601, -53.5042, 2.54259, 116.603)
+occluder = SubResource("BoxOccluder3D_i06oe")
+
+[node name="OccluderInstance3D4" type="OccluderInstance3D" parent="."]
+transform = Transform3D(0.999601, 0, -0.0282531, 0, 1, 0, 0.0282531, 0, 0.999601, -53.5042, 2.54259, -36.1013)
+occluder = SubResource("BoxOccluder3D_i06oe")
 
 [connection signal="body_entered" from="Clearing/StickDropArea" to="Clearing/StickDropArea" method="_on_body_entered"]
 [connection signal="body_entered" from="Clearing/SeeDadGoneArea" to="Clearing/SeeDadGoneArea" method="_on_body_entered"]

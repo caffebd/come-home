@@ -7,7 +7,8 @@ const JUMP_VELOCITY:float = 2.5
 #const SENSITIVITY:float = 0.003
 const SENSITIVITY:float = 0.0008
 
-
+@onready var the_torch := %Torch
+@onready var the_lamp := %Lamp
 
 @export var attack_marker: Marker3D
 @export var rotate_marker: Marker3D
@@ -192,27 +193,25 @@ func _item_collected(item):
 func _check_torch_status(part: String):
 	match torch_parts.size():
 		1:
-			torch = torch_scene.instantiate()
-			hand.add_child(torch)		
+			the_torch.visible = true		
 		2:
 			pass
 		3:
 			has_light = true	
 			GlobalSignals.emit_signal("show_player_info", "Press 'f' to use.")	
-	torch.collected_state(part)		
+	the_torch.collected_state(part)		
 
 func _check_lamp_status():
 	match lamp_parts.size():
 		1:
-			lamp = lamp_scene.instantiate()
-			hand.add_child(lamp)
-			lamp.collected_state(1)
+			the_lamp.visible = true
+			the_lamp.collected_state(1)
 		2:
-			lamp.collected_state(2)
+			the_lamp.collected_state(2)
 		3:
-			lamp.collected_state(3)
-			has_light = true
-			GlobalSignals.emit_signal("show_player_info", "Press 'f' to use.")
+			has_light = true	
+			GlobalSignals.emit_signal("show_player_info", "Press 'f' to use.")	
+			the_lamp.collected_state(3)	
 
 func _mouse_capture(state):
 	use_cursor = state
@@ -302,6 +301,9 @@ func _change_dad_max_dist(dist):
 func _physics_process(delta):
 	# Add the gravity.
 	
+	#if %SpotLight3D.visible:
+		#%SpotLight3D.global_position = hand.get_child(0).spot_marker.global_position
+	
 	if following_dad:
 	
 		var dist = global_position.distance_to(father.global_position)
@@ -384,6 +386,7 @@ func _physics_process(delta):
 	var input_dir = Input.get_vector("left", "right", "forward", "back")
 	if crouching: return
 	if input_dir != Vector2(0,0) and is_on_floor() and speed >= 1.5:
+		hand.get_child(0).push_part.apply_central_impulse(Vector3(input_dir.x/90, 0, input_dir.y/90))
 		if not %Footsteps.playing:
 			%Footsteps.play()
 	else:
@@ -421,7 +424,7 @@ func _physics_process(delta):
 		
 	#print (str(velocity.x) +"   "+str(velocity.y))
 
-
+	
 
 	move_and_slide()
 
