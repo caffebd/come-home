@@ -27,9 +27,13 @@ Narration="*res://autoload/narration.gd"
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 
+[dreadpons_spatial_gardener]
+
+input_and_ui/brush_prop_edit_button=3
+
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/proton_scatter/plugin.cfg", "res://addons/snappy/plugin.cfg")
+enabled=PackedStringArray("res://addons/dreadpon.spatial_gardener/plugin.cfg", "res://addons/proton_scatter/plugin.cfg", "res://addons/snappy/plugin.cfg")
 
 [global_group]
 
