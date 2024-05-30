@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://xjtcajnym6hf"
+path="res://.godot/imported/shrub4_LOD1.obj-3bac6a1236d59b3c7206e7ee112cdec3.mesh"
+
+[deps]
+
+files=["res://.godot/imported/shrub4_LOD1.obj-3bac6a1236d59b3c7206e7ee112cdec3.mesh"]
+
+source_file="res://assets/foliage/shrub4/shrub4_LOD1.obj"
+dest_files=["res://.godot/imported/shrub4_LOD1.obj-3bac6a1236d59b3c7206e7ee112cdec3.mesh", "res://.godot/imported/shrub4_LOD1.obj-3bac6a1236d59b3c7206e7ee112cdec3.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

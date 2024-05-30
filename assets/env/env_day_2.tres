@@ -5,12 +5,15 @@
 [resource]
 background_mode = 2
 sky = ExtResource("1_g5o3d")
-ambient_light_source = 1
-ambient_light_sky_contribution = 0.5
+ambient_light_sky_contribution = 0.3
 reflected_light_source = 1
 tonemap_mode = 3
 ssao_enabled = true
-ssil_radius = 16.0
+ssao_power = 2.52269
+ssao_detail = 5.0
+ssao_sharpness = 1.0
+ssil_radius = 13.25
+ssil_intensity = 3.24
 fog_mode = 1
 fog_light_color = Color(0.390961, 0.585758, 0.639187, 1)
 fog_density = 0.4756

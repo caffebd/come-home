@@ -20,7 +20,7 @@ radius = 1.75466
 
 [node name="Tree1" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.741925, 0)
-visibility_range_end = 150.0
+visibility_range_end = 80.0
 mesh = ExtResource("1_sqp7o")
 surface_material_override/0 = ExtResource("2_7dfsx")
 surface_material_override/1 = SubResource("StandardMaterial3D_ka2rb")
