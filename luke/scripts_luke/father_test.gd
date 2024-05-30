@@ -69,6 +69,7 @@ func _start_game():
 	
 func _start_clearing():
 	walking = false
+	disable_dad = true
 	global_position = sitting_log.global_position
 	global_position.y -= 0.2
 	GlobalSignals.emit_signal("change_dad_max_dist", 20.0)

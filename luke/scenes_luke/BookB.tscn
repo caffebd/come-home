@@ -1,11 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cec4i4xem7qhw"]
+[gd_scene load_steps=11 format=3 uid="uid://cec4i4xem7qhw"]
 
 [ext_resource type="Script" path="res://luke/scripts_luke/pull_item.gd" id="1_5u3xx"]
 [ext_resource type="Material" uid="uid://b7dd71aryuxcc" path="res://assets/materials/bookCover_2.tres" id="2_kb556"]
 [ext_resource type="Material" uid="uid://c1mi72dkkfr3s" path="res://assets/materials/bookPages.tres" id="3_5u8c7"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_ehfwu"]
-size = Vector3(0.09, 0.5, 0.33)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ud0wj"]
 
@@ -61,14 +58,21 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_kndrx")
 
-[node name="BookB" type="RigidBody3D" groups=["highlight", "pull_item"]]
-collision_layer = 3
-mass = 0.5
-script = ExtResource("1_5u3xx")
+[sub_resource type="BoxShape3D" id="BoxShape3D_bo0d4"]
+size = Vector3(0.09, 0.45, 0.295)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0427734)
-shape = SubResource("BoxShape3D_ehfwu")
+[sub_resource type="BoxShape3D" id="BoxShape3D_lhdhg"]
+size = Vector3(0.09, 0.34, 0.19)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_102c6"]
+size = Vector3(0.09, 0.225, 0.1)
+
+[node name="BookB" type="RigidBody3D" node_paths=PackedStringArray("texture") groups=["highlight", "pull_item"]]
+collision_layer = 66
+collision_mask = 64
+continuous_cd = true
+script = ExtResource("1_5u3xx")
+texture = NodePath("TexturesCom_BookCovers0136_6_masked_S")
 
 [node name="RayA" type="RayCast3D" parent="."]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.00376679, 0.00905339, 0.0232754)
@@ -81,8 +85,20 @@ target_position = Vector3(0, -0.05, 0)
 collision_mask = 256
 
 [node name="TexturesCom_BookCovers0136_6_masked_S" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.460742, 0, 0, 0, 0, -0.460742, 0, 0.460742, 0, -0.00468673, 0, 0.190277)
+transform = Transform3D(0.460742, 0, 0, 0, 0, -0.460742, 0, 0.460742, 0, -0.00468673, 0, 0.19486)
 mesh = SubResource("ArrayMesh_vhil2")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("2_kb556")
 surface_material_override/1 = ExtResource("3_5u8c7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0427734)
+shape = SubResource("BoxShape3D_bo0d4")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0300714)
+shape = SubResource("BoxShape3D_lhdhg")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.030865)
+shape = SubResource("BoxShape3D_102c6")

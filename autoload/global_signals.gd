@@ -66,8 +66,9 @@ signal buzz_attack(state)
 
 signal dark_place(state)
 
-signal send_back_to_cave()
-signal send_back_to_house()
+signal caught_by_buzz()
+
+signal path_chosen(path)
 
 signal buzz_off()
 

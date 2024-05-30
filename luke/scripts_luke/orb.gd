@@ -117,6 +117,10 @@ func _physics_process(delta: float) -> void:
 	
 	var player_dist: float = global_position.distance_to(player.global_position)
 	#print (player_dist)
+	var factor = 1/player_dist
+	var set_scale = Vector3(factor, factor, factor)
+	$orbplane.scale = clamp(set_scale, Vector3(0.2, 0.2, 0.2), Vector3(1.0, 1.0, 1.0))
+	#print ($orbplane.scale)
 	if player_dist < 4.0 and sense_player:
 		print ("PLAYER CLOSE")
 		sense_player = false

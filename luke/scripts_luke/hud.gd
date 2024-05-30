@@ -26,13 +26,13 @@ func _ready() -> void:
 	GlobalSignals.show_player_info.connect(_show_player_info)
 	GlobalSignals.hide_player_info.connect(_hide_player_info)
 	GlobalSignals.start_game.connect(_start_game)
-	GlobalSignals.send_back_to_cave.connect(_back_to_cave)
+
 	GlobalSignals.read.connect(_read)
 	%TextBackground.modulate.a = 0.0
 	if use_fade:
 		$Cover.modulate.a = 1.0
-		$TopLid.position.y = 0.0
-		$BottomLid.position.y = 540.0
+		$TopLid.position.y = -560.0
+		$BottomLid.position.y = 1082.0
 		var tween = create_tween()
 		tween.tween_property(%Title, "modulate:a", 1.0, 2.0)
 
@@ -110,7 +110,7 @@ func _use_fade_in():
 	await tween.finished
 	%CloseEyes.play("open")
 
-func _back_to_cave():
+func back_to_cave():
 	%CloseEyes.play("close")
 	var tween = create_tween()
 	%Title.visible = false
@@ -120,7 +120,18 @@ func _back_to_cave():
 	_start_game()
 	await get_tree().create_timer(5.0).timeout
 	GlobalSignals.emit_signal("show_player_info", "That's what would have happened if I hadn't read those papers.")
-	
+
+func back_to_house():
+	%CloseEyes.play("close")
+	var tween = create_tween()
+	%Title.visible = false
+	tween.tween_property($Cover, "modulate:a", 1.0, 5.0)
+	await tween.finished
+	GlobalSignals.emit_signal("start_house")
+	_start_game()
+	await get_tree().create_timer(5.0).timeout
+	GlobalSignals.emit_signal("show_player_info", "That's what would have happened if I hadn't read those papers.")
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	%FPS.text = "FPS " + str(Engine.get_frames_per_second())

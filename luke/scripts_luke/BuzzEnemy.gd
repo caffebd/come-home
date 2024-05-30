@@ -140,7 +140,7 @@ func _on_death_area_body_entered(body):
 			call_deferred("game_over_call")
 		else:
 			print ("CAUGHT BY BUZZZZ") 
-			GlobalSignals.emit_signal("send_back_to_cave")
+			GlobalSignals.emit_signal("caught_by_buzz")
 			#player.playing_active = false	
 			#player.hud.cover_fade_death()
 

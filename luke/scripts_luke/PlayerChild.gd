@@ -101,6 +101,8 @@ var light_on: bool = false
 
 var in_dark: bool = false
 
+var path_chosen: String
+
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	GlobalSignals.start_clearing.connect(_start_clearing)
@@ -114,6 +116,8 @@ func _ready():
 	GlobalSignals.start_in_cave.connect(_start_in_cave)
 	GlobalSignals.dark_place.connect(_dark_place)
 	GlobalSignals.mouse_capture.connect(_mouse_capture)
+	GlobalSignals.caught_by_buzz.connect(_caught_by_buzz)
+	GlobalSignals.path_chosen.connect(_path_chosen)
 	%SpotLight3D.visible = false
 	#GlobalSignals.dad_to_mound.connect(_start_mound)
 	head.rotation_degrees.y = 0.0
@@ -163,6 +167,15 @@ func _dark_place(state):
 	if not in_dark:
 		speed = 2.0
 
+func _path_chosen(path):
+	path_chosen = path
+
+func _caught_by_buzz():
+	if path_chosen == "cave":
+		hud.back_to_cave()
+	else:
+		hud.back_to_house()
+
 func _item_collected(item):
 	match item:
 		"torch_body":
@@ -193,6 +206,7 @@ func _item_collected(item):
 func _check_torch_status(part: String):
 	match torch_parts.size():
 		1:
+			%HandLight.global_position = %TorchMarker.global_position
 			the_torch.visible = true		
 		2:
 			pass
@@ -204,6 +218,7 @@ func _check_torch_status(part: String):
 func _check_lamp_status():
 	match lamp_parts.size():
 		1:
+			%HandLight.global_position = %LampMarker.global_position
 			the_lamp.visible = true
 			the_lamp.collected_state(1)
 		2:
@@ -247,6 +262,9 @@ func _input(event):
 				GlobalSignals.emit_signal("hide_player_info")
 	if Input.is_action_just_pressed("use"):
 		_take_action()
+	
+	if Input.is_action_just_pressed("dad_call"):
+		GlobalSignals.emit_signal("dad_call",1)
 
 	if Input.is_action_pressed("crouch"):
 		if not crouching:
@@ -376,12 +394,22 @@ func _physics_process(delta):
 			if collider.is_in_group("pull_item"):
 				#print ("pull item")
 				current_dragged_item = collider
-				collider.dragged(attack_marker)
+				collider.dragged(lunge_marker)
+				%HoldingBodyCollision.disabled = false
+
+		else:
+			if current_dragged_item != null:
+				%HoldingBodyCollision.disabled = true
+				
+				current_dragged_item.dropped()
+				current_dragged_item = null
 	
 	if Input.is_action_just_released("use"):
 		if current_dragged_item != null:
+			%HoldingBodyCollision.disabled = true
 			current_dragged_item.dropped()
 			current_dragged_item = null
+			
 	
 	var input_dir = Input.get_vector("left", "right", "forward", "back")
 	if crouching: return
@@ -475,7 +503,9 @@ func handle_holding_objects():
 		
 	# Dropping Objects
 	if Input.is_action_just_pressed("use"):
-		if ray.is_colliding(): set_held_object(ray.get_collider())
+		if ray.is_colliding():
+			if heldObject != null: throw_held_object()
+			set_held_object(ray.get_collider())
 		
 	# Object Following
 	if heldObject != null:

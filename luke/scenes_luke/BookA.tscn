@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c3uthfo4rkkv7"]
+[gd_scene load_steps=11 format=3 uid="uid://c3uthfo4rkkv7"]
 
 [ext_resource type="Script" path="res://luke/scripts_luke/pull_item.gd" id="1_78xl8"]
 [ext_resource type="Material" uid="uid://co042sjq1rn5" path="res://assets/materials/bookcover_1.tres" id="1_copmj"]
@@ -59,12 +59,20 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_jdx0o")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ehfwu"]
-size = Vector3(0.13, 0.5, 0.265)
+size = Vector3(0.09, 0.45, 0.295)
 
-[node name="BookA" type="RigidBody3D" groups=["highlight", "pull_item"]]
-collision_layer = 3
-mass = 0.5
+[sub_resource type="BoxShape3D" id="BoxShape3D_ht2mr"]
+size = Vector3(0.09, 0.34, 0.19)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7lsti"]
+size = Vector3(0.09, 0.225, 0.1)
+
+[node name="BookA" type="RigidBody3D" node_paths=PackedStringArray("texture") groups=["highlight", "pull_item"]]
+collision_layer = 66
+collision_mask = 64
+continuous_cd = true
 script = ExtResource("1_78xl8")
+texture = NodePath("TexturesCom_BookCovers0152_2_masked_S")
 
 [node name="TexturesCom_BookCovers0152_2_masked_S" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.497491, 0, 0, 0, 0, -0.497491, 0, 0.497491, 0, 0.000353158, 0, 0.194634)
@@ -76,6 +84,14 @@ surface_material_override/1 = ExtResource("2_ya06x")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0427734)
 shape = SubResource("BoxShape3D_ehfwu")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0300714)
+shape = SubResource("BoxShape3D_ht2mr")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.030865)
+shape = SubResource("BoxShape3D_7lsti")
 
 [node name="RayA" type="RayCast3D" parent="."]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
