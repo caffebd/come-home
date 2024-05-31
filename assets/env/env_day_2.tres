@@ -1,22 +1,16 @@
 [gd_resource type="Environment" load_steps=2 format=3 uid="uid://bflpnk0upluy1"]
 
-[ext_resource type="Sky" uid="uid://cxfuc4ic6vo7k" path="res://assets/env/day_sky.tres" id="1_g5o3d"]
+[ext_resource type="Sky" uid="uid://ceadaaettmnkv" path="res://assets/env/day_sky_2.tres" id="1_ptikb"]
 
 [resource]
 background_mode = 2
-sky = ExtResource("1_g5o3d")
-ambient_light_sky_contribution = 0.3
+sky = ExtResource("1_ptikb")
 reflected_light_source = 1
 tonemap_mode = 3
-ssao_enabled = true
-ssao_power = 2.52269
-ssao_detail = 5.0
-ssao_sharpness = 1.0
-ssil_radius = 13.25
-ssil_intensity = 3.24
 fog_mode = 1
 fog_light_color = Color(0.390961, 0.585758, 0.639187, 1)
 fog_density = 0.4756
 fog_depth_begin = -5.0
 volumetric_fog_enabled = true
-volumetric_fog_emission = Color(0.390933, 0.378778, 0.280706, 1)
+volumetric_fog_density = 0.02
+volumetric_fog_ambient_inject = 0.72

@@ -27,10 +27,10 @@ transform = Transform3D(-0.382275, 0, 3.34196e-08, 0, 0.382275, 0, -3.34196e-08,
 [node name="environment" parent="." instance=ExtResource("4_oae23")]
 
 [node name="sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.9827, -0.0917609, -0.160874, -1.66582e-09, -0.868631, 0.495459, -0.185204, -0.486887, -0.853604, -6.678, 2.75738, -2.17394)
+transform = Transform3D(0.00175585, -0.983119, 0.182962, -0.87482, 0.0871253, 0.47655, -0.484446, -0.160895, -0.859898, -1.34816, 6.03138, 493.148)
 visible = false
 light_color = Color(0.849231, 0.717222, 0.557243, 1)
-light_energy = 0.395
+light_energy = 0.148
 light_bake_mode = 1
 shadow_enabled = true
 shadow_bias = 0.012
