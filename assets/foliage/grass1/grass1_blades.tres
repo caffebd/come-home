@@ -1,0 +1,80 @@
+[gd_resource type="VisualShader" load_steps=11 format=3 uid="uid://b5k1tl66p6tpi"]
+
+[ext_resource type="Texture2D" uid="uid://bn464bm6p2h1g" path="res://assets/foliage/grass1/grass1_atlas_Albedo.jpg" id="1_dlbdf"]
+[ext_resource type="Texture2D" uid="uid://jq64y2vcy8fe" path="res://assets/foliage/grass1/grass1_atlas_Norm.jpg" id="2_2cnd5"]
+[ext_resource type="Texture2D" uid="uid://bvu8klmp4ip4g" path="res://assets/foliage/grass1/grass1_atlas_Opacity.jpg" id="3_o62sn"]
+[ext_resource type="Texture2D" uid="uid://b3s0v16ifnvhh" path="res://assets/foliage/grass1/grass1_atlas_Rough.jpg" id="4_mchf1"]
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_0yns6"]
+texture = ExtResource("1_dlbdf")
+texture_type = 1
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_dkyuy"]
+texture = ExtResource("2_2cnd5")
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_8po8x"]
+texture = ExtResource("3_o62sn")
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_6o6hc"]
+texture = ExtResource("4_mchf1")
+
+[sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_8hf1s"]
+constant = Color(0, 0, 0, 1)
+
+[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_g5ae3"]
+default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(1, 1, 1), 2, Vector3(0.6, 0.6, 0.6)]
+op_type = 3
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+uniform sampler2D tex_frg_2 : source_color;
+uniform sampler2D tex_frg_4;
+uniform sampler2D tex_frg_3;
+
+
+
+void fragment() {
+// Texture2D:2
+	vec4 n_out2p0 = texture(tex_frg_2, UV);
+
+
+// ColorConstant:6
+	vec4 n_out6p0 = vec4(0.000000, 0.000000, 0.000000, 1.000000);
+
+
+// Mix:7
+	vec3 n_in7p2 = vec3(0.60000, 0.60000, 0.60000);
+	vec3 n_out7p0 = mix(vec3(n_out2p0.xyz), vec3(n_out6p0.xyz), n_in7p2);
+
+
+// Texture2D:4
+	vec4 n_out4p0 = texture(tex_frg_4, UV);
+
+
+// Texture2D:3
+	vec4 n_out3p0 = texture(tex_frg_3, UV);
+
+
+// Output:0
+	ALBEDO = n_out7p0;
+	ALPHA = n_out4p0.x;
+	NORMAL_MAP = vec3(n_out3p0.xyz);
+
+
+}
+"
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_0yns6")
+nodes/fragment/2/position = Vector2(-140, -100)
+nodes/fragment/3/node = SubResource("VisualShaderNodeTexture_dkyuy")
+nodes/fragment/3/position = Vector2(80, 320)
+nodes/fragment/4/node = SubResource("VisualShaderNodeTexture_8po8x")
+nodes/fragment/4/position = Vector2(80, 520)
+nodes/fragment/5/node = SubResource("VisualShaderNodeTexture_6o6hc")
+nodes/fragment/5/position = Vector2(-245.5, 1423.88)
+nodes/fragment/6/node = SubResource("VisualShaderNodeColorConstant_8hf1s")
+nodes/fragment/6/position = Vector2(-140, 140)
+nodes/fragment/7/node = SubResource("VisualShaderNodeMix_g5ae3")
+nodes/fragment/7/position = Vector2(160, 0)
+nodes/fragment/connections = PackedInt32Array(3, 0, 0, 9, 4, 0, 0, 1, 2, 0, 7, 0, 7, 0, 0, 0, 6, 0, 7, 1)
