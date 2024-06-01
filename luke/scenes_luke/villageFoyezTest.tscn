@@ -10,7 +10,7 @@
 [node name="village" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("6_bolem")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.8977, 1.90957, 524.22)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.1995, 10.9596, 382.174)
 
 [node name="Node3D" parent="." instance=ExtResource("2_a62tv")]
 
@@ -26,13 +26,12 @@ transform = Transform3D(-0.382275, 0, 3.34196e-08, 0, 0.382275, 0, -3.34196e-08,
 
 [node name="environment" parent="." instance=ExtResource("4_oae23")]
 
-[node name="sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.361529, -0.53857, 0.761078, -0.874472, 0.087284, 0.477159, -0.323413, -0.838048, -0.439408, -1.34816, 6.03138, 493.148)
+[node name="sun2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.924149, 0.196546, 0.327595, -0.340329, 0.0339694, 0.939692, 0.173565, -0.979906, 0.0982831, -1.34816, 6.03138, 493.148)
+visible = false
 light_color = Color(0.849231, 0.717222, 0.557243, 1)
-light_energy = 0.442
+light_energy = 0.197
 light_bake_mode = 1
 shadow_enabled = true
 shadow_bias = 0.012
 directional_shadow_mode = 0
-
-[node name="LightmapGI" type="LightmapGI" parent="."]

@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dmmmircn02wsc"]
+
+[ext_resource type="Texture2D" uid="uid://c1rejo84cnlbr" path="res://assets/foliage/tree1/leafCluster2.png" id="1_8kpyh"]
+
+[resource]
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("1_8kpyh")
