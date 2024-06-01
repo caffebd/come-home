@@ -8,7 +8,7 @@ extends CharacterBody3D
 
 var use_markers: Array[Marker3D]
 
-var marker_index: int = -1 
+var marker_index: int = -1
 
 var speed: float = 0.0
 var max_speed: float = 3.0
@@ -26,7 +26,7 @@ var stick_thrown_once: bool = false
 var voice_route: bool = false
 var cave_route: bool = false
 
-var can_go_home: bool = true
+var can_go_home: bool = false
 
 #git comment
 
@@ -94,7 +94,7 @@ func _physics_process(delta: float) -> void:
 	
 	if chasing:
 		var player_dist: float = global_position.distance_to(player.global_position)
-		if player_dist < 7.0:
+		if player_dist < 2.0:
 			if not $RunningAnimal.playing:
 				_run_sound()
 

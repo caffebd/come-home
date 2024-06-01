@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cm3d1u3ihuwtd"]
+[gd_scene load_steps=15 format=3 uid="uid://cm3d1u3ihuwtd"]
 
 [ext_resource type="Script" path="res://luke/scripts_luke/hud.gd" id="1_v33x2"]
 [ext_resource type="Texture2D" uid="uid://wynt0hi00qc8" path="res://assets/ui/target.png" id="2_4bb86"]
@@ -165,6 +165,12 @@ bg_color = Color(0, 0.373541, 1.92523e-07, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ama0l"]
 bg_color = Color(0.638884, 2.02149e-06, 4.81307e-07, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_euta1"]
+bg_color = Color(0.198692, 0.437546, 1.92523e-07, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_apkkx"]
+bg_color = Color(0.675693, 0.166073, 0.154827, 1)
+
 [node name="Hud" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -315,6 +321,16 @@ text = "Come on Saif, keep up."
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
 [node name="NarrationBackground" type="ColorRect" parent="."]
 unique_name_in_owner = true
 auto_translate_mode = 1
@@ -325,10 +341,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -784.0
-offset_top = -897.0
-offset_right = 776.0
-offset_bottom = -784.0
+offset_left = -777.0
+offset_top = -436.0
+offset_right = 783.0
+offset_bottom = -323.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.89, 0.89, 0.89, 1)
@@ -356,16 +372,6 @@ text = "narraot text"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
 [node name="InfoToPlayer" type="ColorRect" parent="."]
 unique_name_in_owner = true
 auto_translate_mode = 1
@@ -376,10 +382,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -769.0
-offset_top = -996.0
-offset_right = 791.0
-offset_bottom = -883.0
+offset_left = -777.0
+offset_top = -436.0
+offset_right = 783.0
+offset_bottom = -323.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.89, 0.89, 0.89, 1)
@@ -572,6 +578,27 @@ theme_override_fonts/font = ExtResource("4_44lwp")
 theme_override_font_sizes/font_size = 80
 theme_override_styles/normal = SubResource("StyleBoxFlat_ama0l")
 text = "X"
+
+[node name="HideTimer" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -172.0
+offset_top = -95.0
+offset_right = 173.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(0.5, 0.5)
+theme_override_styles/background = SubResource("StyleBoxFlat_euta1")
+theme_override_styles/fill = SubResource("StyleBoxFlat_apkkx")
+value = 100.0
+show_percentage = false
 
 [connection signal="pressed" from="ReadingPage/ENButton" to="." method="_on_en_button_pressed"]
 [connection signal="pressed" from="ReadingPage/BNButton" to="." method="_on_bn_button_pressed"]

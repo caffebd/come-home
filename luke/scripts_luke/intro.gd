@@ -9,6 +9,10 @@ var freeze: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$Label1.modulate.a = 0.0
+	$Label2.modulate.a = 0.0
+	$Label3.modulate.a = 0.0
+	$Label4.modulate.a = 0.0
 	$MouseAnim.play("mouse_pulse")
 
 

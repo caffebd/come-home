@@ -10,7 +10,7 @@ var use_check_points: Array[Marker3D]
 
 enum {HOUSEPATH, GHOST}
 
-var  speed = 10.0
+var  speed = 15.0
 
 
 var target_position: Vector3
@@ -21,10 +21,14 @@ var moving: bool = false
 
 var sense_player: bool = false
 
+
+
 func _ready() -> void:
 	GlobalSignals.fork_set_up.connect(_fork_set_up)
 	GlobalSignals.follow_voice.connect(_follow_voice)
 	GlobalSignals.voice_to_clearing_two.connect(_clearing_two)
+	GlobalSignals.dad_lake_reset.connect(_lake_reset)
+	%DadVoice.player = player
 	#print ("hosue markers "+str(to_house_markers.size()))
 	#_fork_set_up()
 
@@ -32,6 +36,7 @@ func _ready() -> void:
 	
 
 func _fork_set_up():
+	global_position = to_house_markers[0].global_position
 	_set_check_points(HOUSEPATH)
 
 func _clearing_two():
@@ -42,6 +47,12 @@ func _clearing_two():
 	sense_player = true
 	global_position = ghost_markers[0].global_position
 
+func _lake_reset():
+	_set_check_points(GHOST)
+	check_index = 6
+	sense_player = true
+	global_position = ghost_markers[6].global_position
+
 func _follow_voice():
 	print ("follwo dad voice")
 	_set_check_points(HOUSEPATH)
@@ -50,7 +61,7 @@ func _follow_voice():
 func _physics_process(delta: float) -> void:
 	var player_dist: float = global_position.distance_to(player.global_position)
 	#print (player_dist)
-	if player_dist < 8.0 and sense_player:
+	if player_dist < 18.0 and sense_player:
 		print ("PLAYER CLOSE")
 		sense_player = false
 		_next_position()
@@ -80,7 +91,7 @@ func _next_position():
 		#_check_for_narration(use_check_points[check_index].name)
 		print ("select next")
 		check_index += 1
-		GlobalSignals.emit_signal("dad_call", 3)
+		#GlobalSignals.emit_signal("dad_call", 3)
 	else:
 		print ("select done")
 		moving = false

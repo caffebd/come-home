@@ -6,6 +6,8 @@ extends Control
 @onready var reading_panel: Panel = %ReadingPage
 @onready var text_area: RichTextLabel = %BookText
 
+@onready var hide_timer: ProgressBar = %HideTimer
+
 @export var use_fade: bool = true
 
 var target_mode = "off"
@@ -17,6 +19,7 @@ var language: String = "en"
 
 var using_text: String
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GlobalSignals.show_speech.connect(_show_speech)
@@ -26,8 +29,8 @@ func _ready() -> void:
 	GlobalSignals.show_player_info.connect(_show_player_info)
 	GlobalSignals.hide_player_info.connect(_hide_player_info)
 	GlobalSignals.start_game.connect(_start_game)
-
 	GlobalSignals.read.connect(_read)
+	GlobalSignals.hide_narration_simple.connect(_hide_narration_simple)
 	%TextBackground.modulate.a = 0.0
 	if use_fade:
 		$Cover.modulate.a = 1.0
@@ -91,6 +94,12 @@ func _hide_narration():
 	await tween.finished
 	Narration.hide_narration()
 
+func _hide_narration_simple():
+	narration_showing = false
+	var tween = create_tween()
+	tween.tween_property(narration_box, "modulate:a", 0.0, 1.0)
+
+
 func _hide_player_info():
 	player_info_showing = false
 	var tween = create_tween()
@@ -131,6 +140,23 @@ func back_to_house():
 	_start_game()
 	await get_tree().create_timer(5.0).timeout
 	GlobalSignals.emit_signal("show_player_info", "That's what would have happened if I hadn't read those papers.")
+
+
+func back_to_lake():
+	%CloseEyes.play("close")
+	var tween = create_tween()
+	%Title.visible = false
+	tween.tween_property($Cover, "modulate:a", 1.0, 5.0)
+	await tween.finished
+	GlobalSignals.emit_signal("start_lake")
+	_start_game()
+	
+
+func fade_to_end():
+	var tween = create_tween()
+	tween.tween_property($Cover, "modulate:a", 1.0, 3.0)
+	await tween.finished
+	get_tree().change_scene_to_file("res://luke/scenes_luke/narrative/outro.tscn")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

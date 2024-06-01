@@ -46,4 +46,3 @@ func collected_state(parts: int):
 			var mat = $RigidBody3D2/Sphere.get_surface_override_material(2)
 			var tween = create_tween()
 			tween.tween_property(mat, "albedo_color:a", collect_state_three, 1.0)
-

@@ -43,7 +43,3 @@ func dropped():
 	axis_lock_angular_x = false
 	axis_lock_angular_y = false
 	axis_lock_angular_z = false
-
-
-
-

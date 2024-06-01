@@ -13,4 +13,4 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
-		GlobalSignals.emit_signal("dad_call", 4)
+		GlobalSignals.emit_signal("dad_call")

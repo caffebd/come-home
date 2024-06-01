@@ -12,6 +12,8 @@
 material = SubResource("StandardMaterial3D_eqrbs")
 
 [node name="AnimalChase" type="CharacterBody3D"]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_3wx4l")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

@@ -52,6 +52,8 @@ func _ready() -> void:
 	GlobalSignals.fork_set_up.connect(_dad_gone)
 	GlobalSignals.start_house.connect(_dad_gone)
 	GlobalSignals.start_in_cave.connect(_dad_gone)
+	GlobalSignals.orb_to_clearing_two.connect(_dad_gone)
+	GlobalSignals.voice_to_clearing_two.connect(_dad_gone)
 	use_check_points = check_points
 	#$AnimationPlayer.play("Armature|mixamo_com|Layer0")
 	#$AnimationPlayer.pause()
@@ -78,6 +80,7 @@ func _start_clearing():
 
 func _dad_to_mound():
 	walking = false
+	disable_dad = true
 	curr_anim = STANDING
 	to_mound = false
 	global_position = top_mound_marker.global_position
@@ -87,6 +90,8 @@ func _dad_to_mound():
 func _dad_to_clearing():
 	_dad_repeat_log(false)
 	use_check_points = clearing_check_points
+	disable_dad = false
+	$AnimationPlayer.play("walk")
 	_next_position()	
 
 func _dad_repeat_log(state):
@@ -97,6 +102,7 @@ func _dad_repeat_log(state):
 
 
 func _dad_gone():
+	print ("remove dad")
 	disable_dad = true
 	visible = false
 	walking = false
@@ -163,13 +169,15 @@ func _physics_process(delta: float) -> void:
 				#print ("walking")
 				rotation.y=lerp_angle(rotation.y,atan2(velocity.x,velocity.z),.1)
 				speed = lerp(speed, 4.0, 0.5)
-				velocity = direction * speed
+				velocity.x = direction.x * speed
+				velocity.z = direction.z * speed
+				if not is_on_floor():
+					velocity.y -= gravity * delta
 				#curr_anim = WALK
 				$AnimationPlayer.speed_scale = lerp($AnimationPlayer.speed_scale, 0.8, 1.0)
 				GlobalSignals.emit_signal("hide_speech")
 				$SpeechTimer.stop()
-				if not is_on_floor():
-					velocity.y -= gravity * delta
+
 				move_and_slide()
 			else:
 				if can_turn:
@@ -179,7 +187,8 @@ func _physics_process(delta: float) -> void:
 					$AnimationPlayer.speed_scale = lerp($AnimationPlayer.speed_scale, 0.0, 1.0)
 					$SpeechTimer.start()
 					speed = lerp(speed, 0.0, 1.0)
-					velocity = direction * speed
+					velocity.x = direction.x * speed
+					velocity.z = direction.z * speed
 					if not is_on_floor():
 						velocity.y -= gravity * delta
 					move_and_slide()
@@ -188,7 +197,12 @@ func _physics_process(delta: float) -> void:
 			#$AnimationPlayer.pause()
 			#$AnimationPlayer2.play("mixamo_com")
 			walking = false
+
 			_next_position()
+	else:
+		if not is_on_floor():
+			velocity.y -= gravity * delta
+			move_and_slide()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("sit"):

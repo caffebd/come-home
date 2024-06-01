@@ -48,7 +48,3 @@ func dropped():
 	axis_lock_angular_z = false
 	#set_collision_layer_value(1, true)
 	#set_collision_mask_value(1, true)
-
-
-
-

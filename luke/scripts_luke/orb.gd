@@ -45,6 +45,7 @@ func _ready() -> void:
 	GlobalSignals.cave_path_trigger.connect(_cave_path_trigger)
 	GlobalSignals.fork_set_up.connect(_fork_set_up)
 	GlobalSignals.orb_to_clearing_two.connect(_clearing_two)
+	GlobalSignals.orb_lake_reset.connect(_lake_reset)
 	_set_check_points(CLEARING)
 	await get_tree().create_timer(3.0).timeout
 	moving = false
@@ -103,6 +104,12 @@ func _clearing_two():
 	timer_running = true
 	global_position = ghost_markers[0].global_position
 
+func _lake_reset():
+	_set_check_points(GHOST)
+	check_index = 6
+	sense_player = true
+	global_position = ghost_markers[6].global_position
+
 func _orb_sense_player(state):
 	sense_player = state
 
@@ -117,15 +124,27 @@ func _physics_process(delta: float) -> void:
 	
 	var player_dist: float = global_position.distance_to(player.global_position)
 	#print (player_dist)
-	var factor = 1/player_dist
+	
+	var factor = 1.0
+	if player_dist < 4:
+		factor = 0.2
+	elif player_dist < 8:
+		factor = 0.4
+	elif  player_dist <12:
+		factor = 0.6
+	elif  player_dist <16:
+		factor = 0.8
+	elif player_dist >= 16:
+		factor = 1.0
 	var set_scale = Vector3(factor, factor, factor)
-	$orbplane.scale = clamp(set_scale, Vector3(0.2, 0.2, 0.2), Vector3(1.0, 1.0, 1.0))
+	$orbplane.scale = lerp($orbplane.scale, Vector3(factor,factor,factor), 0.05)
+	#clamp(set_scale, Vector3(0.2, 0.2, 0.2), Vector3(1.0, 1.0, 1.0))
 	#print ($orbplane.scale)
 	if player_dist < 4.0 and sense_player:
 		print ("PLAYER CLOSE")
 		sense_player = false
 		_next_position()
-		#%SenseTimer.start()
+		%SenseTimer.start()
 	
 	if not moving: return
 

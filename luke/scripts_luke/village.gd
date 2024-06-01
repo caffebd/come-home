@@ -15,11 +15,14 @@ func _ready() -> void:
 	$path.visible = false
 	#GlobalSignals.emit_signal("start_house")
 	#GlobalSignals.emit_signal("start_in_cave")
-	GlobalSignals.emit_signal("start_clearing")
+	#GlobalSignals.emit_signal("start_clearing")
 	#GlobalSignals.emit_signal("fork_set_up")
 	#GlobalSignals.emit_signal("dad_to_mound")
 	#GlobalSignals.emit_signal("night_path_set_up")
-	await get_tree().create_timer(8.0).timeout
+	GlobalSignals.emit_signal("orb_to_clearing_two")
+	#GlobalSignals.emit_signal("start_lake")
+	
+	await get_tree().create_timer(4.0).timeout
 	GlobalSignals.emit_signal("start_game")
 	
 	
@@ -56,6 +59,3 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-
-
-

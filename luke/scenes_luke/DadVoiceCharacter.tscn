@@ -276,6 +276,7 @@ script = ExtResource("1_0s6oc")
 shape = SubResource("SphereShape3D_u4jcm")
 
 [node name="DadVoice" type="AudioStreamPlayer3D" parent="."]
+unique_name_in_owner = true
 stream = ExtResource("2_sf3xu")
 volume_db = 5.0
 script = ExtResource("2_43wvp")
@@ -293,6 +294,11 @@ libraries = {
 "": SubResource("AnimationLibrary_dn74t")
 }
 
+[node name="CallTimer" type="Timer" parent="DadVoice"]
+unique_name_in_owner = true
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 visible = false
 mesh = SubResource("BoxMesh_bdxok")
+
+[connection signal="timeout" from="DadVoice/CallTimer" to="DadVoice" method="_on_call_timer_timeout"]

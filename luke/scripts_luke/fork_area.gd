@@ -19,7 +19,7 @@ func _on_body_entered(body: Node3D) -> void:
 		Narration.sub_index = 0
 		Narration.narrate()
 		await get_tree().create_timer(4.0).timeout
-		GlobalSignals.emit_signal("dad_call", 3)
+		GlobalSignals.emit_signal("dad_call")
 		await get_tree().create_timer(4.0).timeout
 		Narration.narrate()
 		body.speed = 2.0

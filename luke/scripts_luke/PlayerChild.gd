@@ -13,6 +13,12 @@ const SENSITIVITY:float = 0.0008
 @export var attack_marker: Marker3D
 @export var rotate_marker: Marker3D
 @export var lunge_marker: Marker3D
+
+@export var clearing_two_marker: Marker3D
+
+
+@export var into_lake_marker: Marker3D
+@export var reset_before_lake: Marker3D
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var speed = 2.0
@@ -53,11 +59,15 @@ var lamp_scene = preload("res://luke/scenes_luke/Lamp.tscn")
 
 var current_dragged_item
 
+var the_log: Node3D
+
 var use_cursor: bool = false
 
 var too_far: bool = false
 
 var max_dad_dist: float = 9.0
+
+var log_dragging: bool = false
 
 #head wobble settings here
 
@@ -101,13 +111,16 @@ var light_on: bool = false
 
 var in_dark: bool = false
 
-var path_chosen: String
+var path_chosen: String = "cave"
+
+var being_pulled_lake: bool = false
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	GlobalSignals.start_clearing.connect(_start_clearing)
 	GlobalSignals.change_dad_max_dist.connect(_change_dad_max_dist)
 	GlobalSignals.clearing_trigger_orb.connect(_clearing_trigger_orb)
+	#GlobalSignals.dad_to_mound.connect(_start_mound)
 	GlobalSignals.father_gone.connect(_father_gone)
 	GlobalSignals.night_path_set_up.connect(_night_path_set_up)
 	GlobalSignals.fork_set_up.connect(_fork_set_up)
@@ -118,8 +131,11 @@ func _ready():
 	GlobalSignals.mouse_capture.connect(_mouse_capture)
 	GlobalSignals.caught_by_buzz.connect(_caught_by_buzz)
 	GlobalSignals.path_chosen.connect(_path_chosen)
+	GlobalSignals.pull_into_lake.connect(_pull_into_lake)
+	GlobalSignals.start_lake.connect(_start_lake_reset)
+	GlobalSignals.orb_to_clearing_two.connect(_clearing_two_start)
+	GlobalSignals.voice_to_clearing_two.connect(_clearing_two_start)
 	%SpotLight3D.visible = false
-	#GlobalSignals.dad_to_mound.connect(_start_mound)
 	head.rotation_degrees.y = 0.0
 	last_distance = global_position.distance_to(father.global_position)
 	
@@ -134,6 +150,7 @@ func _start_clearing():
 
 func _clearing_trigger_orb():
 	can_trigger_orb = true
+
 
 func _father_gone():
 	following_dad = false
@@ -162,6 +179,18 @@ func _start_in_cave():
 	GlobalSignals.emit_signal("father_gone")
 	global_position = in_cave_marker.global_position	
 
+func _clearing_two_start():
+	following_dad = false
+	can_trigger_orb = false
+	GlobalSignals.emit_signal("father_gone")
+	global_position = clearing_two_marker.global_position
+
+func _start_lake_reset():
+	being_pulled_lake = false
+	global_position = reset_before_lake.global_position
+	if not path_chosen == "cave":
+		GlobalSignals.emit_signal("dad_call")
+
 func _dark_place(state):
 	in_dark = state
 	if not in_dark:
@@ -175,6 +204,20 @@ func _caught_by_buzz():
 		hud.back_to_cave()
 	else:
 		hud.back_to_house()
+
+func _pull_into_lake():
+	being_pulled_lake = true
+	GlobalSignals.emit_signal("show_player_info", "I feel something bad would have happened if I had gone that way.")
+	await get_tree().create_timer(4.0).timeout
+	hud.back_to_lake()
+	if path_chosen == "cave":
+		GlobalSignals.emit_signal("orb_lake_reset")
+	else:
+		GlobalSignals.emit_signal("dad_lake_reset")
+		
+
+
+	
 
 func _item_collected(item):
 	match item:
@@ -272,10 +315,22 @@ func _input(event):
 			var tween = create_tween()
 			tween.tween_property(head, "position:y", 0.2, 0.5)
 			crouching = true
-			if ready_to_hide:
-				%CrouchTimer.start()
-				
+			
+			
+
+			#if ready_to_hide:
+				#%CrouchTimer.start()
+		if ready_to_hide:
+			hud.hide_timer.visible = true
+			hud.hide_timer.value -= 1.0
+			if hud.hide_timer.value < 0.2:
+				hud.hide_timer.visible = false
+				GlobalSignals.emit_signal("hiding")
+
+			
 	if Input.is_action_just_released("crouch"):
+		hud.hide_timer.value = 100
+		hud.hide_timer.visible = false
 		%CrouchTimer.stop()
 		var tween = create_tween()
 		tween.tween_property(head, "position:y", 0.5, 0.5)
@@ -388,7 +443,11 @@ func _physics_process(delta):
 
 			if collider.get_parent().is_in_group("log"):
 				var object = collider.get_parent()
-				object.dragged(attack_marker)
+				the_log = object
+				the_log.dragged(attack_marker)
+				the_log.disable_col()
+				log_dragging = true
+				%FootLogCollision.disabled = false
 				#object.global_position.z = attack_marker.global_position.z
 				#object.global_position.x = attack_marker.global_position.x
 			if collider.is_in_group("pull_item"):
@@ -409,7 +468,26 @@ func _physics_process(delta):
 			%HoldingBodyCollision.disabled = true
 			current_dragged_item.dropped()
 			current_dragged_item = null
+		if log_dragging:
+			log_dragging = false
+			%FootLogCollision.disabled = true
+			the_log.enable_col()
 			
+	
+	if being_pulled_lake:
+		var direction = global_position.direction_to(into_lake_marker.global_position)
+		if global_position.distance_to(into_lake_marker.global_position) > 0.2:
+			#rotation.y=lerp_angle(rotation.y,atan2(velocity.x,velocity.z),.1)
+			speed = lerp(speed, 4.0, 0.5)
+			velocity = direction * speed
+			move_and_slide()
+		
+			return
+			
+		else:
+			
+			print ("RESET HERE")
+			return
 	
 	var input_dir = Input.get_vector("left", "right", "forward", "back")
 	if crouching: return
@@ -483,6 +561,8 @@ func set_held_object(body):
 			heldObject = body
 			heldObject.held = true
 			heldObject.my_collision.disabled = true
+
+				
 	
 func drop_held_object():
 	heldObject = null
@@ -490,6 +570,8 @@ func drop_held_object():
 func throw_held_object():
 	var obj = heldObject
 	heldObject.held = false
+	if heldObject.has_method("set_thrown"):
+		heldObject.set_thrown()
 	drop_held_object()
 	obj.apply_central_impulse(-camera.global_basis.z * throwForce * 10)
 	obj.angular_velocity.z = 2
