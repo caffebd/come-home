@@ -8,6 +8,7 @@ sky = ExtResource("1_ptikb")
 reflected_light_source = 1
 tonemap_mode = 3
 ssao_enabled = true
+ssil_enabled = true
 fog_mode = 1
 fog_light_color = Color(0.390961, 0.585758, 0.639187, 1)
 fog_density = 0.4756

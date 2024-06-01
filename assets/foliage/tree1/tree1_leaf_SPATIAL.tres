@@ -3,6 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://c1rejo84cnlbr" path="res://assets/foliage/tree1/leafCluster2.png" id="1_8kpyh"]
 
 [resource]
-transparency = 4
+transparency = 2
+alpha_scissor_threshold = 0.2
+alpha_antialiasing_mode = 0
 cull_mode = 2
 albedo_texture = ExtResource("1_8kpyh")
