@@ -15,7 +15,7 @@ texture = ExtResource("2_aqw4c")
 texture = ExtResource("3_kdtku")
 
 [sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_kmpqm"]
-default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(1, 1, 1), 2, Vector3(0.6, 0.6, 0.6)]
+default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(1, 1, 1), 2, Vector3(0.58, 0.6, 0.6)]
 op_type = 3
 
 [sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_x03jd"]
@@ -41,7 +41,7 @@ void fragment() {
 
 
 // Mix:5
-	vec3 n_in5p2 = vec3(0.60000, 0.60000, 0.60000);
+	vec3 n_in5p2 = vec3(0.58000, 0.60000, 0.60000);
 	vec3 n_out5p0 = mix(vec3(n_out2p0.xyz), vec3(n_out6p0.xyz), n_in5p2);
 
 
@@ -61,6 +61,7 @@ void fragment() {
 
 }
 "
+graph_offset = Vector2(-68.9885, 265.582)
 nodes/fragment/0/position = Vector2(400, 240)
 nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_unm07")
 nodes/fragment/2/position = Vector2(-200, 40)
