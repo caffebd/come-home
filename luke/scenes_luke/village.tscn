@@ -574,7 +574,7 @@ animal_markers = [NodePath("../VoicePathOne/AnimalMarkers/Animal1"), NodePath(".
 cave_markers = [NodePath("../PathToCave/CaveAnimals/CaveAnimal1"), NodePath("../PathToCave/CaveAnimals/CaveAnimal2"), NodePath("../PathToCave/CaveAnimals/CaveAnimal3")]
 
 [node name="DadVoiceCharacter" parent="." node_paths=PackedStringArray("player", "to_house_markers", "ghost_markers") instance=ExtResource("26_gfgx6")]
-transform = Transform3D(0.999738, -0.0228967, 0, 0.0228967, 0.999738, 0, 0, 0, 1, -24.2127, 30.4307, 234.405)
+transform = Transform3D(0.999738, -0.0228967, 0, 0.0228967, 0.999738, 0, 0, 0, 1, -43.7355, 7.06056, 238.466)
 player = NodePath("../PlayerChild")
 to_house_markers = [NodePath("../VoicePathOne/VoiceMarkers/VoicePath1"), NodePath("../VoicePathOne/VoiceMarkers/VoicePath2"), NodePath("../VoicePathOne/VoiceMarkers/VoicePath3"), NodePath("../VoicePathOne/VoiceMarkers/VoicePath4"), NodePath("../VoicePathOne/VoiceMarkers/VoicePath5"), NodePath("../VoicePathOne/VoiceMarkers/VoicePath6"), NodePath("../VoicePathOne/VoiceMarkers/VoicePath7")]
 ghost_markers = [NodePath("../ClearingTwo/GhostMarkers/GhostMarker1"), NodePath("../ClearingTwo/GhostMarkers/GhostMarker2"), NodePath("../ClearingTwo/GhostMarkers/GhostMarker3"), NodePath("../ClearingTwo/GhostMarkers/GhostMarker4"), NodePath("../ClearingTwo/GhostMarkers/GhostMarker5"), NodePath("../ClearingTwo/GhostMarkers/GhostMarker6"), NodePath("../ClearingTwo/GhostMarkers/GhostMarker7"), NodePath("../ClearingTwo/GhostMarkers/GhostMarker8"), NodePath("../ClearingTwo/GhostMarkers/GhostMarker9")]
@@ -1916,7 +1916,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.36077, -1.26223, 14.7968)
 [node name="World" parent="." instance=ExtResource("56_atgdd")]
 
 [node name="PlayerChild" parent="." node_paths=PackedStringArray("attack_marker", "rotate_marker", "lunge_marker", "clearing_two_marker", "into_lake_marker", "reset_before_lake", "father", "start_mound_marker", "start_clearing_marker", "start_night_path_marker", "start_fork_marker", "start_house_marker", "in_cave_marker") instance=ExtResource("14_k0c81")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.9652, 8.96677, -198.178)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.4303, 2.42956, 524.372)
 attack_marker = NodePath("Head/PlayerCam/AttackMarker")
 rotate_marker = NodePath("RotateMarker")
 lunge_marker = NodePath("Head/PlayerCam/LungeMarker")

@@ -120,7 +120,7 @@ func _ready():
 	GlobalSignals.start_clearing.connect(_start_clearing)
 	GlobalSignals.change_dad_max_dist.connect(_change_dad_max_dist)
 	GlobalSignals.clearing_trigger_orb.connect(_clearing_trigger_orb)
-	#GlobalSignals.dad_to_mound.connect(_start_mound)
+	GlobalSignals.dad_to_mound.connect(_start_mound)
 	GlobalSignals.father_gone.connect(_father_gone)
 	GlobalSignals.night_path_set_up.connect(_night_path_set_up)
 	GlobalSignals.fork_set_up.connect(_fork_set_up)
