@@ -28,6 +28,7 @@ transform = Transform3D(-0.382275, 0, 3.34196e-08, 0, 0.382275, 0, -3.34196e-08,
 
 [node name="sun2" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.924149, 0.196546, 0.327595, -0.340329, 0.0339694, 0.939692, 0.173565, -0.979906, 0.0982831, -1.34816, 6.03138, 493.148)
+visible = false
 light_color = Color(0.849231, 0.717222, 0.557243, 1)
 light_energy = 0.197
 light_bake_mode = 1
