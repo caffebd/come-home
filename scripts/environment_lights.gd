@@ -12,7 +12,7 @@ func _ready() -> void:
 	GlobalSignals.time_transition_6.connect(_time_transition_6)
 	GlobalSignals.time_transition_7.connect(_time_transition_7)
 	GlobalSignals.time_transition_8.connect(_time_transition_8)
-	GlobalSignals.time_transition_8.connect(_time_transition_9)
+	GlobalSignals.time_transition_9.connect(_time_transition_9)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("night_0"):
@@ -36,43 +36,108 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("night_9"):
 		_time_transition_9()
 
+# DAY TO NIGHT
+
 func _time_transition_0():
 	print ("Transition 0")
-	var tween = create_tween().parallel()
-	tween.tween_property($WorldEnvironment, "environment:sky:sky_material:sky_top_color", Color("327085"), 2.0)
-	tween.tween_property($WorldEnvironment, "environment:sky:sky_material:sky_horizon_color", Color("000000"), 2.0)
-	tween.tween_property($WorldEnvironment, "environment:sky:sky_material:ground_horizon_color", Color("000000"), 2.0)
-	tween.tween_property($WorldEnvironment, "environment:volumetric_fog_albedo", Color("3c3c3c"), 2.0)
-	tween.tween_property($WorldEnvironment, "environment:volumetric_fog_emission", Color("0f2722"), 2.0)
-	tween.tween_property($WorldEnvironment, "environment:volumetric_fog_density", 0.05, 2.0)
+	var tween = create_tween().set_parallel()
+	tween.tween_property($WorldEnvironment, "environment:sky:sky_material:sky_top_color", Color("947140"), 20.0)
+	tween.tween_property($WorldEnvironment, "environment:sky:sky_material:sky_horizon_color", Color("121d1c"), 20.0)
+	tween.tween_property($WorldEnvironment, "environment:sky:sky_material:ground_horizon_color", Color("121d1c"), 20.0)
+	tween.tween_property($WorldEnvironment, "environment:sky:sky_material:ground_curve", 0.03306, 20.0)
+	tween.tween_property($WorldEnvironment, "environment:ambient_light_sky_contribution", 0.744, 20.0)
+	tween.tween_property($WorldEnvironment, "environment:volumetric_fog_density", 0.0268, 20.0)
+	tween.tween_property($WorldEnvironment, "environment:volumetric_fog_length", 79.2, 20.0)
+	tween.tween_property($WorldEnvironment, "environment:volumetric_fog_ambient_inject", 0.78, 20.0)
+	tween.tween_property($WorldEnvironment, "environment:volumetric_fog_sky_affect", 0.7528, 20.0)
 
 func _time_transition_1():
 	print ("Transition 1")
 	pass
-
+	var tween = create_tween().set_parallel()
+	tween.tween_property($WorldEnvironment, "environment:sky:sky_material:sky_top_color", Color("796440"), 20.0)
+	tween.tween_property($WorldEnvironment, "environment:sky:sky_material:sky_horizon_color", Color("253a38"), 20.0)
+	tween.tween_property($WorldEnvironment, "environment:sky:sky_material:ground_horizon_color", Color("253a38"), 20.0)
+	tween.tween_property($WorldEnvironment, "environment:sky:sky_material:ground_curve", 0.04622, 20.0)
+	tween.tween_property($WorldEnvironment, "environment:ambient_light_sky_contribution", 0.808, 20.0)
+	tween.tween_property($WorldEnvironment, "environment:volumetric_fog_density", 0.0326, 20.0)
+	tween.tween_property($WorldEnvironment, "environment:volumetric_fog_length", 94.4, 20.0)
+	tween.tween_property($WorldEnvironment, "environment:volumetric_fog_ambient_inject",0.71, 20.0)
+	tween.tween_property($WorldEnvironment, "environment:volumetric_fog_sky_affect", 0.8146, 20.0)
 
 
 func _time_transition_2():
 	print ("Transition 2")
 	pass
-
+	var tween = create_tween().set_parallel()
+	tween.tween_property($WorldEnvironment, "environment:sky:sky_material:sky_top_color", Color("5d583f"), 20.0)
+	tween.tween_property($WorldEnvironment, "environment:sky:sky_material:sky_horizon_color", Color("375753"), 20.0)
+	tween.tween_property($WorldEnvironment, "environment:sky:sky_material:ground_horizon_color", Color("375753"), 20.0)
+	tween.tween_property($WorldEnvironment, "environment:sky:sky_material:ground_curve", 0.05938, 20.0)
+	tween.tween_property($WorldEnvironment, "environment:ambient_light_sky_contribution", 0.872, 20.0)
+	tween.tween_property($WorldEnvironment, "environment:volumetric_fog_density", 0.0384, 20.0)
+	tween.tween_property($WorldEnvironment, "environment:volumetric_fog_length", 109.6, 20.0)
+	tween.tween_property($WorldEnvironment, "environment:volumetric_fog_ambient_inject", 0.64, 20.0)
+	tween.tween_property($WorldEnvironment, "environment:volumetric_fog_sky_affect", 0.8764, 20.0)
 
 func _time_transition_3():
 	print ("Transition 3")
 	pass
+	var tween = create_tween().set_parallel()
+	tween.tween_property($WorldEnvironment, "environment:sky:sky_material:sky_top_color", Color("424b3f"), 20.0)
+	tween.tween_property($WorldEnvironment, "environment:sky:sky_material:sky_horizon_color", Color("4a746f"), 20.0)
+	tween.tween_property($WorldEnvironment, "environment:sky:sky_material:ground_horizon_color", Color("4a746f"), 20.0)
+	tween.tween_property($WorldEnvironment, "environment:sky:sky_material:ground_curve", 0.07254, 20.0)
+	tween.tween_property($WorldEnvironment, "environment:ambient_light_sky_contribution", 0.936, 20.0)
+	tween.tween_property($WorldEnvironment, "environment:volumetric_fog_density", 0.0442, 20.0)
+	tween.tween_property($WorldEnvironment, "environment:volumetric_fog_length", 124.8, 20.0)
+	tween.tween_property($WorldEnvironment, "environment:volumetric_fog_ambient_inject", 0.57, 20.0)
+	tween.tween_property($WorldEnvironment, "environment:volumetric_fog_sky_affect", 0.9382, 20.0)
 	
 func _time_transition_4():
 	print ("Transition 4")
 	pass
-
+	var tween = create_tween().set_parallel()
+	tween.tween_property($WorldEnvironment, "environment:sky:sky_material:sky_top_color", Color("263e3e"), 5.0)
+	tween.tween_property($WorldEnvironment, "environment:sky:sky_material:sky_horizon_color", Color("5c918b"), 5.0)
+	tween.tween_property($WorldEnvironment, "environment:sky:sky_material:ground_horizon_color", Color("5c918b"), 5.0)
+	tween.tween_property($WorldEnvironment, "environment:sky:sky_material:ground_curve", 0.0857, 5.0)
+	tween.tween_property($WorldEnvironment, "environment:ambient_light_sky_contribution", 1.0, 5.0)
+	tween.tween_property($WorldEnvironment, "environment:volumetric_fog_density", 0.05, 5.0)
+	tween.tween_property($WorldEnvironment, "environment:volumetric_fog_length", 140.0, 5.0)
+	tween.tween_property($WorldEnvironment, "environment:volumetric_fog_ambient_inject", 0.5, 50.0)
+	tween.tween_property($WorldEnvironment, "environment:volumetric_fog_sky_affect", 1.0, 5.0)
+	
+	# NIGHT TO CAVE
+	
 func _time_transition_5():
 	print ("Transition 5")
 	pass
-
+	var tween = create_tween().set_parallel()
+	tween.tween_property($WorldEnvironment, "environment:sky:sky_material:sky_top_color", Color("000000"), 2.0)
+	tween.tween_property($WorldEnvironment, "environment:sky:sky_material:sky_horizon_color", Color("000000"), 2.0)
+	tween.tween_property($WorldEnvironment, "environment:sky:sky_material:ground_horizon_color", Color("000000"), 2.0)
+	$WorldEnvironment.environment.fog_enabled = true
+	tween.tween_property($WorldEnvironment, "environment:fog_light_energy", 1, 2)
+	tween.tween_property($WorldEnvironment, "environment:volumetric_fog_density", 0.0728, 2.0)
+	tween.tween_property($WorldEnvironment, "environment:volumetric_fog_albedo", Color("000000"), 2.0)
+	tween.tween_property($WorldEnvironment, "environment:volumetric_fog_emission", Color("213c38"), 2.0)
+	tween.tween_property($WorldEnvironment, "environment:volumetric_fog_length", 64.0, 2.0)
+	tween.tween_property($WorldEnvironment, "environment:volumetric_fog_ambient_inject", 0.0, 2.0)
+	
+	# CAVE ROOM TO EXIT
+	
 func _time_transition_6():
 	print ("Transition 6")
 	pass
-
+	var tween = create_tween().set_parallel()	
+	$WorldEnvironment.environment.fog_enabled = true
+	tween.tween_property($WorldEnvironment, "environment:fog_light_energy", 0, 2)
+	tween.tween_property($WorldEnvironment, "environment:volumetric_fog_density", 0.03, 2.0)
+	tween.tween_property($WorldEnvironment, "environment:volumetric_fog_albedo", Color("000000"), 2.0)
+	tween.tween_property($WorldEnvironment, "environment:volumetric_fog_emission", Color("213c38"), 2.0)
+	tween.tween_property($WorldEnvironment, "environment:volumetric_fog_length", 64.0, 2.0)
+	tween.tween_property($WorldEnvironment, "environment:volumetric_fog_ambient_inject", 0.0, 2.0)
 func _time_transition_7():
 	print ("Transition 7")
 	pass

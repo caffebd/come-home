@@ -10,7 +10,7 @@
 [node name="village" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("6_bolem")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.1742, 6.2628, -255.437)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.0518, 7.16708, -240.873)
 
 [node name="Node3D" parent="." instance=ExtResource("2_a62tv")]
 

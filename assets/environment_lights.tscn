@@ -1,11 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://dplf8d8w78la4"]
+[gd_scene load_steps=3 format=3 uid="uid://dplf8d8w78la4"]
 
-[ext_resource type="Environment" uid="uid://bflpnk0upluy1" path="res://assets/env/env_day_2.tres" id="1_s4241"]
+[ext_resource type="Environment" uid="uid://bflpnk0upluy1" path="res://assets/env/env_day_2.tres" id="1_28tg7"]
+[ext_resource type="Script" path="res://scripts/environment_lights.gd" id="1_aub4m"]
 
 [node name="environment" type="Node3D"]
+script = ExtResource("1_aub4m")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("1_s4241")
+environment = ExtResource("1_28tg7")
 
 [node name="sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.9827, -0.0917609, -0.160874, -1.66582e-09, -0.868631, 0.495459, -0.185204, -0.486887, -0.853604, -6.678, 2.75738, -2.17394)

@@ -182,6 +182,7 @@ common/physics_jitter_fix=0.0
 driver/threads/thread_model=2
 environment/volumetric_fog/use_filter=0
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)
+anti_aliasing/quality/msaa_3d=2
 anti_aliasing/quality/screen_space_aa=1
 anti_aliasing/quality/use_taa=true
 occlusion_culling/use_occlusion_culling=true
