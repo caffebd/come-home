@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cahhg0aqvpmrs" path="res://luke/scenes_luke/torch.tscn" id="3_p5kv6"]
 [ext_resource type="AudioStream" uid="uid://oy0gvh16kvly" path="res://luke/assets_luke/audio_luke/grass_footsteps.mp3" id="3_r2ww0"]
 
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0ogxy"]
 height = 1.219
 

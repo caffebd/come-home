@@ -1,8 +1,7 @@
 [gd_resource type="NoiseTexture2D" load_steps=3 format=3 uid="uid://dcbo6xrk02022"]
 
 [sub_resource type="Gradient" id="Gradient_7dbph"]
-offsets = PackedFloat32Array(0.253846, 0.611538, 0.75)
-colors = PackedColorArray(0, 0, 0, 1, 0.652864, 0.652864, 0.652864, 1, 1, 1, 1, 1)
+offsets = PackedFloat32Array(0.237288, 0.779661)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_mdc5v"]
 frequency = 0.024
