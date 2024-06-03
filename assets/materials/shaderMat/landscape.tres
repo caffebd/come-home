@@ -534,7 +534,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-2603.57, 3753.88)
 modes/diffuse = 2
 nodes/fragment/0/position = Vector2(440, 940)
 nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_sh8dn")
