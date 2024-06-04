@@ -15,5 +15,5 @@ func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		set_deferred("monitoring", false)
 		GlobalSignals.emit_signal("hiding")
-		GlobalSignals.emit_signal("voice_to_clearing_two")
-		GlobalSignals.emit_signal("path_chosen", "cave")
+		GlobalSignals.emit_signal("voice_to_clearing_two", false)
+		GlobalSignals.emit_signal("path_chosen", "house")

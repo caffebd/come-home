@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cm3d1u3ihuwtd"]
+[gd_scene load_steps=17 format=3 uid="uid://cm3d1u3ihuwtd"]
 
 [ext_resource type="Script" path="res://luke/scripts_luke/hud.gd" id="1_v33x2"]
 [ext_resource type="Texture2D" uid="uid://wynt0hi00qc8" path="res://assets/ui/target.png" id="2_4bb86"]
@@ -170,6 +170,22 @@ bg_color = Color(0.198692, 0.437546, 1.92523e-07, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_apkkx"]
 bg_color = Color(0.675693, 0.166073, 0.154827, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yi8fn"]
+bg_color = Color(0.141176, 0.141176, 0.141176, 0.6)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.533037, 0.533037, 0.533036, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nojpq"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.533333, 0.533333, 0.533333, 1)
 
 [node name="Hud" type="Control"]
 layout_mode = 3
@@ -461,59 +477,6 @@ theme_override_fonts/font = ExtResource("4_44lwp")
 theme_override_font_sizes/font_size = 50
 text = "123"
 
-[node name="Cover" type="ColorRect" parent="."]
-auto_translate_mode = 1
-modulate = Color(1, 1, 1, 0)
-visibility_layer = 524289
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 1)
-metadata/_edit_lock_ = true
-
-[node name="Title" type="Label" parent="Cover"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -210.5
-offset_top = -39.0
-offset_right = 210.5
-offset_bottom = 39.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("4_44lwp")
-theme_override_font_sizes/font_size = 82
-text = "Come Home"
-
-[node name="Title2" type="Label" parent="Cover/Title"]
-unique_name_in_owner = true
-auto_translate_mode = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -348.0
-offset_top = 67.0
-offset_right = 351.0
-offset_bottom = 145.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("4_44lwp")
-theme_override_font_sizes/font_size = 50
-text = "Bangla Ghost Stories Chapter 1"
-
 [node name="ReadingPage" type="Panel" parent="."]
 unique_name_in_owner = true
 visible = false
@@ -600,6 +563,106 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_apkkx")
 value = 100.0
 show_percentage = false
 
+[node name="AnimalDistance" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 41.0
+offset_top = -271.0
+offset_right = 106.0
+offset_bottom = 279.0
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_yi8fn")
+theme_override_styles/fill = SubResource("StyleBoxFlat_nojpq")
+max_value = 50.0
+fill_mode = 3
+show_percentage = false
+
+[node name="Cover" type="ColorRect" parent="."]
+auto_translate_mode = 1
+modulate = Color(1, 1, 1, 0)
+visibility_layer = 524289
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="Title" type="Label" parent="Cover"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -210.5
+offset_top = -39.0
+offset_right = 210.5
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_44lwp")
+theme_override_font_sizes/font_size = 82
+text = "Come Home"
+
+[node name="Title2" type="Label" parent="Cover/Title"]
+unique_name_in_owner = true
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -348.0
+offset_top = 67.0
+offset_right = 351.0
+offset_bottom = 145.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_44lwp")
+theme_override_font_sizes/font_size = 50
+text = "Bangla Ghost Stories Chapter 1"
+
+[node name="ExitCover" type="ColorRect" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0807834, 0.0807833, 0.0807833, 0.839216)
+
+[node name="MenuButton" type="Button" parent="ExitCover"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -130.0
+offset_top = -51.0
+offset_right = 130.0
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_44lwp")
+theme_override_font_sizes/font_size = 80
+text = "menu"
+
 [connection signal="pressed" from="ReadingPage/ENButton" to="." method="_on_en_button_pressed"]
 [connection signal="pressed" from="ReadingPage/BNButton" to="." method="_on_bn_button_pressed"]
 [connection signal="pressed" from="ReadingPage/CloseBtn" to="." method="_on_close_btn_pressed"]
+[connection signal="pressed" from="ExitCover/MenuButton" to="." method="_on_menu_button_pressed"]

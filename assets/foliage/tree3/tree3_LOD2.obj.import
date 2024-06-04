@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dnywotc3edogl"
+path="res://.godot/imported/tree3_LOD2.obj-8e4f16dbf176b44d67cf31c06c157a3d.mesh"
+
+[deps]
+
+files=["res://.godot/imported/tree3_LOD2.obj-8e4f16dbf176b44d67cf31c06c157a3d.mesh"]
+
+source_file="res://assets/foliage/tree3/tree3_LOD2.obj"
+dest_files=["res://.godot/imported/tree3_LOD2.obj-8e4f16dbf176b44d67cf31c06c157a3d.mesh", "res://.godot/imported/tree3_LOD2.obj-8e4f16dbf176b44d67cf31c06c157a3d.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

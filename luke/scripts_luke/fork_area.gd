@@ -13,7 +13,7 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
-		#body.speed = 0.3
+		body.normal_speed = 0.05
 		set_deferred("monitoring", false)
 		Narration.main_index = Narration.fork_index
 		Narration.sub_index = 0
@@ -22,4 +22,4 @@ func _on_body_entered(body: Node3D) -> void:
 		GlobalSignals.emit_signal("dad_call")
 		await get_tree().create_timer(4.0).timeout
 		Narration.narrate()
-		body.speed = 2.0
+		body.normal_speed = 2.0

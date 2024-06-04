@@ -14,7 +14,7 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		print ("I am on one")
-		set_deferred("monitoring", false)
+	
 		GlobalSignals.emit_signal("animal_trigger")
 		Narration.main_index = Narration.cave_animal_index
 		Narration.sub_index = 0

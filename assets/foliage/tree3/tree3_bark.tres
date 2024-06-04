@@ -1,0 +1,42 @@
+[gd_resource type="VisualShader" load_steps=5 format=3 uid="uid://cnwfv1an77isg"]
+
+[ext_resource type="Texture2D" uid="uid://ch6w2vk2wfrd5" path="res://assets/foliage/tree3/ugblaadn_2K_Albedo.jpg" id="1_y0jgf"]
+[ext_resource type="Texture2D" uid="uid://nevq5vbslmpx" path="res://assets/foliage/tree3/ugblaadn_2K_Albedo_Normal.jpg" id="2_qnhrd"]
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_g28t2"]
+texture = ExtResource("1_y0jgf")
+texture_type = 1
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_fs2w0"]
+texture = ExtResource("2_qnhrd")
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+uniform sampler2D tex_frg_2 : source_color;
+uniform sampler2D tex_frg_3;
+
+
+
+void fragment() {
+// Texture2D:2
+	vec4 n_out2p0 = texture(tex_frg_2, UV);
+
+
+// Texture2D:3
+	vec4 n_out3p0 = texture(tex_frg_3, UV);
+
+
+// Output:0
+	ALBEDO = vec3(n_out2p0.xyz);
+	NORMAL_MAP = vec3(n_out3p0.xyz);
+
+
+}
+"
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_g28t2")
+nodes/fragment/2/position = Vector2(108, 140.5)
+nodes/fragment/3/node = SubResource("VisualShaderNodeTexture_fs2w0")
+nodes/fragment/3/position = Vector2(108, 328)
+nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0, 3, 0, 0, 9)

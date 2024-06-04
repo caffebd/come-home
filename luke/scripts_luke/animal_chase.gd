@@ -5,6 +5,8 @@ extends CharacterBody3D
 
 @export var animal_markers: Array[Marker3D]
 @export var cave_markers: Array[Marker3D]
+@export var lake_markers: Array[Marker3D]
+
 
 var use_markers: Array[Marker3D]
 
@@ -25,6 +27,7 @@ var stick_thrown_once: bool = false
 
 var voice_route: bool = false
 var cave_route: bool = false
+var lake_route: bool = false
 
 var can_go_home: bool = false
 
@@ -35,6 +38,10 @@ func _ready() -> void:
 	GlobalSignals.stick_drop_forest.connect(_go_home)
 	GlobalSignals.follow_voice.connect(_follow_voice)
 	GlobalSignals.cave_path_trigger.connect(_follow_cave)
+	GlobalSignals.animal_to_lake.connect(_to_lake)
+	GlobalSignals.voice_path_reset.connect(_follow_voice)
+	GlobalSignals.cave_path_reset.connect(_follow_cave)
+	GlobalSignals.lake_path_reset.connect(_lake_path_reset)
 	GlobalSignals.hiding.connect(_go_home)
 
 	
@@ -42,6 +49,7 @@ func _follow_voice():
 	marker_index = 0
 	voice_route = true
 	cave_route = false
+	lake_route = false
 	use_markers.clear()
 	use_markers = animal_markers.duplicate()
 	global_position = use_markers[0].global_position
@@ -50,6 +58,7 @@ func _follow_cave():
 	marker_index = 0
 	cave_route = true
 	voice_route = false
+	lake_route = false
 	use_markers.clear()
 	use_markers = cave_markers.duplicate()
 	global_position = use_markers[0].global_position
@@ -61,8 +70,27 @@ func _start_chase():
 	homing = false
 	moving = true
 	can_go_home = true
-	
 
+func _to_lake():
+	voice_route = false
+	cave_route = false
+	lake_route = true
+	marker_index = 0
+	max_speed = 4.3
+	use_markers.clear()
+	use_markers = lake_markers.duplicate()
+	global_position = use_markers[0].global_position
+
+func _lake_path_reset():	
+	voice_route = false
+	cave_route = false
+	lake_route = true
+	marker_index = 0
+	max_speed = 3.0
+	use_markers.clear()
+	use_markers = lake_markers.duplicate()
+	global_position = use_markers[0].global_position
+	
 func _go_home():
 	if not can_go_home: return
 	if voice_route:
@@ -94,14 +122,17 @@ func _physics_process(delta: float) -> void:
 	
 	if chasing:
 		var player_dist: float = global_position.distance_to(player.global_position)
+		#print (player_dist)
 		if player_dist < 2.0:
 			if not $RunningAnimal.playing:
 				_run_sound()
 
 		direction = global_position.direction_to(player.global_position)
 		target_position = player.global_position
+		player.hud.animal_distance_bar(player_dist)
 		
 	if homing:
+		player.hud.distance_bar.visible = false
 		var go_index = use_markers.size()-1
 		if marker_index < use_markers.size():
 			go_index = marker_index
@@ -118,6 +149,7 @@ func _physics_process(delta: float) -> void:
 	
 	else:
 		moving = false
+		player.hud.distance_bar.visible = false
 
 
 func _walk_sound():
@@ -126,3 +158,29 @@ func _walk_sound():
 func _run_sound():
 	$WalkIngAnimal.stop()
 	$RunningAnimal.play()
+
+
+func _on_catch_player_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		if not body.path_chosen == "cave":
+			_player_was_caught()
+		else:
+			if body.crouching and body.ready_to_hide:
+				return
+			else:
+				_player_was_caught()
+			
+func _player_was_caught():
+		$WalkIngAnimal.stop()
+		$RunningAnimal.stop()	
+		chasing = false
+		homing = false
+		moving = false
+		can_go_home = false
+		if voice_route:
+			GlobalSignals.emit_signal("voice_path_reset")
+			GlobalSignals.emit_signal("stick_reset")
+		elif cave_route:
+			GlobalSignals.emit_signal("cave_path_reset")
+		elif lake_route:
+			GlobalSignals.emit_signal("lake_path_reset")			

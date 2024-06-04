@@ -13,7 +13,11 @@ extends CharacterBody3D
 @export var breath_2: AudioStreamPlayer3D
 @export var breath_3: AudioStreamPlayer3D
 
+@export var wait_at_path_marker: Marker3D
+
 @onready var orb_collider: CollisionShape3D = %OrbCollider
+
+
 
 var use_check_points: Array[Marker3D]
 
@@ -35,6 +39,8 @@ var start_speed = 40.0
 
 var timer_running: bool = false
 
+var on_path_one: bool = false
+
 func _ready() -> void:
 	GlobalSignals.clearing_trigger_orb.connect(_clearing_trigger_orb)
 	GlobalSignals.orb_sense_player.connect(_orb_sense_player)
@@ -44,6 +50,7 @@ func _ready() -> void:
 	GlobalSignals.cave_path_set_up.connect(_cave_path_set_up)
 	GlobalSignals.cave_path_trigger.connect(_cave_path_trigger)
 	GlobalSignals.fork_set_up.connect(_fork_set_up)
+	GlobalSignals.cave_path_reset.connect(_cave_path_reset)
 	GlobalSignals.orb_to_clearing_two.connect(_clearing_two)
 	GlobalSignals.orb_lake_reset.connect(_lake_reset)
 	_set_check_points(CLEARING)
@@ -77,6 +84,7 @@ func _fork_set_up():
 	check_index = 0
 	sense_player = true
 	timer_running = true
+	on_path_one = true
 
 func _cave_path_set_up():
 	moving = false
@@ -85,6 +93,14 @@ func _cave_path_set_up():
 	check_index = 0
 	sense_player = true
 	timer_running = true
+
+func _cave_path_reset():
+	moving = false
+	global_position = cave_path_markers[2].global_position
+	_set_check_points(CAVE)
+	check_index = 2
+	sense_player = true
+
 
 func _cave_path_trigger():
 	moving = false
@@ -95,7 +111,7 @@ func _cave_path_trigger():
 	timer_running = true
 	_next_position()
 
-func _clearing_two():
+func _clearing_two(start_state):
 	moving = false
 	#global_position = path_one_markers[path_one_markers.size()-1].global_position
 	_set_check_points(GHOST)
@@ -106,9 +122,9 @@ func _clearing_two():
 
 func _lake_reset():
 	_set_check_points(GHOST)
-	check_index = 6
+	check_index = 10
 	sense_player = true
-	global_position = ghost_markers[6].global_position
+	global_position = ghost_markers[10].global_position
 
 func _orb_sense_player(state):
 	sense_player = state
@@ -174,6 +190,7 @@ func _set_check_points(phase):
 		CLEARING:
 			use_check_points = clearing_markers.duplicate()
 		PATHONE:
+			on_path_one = true
 			use_check_points = path_one_markers.duplicate()
 		CAVE:
 			use_check_points = cave_path_markers.duplicate()
@@ -190,7 +207,13 @@ func _next_position():
 		print ("select next")
 		check_index += 1
 	else:
-		print ("select done")
+		if on_path_one:
+			on_path_one = false
+			target_position = wait_at_path_marker.global_position
+			speed = start_speed
+			moving = true	
+			print ("wait at path")
+		print ("orb select done")
 		moving = false
 		timer_running = false
 		%SenseTimer.stop()
@@ -200,19 +223,30 @@ func _next_position():
 func _check_for_narration(check_point: String):
 	print(check_point)
 	match check_point:
-		"OrbNight2":
+		"OrbNight1":
 			GlobalSignals.emit_signal("time_transition_0")
+		"OrbNight2":
+			GlobalSignals.emit_signal("time_transition_1")
 			Narration.narrate()
+		"OrbNight3":
+			GlobalSignals.emit_signal("time_transition_2")
 		"OrbNight4":
 			Narration.narrate()
+		"OrbNight5":
+			GlobalSignals.emit_signal("time_transition_3")
 		"OrbNight6":
 			breath_1.play()
+		"OrbNight7":
+			GlobalSignals.emit_signal("time_transition_4")
 		"OrbNight8":
 			Narration.narrate()
 		"OrbNight9":
+			GlobalSignals.emit_signal("time_transition_5")
 			breath_2.play()
 		"OrbNight10":
-			Narration.narrate()
+			GlobalSignals.emit_signal("time_transition_6")
+		#"OrbNight10":
+			#Narration.narrate()
 		#"OrbNight11":
 			#moving = false
 			#timer_running = false

@@ -1,0 +1,56 @@
+[gd_resource type="VisualShader" load_steps=7 format=3 uid="uid://cbjqf2evlw5ol"]
+
+[ext_resource type="Texture2D" uid="uid://dty7ei7lvvo70" path="res://assets/foliage/tree4/qhzho_1K_Albedo.jpg" id="1_ir6ii"]
+[ext_resource type="Texture2D" uid="uid://sumdjmet0dh8" path="res://assets/foliage/tree4/qhzho_1K_Albedo_Normal.jpg" id="2_sqjrj"]
+[ext_resource type="Texture2D" uid="uid://buc2ekcyndd5n" path="res://assets/foliage/tree4/qhzho_1K_Albedo_Opacity.jpg" id="3_mwll0"]
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_j2dm8"]
+texture = ExtResource("1_ir6ii")
+texture_type = 1
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_t6x5j"]
+texture = ExtResource("2_sqjrj")
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_1q5q5"]
+texture = ExtResource("3_mwll0")
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_disabled, diffuse_lambert, specular_schlick_ggx, depth_prepass_alpha;
+
+uniform sampler2D tex_frg_2 : source_color;
+uniform sampler2D tex_frg_4;
+uniform sampler2D tex_frg_3;
+
+
+
+void fragment() {
+// Texture2D:2
+	vec4 n_out2p0 = texture(tex_frg_2, UV);
+
+
+// Texture2D:4
+	vec4 n_out4p0 = texture(tex_frg_4, UV);
+
+
+// Texture2D:3
+	vec4 n_out3p0 = texture(tex_frg_3, UV);
+
+
+// Output:0
+	ALBEDO = vec3(n_out2p0.xyz);
+	ALPHA = n_out4p0.x;
+	NORMAL_MAP = vec3(n_out3p0.xyz);
+
+
+}
+"
+modes/cull = 2
+flags/depth_prepass_alpha = true
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_j2dm8")
+nodes/fragment/2/position = Vector2(116, 131.5)
+nodes/fragment/3/node = SubResource("VisualShaderNodeTexture_t6x5j")
+nodes/fragment/3/position = Vector2(116, 319)
+nodes/fragment/4/node = SubResource("VisualShaderNodeTexture_1q5q5")
+nodes/fragment/4/position = Vector2(116, 506.5)
+nodes/fragment/connections = PackedInt32Array(3, 0, 0, 9, 4, 0, 0, 1, 2, 0, 0, 0)

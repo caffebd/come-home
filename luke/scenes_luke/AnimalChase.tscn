@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cj72mcn1cc5y2"]
+[gd_scene load_steps=8 format=3 uid="uid://cj72mcn1cc5y2"]
 
 [ext_resource type="Script" path="res://luke/scripts_luke/animal_chase.gd" id="1_3wx4l"]
 [ext_resource type="AudioStream" uid="uid://cflxkcnnquvdf" path="res://luke/assets_luke/audio_luke/animal_walk.mp3" id="1_d45ta"]
@@ -10,6 +10,9 @@
 
 [sub_resource type="BoxMesh" id="BoxMesh_eglbk"]
 material = SubResource("StandardMaterial3D_eqrbs")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_c86ge"]
+radius = 2.4
 
 [node name="AnimalChase" type="CharacterBody3D"]
 collision_layer = 0
@@ -31,3 +34,10 @@ stream = ExtResource("2_ey45u")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.28138, 0, 0, 0, 1.28138, 0, 0, 0, 1.28138, 0, 0, 0)
 mesh = SubResource("BoxMesh_eglbk")
+
+[node name="CatchPlayer" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CatchPlayer"]
+shape = SubResource("SphereShape3D_c86ge")
+
+[connection signal="body_entered" from="CatchPlayer" to="." method="_on_catch_player_body_entered"]
