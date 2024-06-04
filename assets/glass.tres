@@ -4,7 +4,14 @@
 colors = PackedColorArray(0.111197, 0.111197, 0.111197, 1, 1, 1, 1, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_vfbwc"]
-frequency = 0.0152
+frequency = 0.0316
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ss0ff"]
+width = 1024
+height = 1024
+seamless = true
+color_ramp = SubResource("Gradient_rqyqw")
+noise = SubResource("FastNoiseLite_vfbwc")
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_nmymp"]
 width = 1024
@@ -14,17 +21,11 @@ as_normal_map = true
 color_ramp = SubResource("Gradient_rqyqw")
 noise = SubResource("FastNoiseLite_vfbwc")
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ss0ff"]
-width = 1024
-height = 1024
-seamless = true
-color_ramp = SubResource("Gradient_rqyqw")
-noise = SubResource("FastNoiseLite_vfbwc")
-
 [resource]
 transparency = 1
 cull_mode = 2
-albedo_color = Color(1, 1, 1, 0.0117647)
+albedo_color = Color(1, 1, 1, 0.14902)
+albedo_texture = SubResource("NoiseTexture2D_ss0ff")
 roughness_texture = SubResource("NoiseTexture2D_ss0ff")
-normal_enabled = true
 normal_texture = SubResource("NoiseTexture2D_nmymp")
+refraction_texture = SubResource("NoiseTexture2D_ss0ff")
