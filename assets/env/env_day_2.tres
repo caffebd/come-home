@@ -5,9 +5,9 @@
 [resource]
 background_mode = 2
 sky = ExtResource("1_ptikb")
-ambient_light_sky_contribution = 0.68
 reflected_light_source = 1
 tonemap_mode = 3
+ssr_enabled = true
 ssao_enabled = true
 ssil_enabled = true
 sdfgi_use_occlusion = true
@@ -18,4 +18,3 @@ fog_depth_begin = -5.0
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.021
 volumetric_fog_ambient_inject = 0.85
-volumetric_fog_sky_affect = 0.691
