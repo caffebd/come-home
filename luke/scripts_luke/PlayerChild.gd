@@ -7,11 +7,6 @@ const JUMP_VELOCITY:float = 2.5
 #const SENSITIVITY:float = 0.003
 const SENSITIVITY:float = 0.0008
 
-const WALK_SPEED: float = 2.0
-const RUN_SPEED: float = 4.0
-
-var normal_speed: float = 2.0
-
 @onready var the_torch := %Torch
 @onready var the_lamp := %Lamp
 
@@ -21,9 +16,6 @@ var normal_speed: float = 2.0
 
 @export var clearing_two_marker: Marker3D
 
-@export var voice_path_reset_marker: Marker3D
-@export var cave_path_reset_marker: Marker3D
-@export var lake_path_reset_marker: Marker3D
 
 @export var into_lake_marker: Marker3D
 @export var reset_before_lake: Marker3D
@@ -73,10 +65,9 @@ var use_cursor: bool = false
 
 var too_far: bool = false
 
-var max_dad_dist: float = 90.0
+var max_dad_dist: float = 9.0
 
 var log_dragging: bool = false
-
 
 #head wobble settings here
 
@@ -124,14 +115,12 @@ var path_chosen: String = "cave"
 
 var being_pulled_lake: bool = false
 
-var can_run: bool = false
-
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	GlobalSignals.start_clearing.connect(_start_clearing)
 	GlobalSignals.change_dad_max_dist.connect(_change_dad_max_dist)
 	GlobalSignals.clearing_trigger_orb.connect(_clearing_trigger_orb)
-	GlobalSignals.player_to_mound.connect(_start_mound)
+	GlobalSignals.dad_to_mound.connect(_start_mound)
 	GlobalSignals.father_gone.connect(_father_gone)
 	GlobalSignals.night_path_set_up.connect(_night_path_set_up)
 	GlobalSignals.fork_set_up.connect(_fork_set_up)
@@ -139,9 +128,7 @@ func _ready():
 	GlobalSignals.start_house.connect(_start_house)
 	GlobalSignals.start_in_cave.connect(_start_in_cave)
 	GlobalSignals.dark_place.connect(_dark_place)
-
 	GlobalSignals.mouse_capture.connect(_mouse_capture)
-	GlobalSignals.mouse_capture_read.connect(_mouse_capture_read)
 	GlobalSignals.caught_by_buzz.connect(_caught_by_buzz)
 	GlobalSignals.path_chosen.connect(_path_chosen)
 	GlobalSignals.pull_into_lake.connect(_pull_into_lake)
@@ -190,17 +177,13 @@ func _start_in_cave():
 	following_dad = false
 	can_trigger_orb = false
 	GlobalSignals.emit_signal("father_gone")
-	
 	global_position = in_cave_marker.global_position	
 
-func _clearing_two_start(start_state):
-	if start_state:
-		GlobalSignals.emit_signal("animal_to_lake")
-		following_dad = false
-		can_trigger_orb = false
-		GlobalSignals.emit_signal("father_gone")
-		global_position = clearing_two_marker.global_position
-		GlobalSignals.emit_signal("dad_call")
+func _clearing_two_start():
+	following_dad = false
+	can_trigger_orb = false
+	GlobalSignals.emit_signal("father_gone")
+	global_position = clearing_two_marker.global_position
 
 func _start_lake_reset():
 	being_pulled_lake = false
@@ -211,33 +194,16 @@ func _start_lake_reset():
 func _dark_place(state):
 	in_dark = state
 	if not in_dark:
-		normal_speed = 2.0
+		speed = 2.0
 
 func _path_chosen(path):
 	path_chosen = path
-	GlobalVars.path_chosen = path
 
 func _caught_by_buzz():
 	if path_chosen == "cave":
 		hud.back_to_cave()
 	else:
 		hud.back_to_house()
-
-func voice_path_reset():
-	head.rotation_degrees.y = 0.0
-	global_position = voice_path_reset_marker.global_position
-	GlobalSignals.emit_signal("stick_create")
-	GlobalSignals.emit_signal("show_player_info","I had to find a way to distract that animal.")
-
-func cave_path_reset():
-	head.rotation_degrees.y = 0.0
-	global_position = cave_path_reset_marker.global_position
-	GlobalSignals.emit_signal("show_player_info","I had to find somewhere to hide from that animal.")
-
-func lake_path_reset():
-	head.rotation_degrees.y = 0.0
-	global_position = lake_path_reset_marker.global_position
-	GlobalSignals.emit_signal("show_player_info","I had to run to get away from that animal.")
 
 func _pull_into_lake():
 	being_pulled_lake = true
@@ -250,11 +216,7 @@ func _pull_into_lake():
 		GlobalSignals.emit_signal("dad_lake_reset")
 		
 
-func run_active():
-	GlobalSignals.emit_signal("show_player_info", "Hold 'SHIFT' to run.")
-	can_run = true
-	await get_tree().create_timer(4.0).timeout
-	GlobalSignals.emit_signal("hide_player_info")
+
 	
 
 func _item_collected(item):
@@ -313,19 +275,9 @@ func _mouse_capture(state):
 	use_cursor = state
 	if use_cursor:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		hud.exit_cover(true)
 	else:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-		hud.exit_cover(false)
-
-func _mouse_capture_read(state):
-	use_cursor = state
-	if use_cursor:
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	else:
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-
-		
+			
 func _input(event):
 	if event is InputEventMouseMotion:
 		if use_cursor:
@@ -339,10 +291,8 @@ func _input(event):
 	if Input.is_action_just_pressed("ui_cancel") and not hud.reading_panel.visible:
 		if use_cursor:
 			_mouse_capture(false)
-			
 		else:
 			_mouse_capture(true)
-			
 
 	if Input.is_action_just_pressed("torch") and has_light:
 		%SpotLight3D.visible = !%SpotLight3D.visible
@@ -356,8 +306,8 @@ func _input(event):
 	if Input.is_action_just_pressed("use"):
 		_take_action()
 	
-	#if Input.is_action_just_pressed("dad_call"):
-		#GlobalSignals.emit_signal("dad_call",1)
+	if Input.is_action_just_pressed("dad_call"):
+		GlobalSignals.emit_signal("dad_call",1)
 
 	if Input.is_action_pressed("crouch"):
 		if not crouching:
@@ -365,6 +315,9 @@ func _input(event):
 			var tween = create_tween()
 			tween.tween_property(head, "position:y", 0.2, 0.5)
 			crouching = true
+			
+			
+
 			#if ready_to_hide:
 				#%CrouchTimer.start()
 		if ready_to_hide:
@@ -374,11 +327,7 @@ func _input(event):
 				hud.hide_timer.visible = false
 				GlobalSignals.emit_signal("hiding")
 
-	if Input.is_action_pressed("run") and can_run:
-		speed = RUN_SPEED
-	else:
-		speed = normal_speed	
-	
+			
 	if Input.is_action_just_released("crouch"):
 		hud.hide_timer.value = 100
 		hud.hide_timer.visible = false
@@ -436,15 +385,15 @@ func _physics_process(delta):
 			if not too_far:
 				GlobalSignals.emit_signal("show_player_info", "I didn't want to go too far from dad.")
 			too_far = true
-			normal_speed = 0.75
+			speed = 0.75
 			if dist > max_dad_dist + 1:
-				normal_speed = 0.25
+				speed = 0.25
 			if dist < last_distance:
-				normal_speed = 1.5
+				speed = 1.5
 		else:
 			if too_far:
 				GlobalSignals.emit_signal("hide_player_info")
-			normal_speed = 2.0
+			speed = 2.0
 			too_far = false
 		
 		
@@ -452,9 +401,9 @@ func _physics_process(delta):
 	
 	if in_dark:
 		if light_on:
-			normal_speed = 2.0
+			speed = 2.0
 		else:
-			normal_speed = 0.5
+			speed = 0.5
 	
 	handle_holding_objects()
 	
@@ -529,7 +478,7 @@ func _physics_process(delta):
 		var direction = global_position.direction_to(into_lake_marker.global_position)
 		if global_position.distance_to(into_lake_marker.global_position) > 0.2:
 			#rotation.y=lerp_angle(rotation.y,atan2(velocity.x,velocity.z),.1)
-			speed = lerp(speed, 6.0, 0.5)
+			speed = lerp(speed, 4.0, 0.5)
 			velocity = direction * speed
 			move_and_slide()
 		
@@ -628,14 +577,6 @@ func throw_held_object():
 	obj.angular_velocity.z = 2
 	obj.gravity_scale = 0.1
 	obj.my_collision.disabled = false
-
-func release_held_object():
-	if heldObject != null:
-		var obj = heldObject
-		heldObject.held = false
-		drop_held_object()
-		obj.my_collision.set_deferred("disabled", false)
-		print ("released held object")
 	
 func handle_holding_objects():
 	# Throwing Objects

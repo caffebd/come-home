@@ -8,13 +8,7 @@ extends Control
 
 @onready var hide_timer: ProgressBar = %HideTimer
 
-@onready var distance_bar: ProgressBar = %AnimalDistance
-
 @export var use_fade: bool = true
-
-@export var player: CharacterBody3D
-
-
 
 var target_mode = "off"
 
@@ -37,9 +31,6 @@ func _ready() -> void:
 	GlobalSignals.start_game.connect(_start_game)
 	GlobalSignals.read.connect(_read)
 	GlobalSignals.hide_narration_simple.connect(_hide_narration_simple)
-	GlobalSignals.voice_path_reset.connect(_voice_path_reset)
-	GlobalSignals.cave_path_reset.connect(_cave_path_reset)
-	GlobalSignals.lake_path_reset.connect(_lake_path_reset)
 	%TextBackground.modulate.a = 0.0
 	if use_fade:
 		$Cover.modulate.a = 1.0
@@ -120,7 +111,7 @@ func _read(text:String):
 	var show_text = text_language[using_text]
 	text_area.text = show_text
 	reading_panel.visible = true
-	GlobalSignals.emit_signal("mouse_capture_read", true)
+	GlobalSignals.emit_signal("mouse_capture", true)
 	
 func _use_fade_in():
 	var tween = create_tween()
@@ -159,38 +150,8 @@ func back_to_lake():
 	await tween.finished
 	GlobalSignals.emit_signal("start_lake")
 	_start_game()
-
-func _voice_path_reset():
-	%CloseEyes.play("close")
-	var tween = create_tween()
-	%Title.visible = false
-	player.release_held_object()
-	tween.tween_property($Cover, "modulate:a", 1.0, 5.0)
-	await tween.finished
-	distance_bar.visible = false
-	player.voice_path_reset()
-	_start_game()
-
-func _cave_path_reset():
-	%CloseEyes.play("close")
-	var tween = create_tween()
-	%Title.visible = false
-	tween.tween_property($Cover, "modulate:a", 1.0, 5.0)
-	await tween.finished
-	distance_bar.visible = false
-	player.cave_path_reset()
-	_start_game()
-
-func _lake_path_reset():
-	%CloseEyes.play("close")
-	var tween = create_tween()
-	%Title.visible = false
-	tween.tween_property($Cover, "modulate:a", 1.0, 5.0)
-	await tween.finished
-	distance_bar.visible = false
-	player.lake_path_reset()
-	_start_game()
 	
+
 func fade_to_end():
 	var tween = create_tween()
 	tween.tween_property($Cover, "modulate:a", 1.0, 3.0)
@@ -216,7 +177,7 @@ func _on_close_btn_pressed() -> void:
 	reading_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	text_area.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	reading_panel.visible = false
-	GlobalSignals.emit_signal("mouse_capture_read", false)
+	GlobalSignals.emit_signal("mouse_capture", false)
 
 
 func _on_en_button_pressed() -> void:
@@ -233,15 +194,3 @@ func _on_bn_button_pressed() -> void:
 	var show_text = text_language[using_text]
 	text_area.add_theme_font_size_override("normal_font_size", 40)
 	text_area.text = show_text
-
-func animal_distance_bar(dist: float):
-	if not distance_bar.visible:
-		distance_bar.visible = true
-	var new_value:float = 50.0 - dist + 4.0
-	distance_bar.value = new_value
-
-func exit_cover(state):
-	%ExitCover.visible = state
-
-func _on_menu_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://luke/scenes_luke/menu.tscn")

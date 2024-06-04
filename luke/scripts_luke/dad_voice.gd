@@ -17,9 +17,8 @@ func _ready() -> void:
 	GlobalSignals.stick_drop_forest.connect(_resume_call)
 	GlobalSignals.cave_path_trigger.connect(_follow_cave)
 	GlobalSignals.voice_to_clearing_two.connect(_stop_call)
-	GlobalSignals.orb_to_clearing_two.connect(_stop_call)
 
-func _stop_call(state = false):
+func _stop_call():
 	%CallTimer.stop()
 
 func _adjust_random():

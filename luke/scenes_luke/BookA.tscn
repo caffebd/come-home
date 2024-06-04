@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://c3uthfo4rkkv7"]
+[gd_scene load_steps=11 format=3 uid="uid://c3uthfo4rkkv7"]
 
 [ext_resource type="Script" path="res://luke/scripts_luke/pull_item.gd" id="1_78xl8"]
 [ext_resource type="Material" uid="uid://co042sjq1rn5" path="res://assets/materials/bookcover_1.tres" id="1_copmj"]
@@ -13,20 +13,20 @@ _surfaces = [{
 "aabb": AABB(-0.0701017, -0.647425, -0.5, 0.139497, 0.647425, 1.00001),
 "format": 34896613377,
 "index_count": 18,
-"index_data": PackedByteArray("AAAGAAUAAAACAAYABAAGAAcABAAFAAYABAADAAEABAAHAAMA"),
+"index_data": PackedByteArray(0, 0, 6, 0, 5, 0, 0, 0, 2, 0, 6, 0, 4, 0, 6, 0, 7, 0, 4, 0, 5, 0, 6, 0, 4, 0, 3, 0, 1, 0, 4, 0, 7, 0, 3, 0),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 8,
-"vertex_data": PackedByteArray("AAAAAP7/AAD//wAA/v8AAAAAAAAAAAAA//8AAAAAAAD//////v8AAAAA///+/wAAAAD//wAAAAD/////AAAAAA==")
+"vertex_data": PackedByteArray(0, 0, 0, 0, 254, 255, 0, 0, 255, 255, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 254, 255, 0, 0, 0, 0, 255, 255, 254, 255, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0)
 }, {
 "aabb": AABB(-0.0665086, -0.56748, -0.423526, 0.132311, 0.566977, 0.847063),
 "format": 34896613377,
 "index_count": 36,
-"index_data": PackedByteArray("BAAHAAUABAAGAAcAAgABAAMAAgAAAAEAAAAFAAEAAAAEAAUABgADAAcABgACAAMABwABAAUABwADAAEABgAAAAIABgAEAAAA"),
+"index_data": PackedByteArray(4, 0, 7, 0, 5, 0, 4, 0, 6, 0, 7, 0, 2, 0, 1, 0, 3, 0, 2, 0, 0, 0, 1, 0, 0, 0, 5, 0, 1, 0, 0, 0, 4, 0, 5, 0, 6, 0, 3, 0, 7, 0, 6, 0, 2, 0, 3, 0, 7, 0, 1, 0, 5, 0, 7, 0, 3, 0, 1, 0, 6, 0, 0, 0, 2, 0, 6, 0, 4, 0, 0, 0),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 8,
-"vertex_data": PackedByteArray("AAD9//7/AAAAAP3/AAAAAP///f/+/wAA///9/wAAAAAAAAAA/v8AAAAAAAAAAAAA//8AAP7/AAD//wAAAAAAAA==")
+"vertex_data": PackedByteArray(0, 0, 253, 255, 254, 255, 0, 0, 0, 0, 253, 255, 0, 0, 0, 0, 255, 255, 253, 255, 254, 255, 0, 0, 255, 255, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 254, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0)
 }]
 blend_shape_mode = 0
 
@@ -34,26 +34,26 @@ blend_shape_mode = 0
 resource_name = "book1_TexturesCom_BookCovers0152_2_masked_S"
 _surfaces = [{
 "aabb": AABB(-0.0701017, -0.647425, -0.5, 0.139497, 0.647425, 1.00001),
-"attribute_data": PackedByteArray("AAD///////8AAAAA//8AANSL///Ui///C3T//wt0//8LdAAAC3QAANSLAADUiwAA"),
+"attribute_data": PackedByteArray(0, 0, 255, 255, 255, 255, 255, 255, 0, 0, 0, 0, 255, 255, 0, 0, 212, 139, 255, 255, 212, 139, 255, 255, 11, 116, 255, 255, 11, 116, 255, 255, 11, 116, 0, 0, 11, 116, 0, 0, 212, 139, 0, 0, 212, 139, 0, 0),
 "format": 34896613399,
 "index_count": 18,
-"index_data": PackedByteArray("AAAIAAYAAAACAAgABAAJAAoABAAHAAkABQADAAEABQALAAMA"),
+"index_data": PackedByteArray(0, 0, 8, 0, 6, 0, 0, 0, 2, 0, 8, 0, 4, 0, 9, 0, 10, 0, 4, 0, 7, 0, 9, 0, 5, 0, 3, 0, 1, 0, 5, 0, 11, 0, 3, 0),
 "material": SubResource("StandardMaterial3D_v8sfs"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 12,
-"vertex_data": PackedByteArray("AAAAAP7/VNX//wAA/v9U1QAAAAAAAFTV//8AAAAAVNX//////v//v//////+/1TVAAD///7/VNUAAP///v//vwAA//8AAFTVAAD//wAA/7//////AAD/v/////8AAFTVVNVU1aqqVVVU1VTVqqpUVf///3+qqlRVVNVU1f///39U1VTV////f////3+qqlRV")
+"vertex_data": PackedByteArray(0, 0, 0, 0, 254, 255, 84, 213, 255, 255, 0, 0, 254, 255, 84, 213, 0, 0, 0, 0, 0, 0, 84, 213, 255, 255, 0, 0, 0, 0, 84, 213, 255, 255, 255, 255, 254, 255, 255, 191, 255, 255, 255, 255, 254, 255, 84, 213, 0, 0, 255, 255, 254, 255, 84, 213, 0, 0, 255, 255, 254, 255, 255, 191, 0, 0, 255, 255, 0, 0, 84, 213, 0, 0, 255, 255, 0, 0, 255, 191, 255, 255, 255, 255, 0, 0, 255, 191, 255, 255, 255, 255, 0, 0, 84, 213, 84, 213, 84, 213, 170, 170, 85, 85, 84, 213, 84, 213, 170, 170, 84, 85, 255, 255, 255, 127, 170, 170, 84, 85, 84, 213, 84, 213, 255, 255, 255, 127, 84, 213, 84, 213, 255, 255, 255, 127, 255, 255, 255, 127, 170, 170, 84, 85)
 }, {
 "aabb": AABB(-0.0665086, -0.56748, -0.423526, 0.132311, 0.566977, 0.847063),
-"attribute_data": PackedByteArray("/1///xuqrY3/XwAA/5///xaqrY3/nwAA6sGtjf9f/z//X/8/R5Ktjf+f/z//n/8/lGD/v/B0/uzwdP7sap//v/B0d4jwdHeI8mT+7PJk/uyUYP9/8mR3iPJkd4hqn/9/"),
+"attribute_data": PackedByteArray(255, 95, 255, 255, 27, 170, 173, 141, 255, 95, 0, 0, 255, 159, 255, 255, 22, 170, 173, 141, 255, 159, 0, 0, 234, 193, 173, 141, 255, 95, 255, 63, 255, 95, 255, 63, 71, 146, 173, 141, 255, 159, 255, 63, 255, 159, 255, 63, 148, 96, 255, 191, 240, 116, 254, 236, 240, 116, 254, 236, 106, 159, 255, 191, 240, 116, 119, 136, 240, 116, 119, 136, 242, 100, 254, 236, 242, 100, 254, 236, 148, 96, 255, 127, 242, 100, 119, 136, 242, 100, 119, 136, 106, 159, 255, 127),
 "format": 34896613399,
 "index_count": 36,
-"index_data": PackedByteArray("DQAVABAADQASABUABwAFAAoABwACAAUAAAAPAAMAAAAMAA8AFAALABcAFAAIAAsAFgAEABEAFgAJAAQAEwABAAYAEwAOAAEA"),
+"index_data": PackedByteArray(13, 0, 21, 0, 16, 0, 13, 0, 18, 0, 21, 0, 7, 0, 5, 0, 10, 0, 7, 0, 2, 0, 5, 0, 0, 0, 15, 0, 3, 0, 0, 0, 12, 0, 15, 0, 20, 0, 11, 0, 23, 0, 20, 0, 8, 0, 11, 0, 22, 0, 4, 0, 17, 0, 22, 0, 9, 0, 4, 0, 19, 0, 1, 0, 6, 0, 19, 0, 14, 0, 1, 0),
 "material": SubResource("StandardMaterial3D_32pq1"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 24,
-"vertex_data": PackedByteArray("AAD9//7///8AAP3//v8AAAAA/f/+/1TVAAD9/wAA//8AAP3/AAAAAAAA/f8AAFTV///9//7/AID///3//v9U1f///f/+//+////9/wAAAAD///3/AABU1f///f8AAP+/AAAAAP7///8AAAAA/v///wAAAAD+/wAAAAAAAAAA//8AAAAAAAD//wAAAAAAAAAA//8AAP7//////wAA/v8AAP//AAD+//+///8AAAAA/////wAAAAAAAP//AAAAAP+//z//f/9//39U1aoq/z//f/9///9U1aoq/3///1TVqir/fwAA/3///1TVqir/fwAA/z//f/9//z//f/9//z//f/9//z//f////3//P/9//3//fwAA/3//P/9/////fwAA")
+"vertex_data": PackedByteArray(0, 0, 253, 255, 254, 255, 255, 255, 0, 0, 253, 255, 254, 255, 0, 0, 0, 0, 253, 255, 254, 255, 84, 213, 0, 0, 253, 255, 0, 0, 255, 255, 0, 0, 253, 255, 0, 0, 0, 0, 0, 0, 253, 255, 0, 0, 84, 213, 255, 255, 253, 255, 254, 255, 0, 128, 255, 255, 253, 255, 254, 255, 84, 213, 255, 255, 253, 255, 254, 255, 255, 191, 255, 255, 253, 255, 0, 0, 0, 0, 255, 255, 253, 255, 0, 0, 84, 213, 255, 255, 253, 255, 0, 0, 255, 191, 0, 0, 0, 0, 254, 255, 255, 255, 0, 0, 0, 0, 254, 255, 255, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 254, 255, 255, 255, 255, 255, 0, 0, 254, 255, 0, 0, 255, 255, 0, 0, 254, 255, 255, 191, 255, 255, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 255, 191, 255, 63, 255, 127, 255, 127, 255, 127, 84, 213, 170, 42, 255, 63, 255, 127, 255, 127, 255, 255, 84, 213, 170, 42, 255, 127, 255, 255, 84, 213, 170, 42, 255, 127, 0, 0, 255, 127, 255, 255, 84, 213, 170, 42, 255, 127, 0, 0, 255, 63, 255, 127, 255, 127, 255, 63, 255, 127, 255, 127, 255, 63, 255, 127, 255, 127, 255, 63, 255, 127, 255, 255, 255, 127, 255, 63, 255, 127, 255, 127, 255, 127, 0, 0, 255, 127, 255, 63, 255, 127, 255, 255, 255, 127, 0, 0)
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_jdx0o")

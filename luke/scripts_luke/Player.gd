@@ -165,3 +165,4 @@ func _headbob(time)->Vector3:
 
 func _to_menu():
 	get_tree().change_scene_to_file("res://scenes/Menu.tscn")
+

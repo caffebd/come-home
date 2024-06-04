@@ -19,11 +19,11 @@
 [ext_resource type="ArrayMesh" uid="uid://0ht0xhn02jjx" path="res://assets/foliage/grass2/grass2_LOD1.res" id="19_sf4dq"]
 [ext_resource type="ArrayMesh" uid="uid://beo5vdhyqj5ch" path="res://assets/foliage/grass3/grass3_LOD0.res" id="20_vmrr4"]
 [ext_resource type="ArrayMesh" uid="uid://bnl58evtyovfr" path="res://assets/foliage/grass3/grass3_LOD1.res" id="21_7kaso"]
-[ext_resource type="ArrayMesh" uid="uid://crssrkdhwrhuh" path="res://assets/foliage/foliage/fern1/fern1_LOD0.res" id="22_827jx"]
+[ext_resource type="ArrayMesh" uid="uid://crssrkdhwrhuh" path="res://assets/foliage/fern1/fern1_LOD0.res" id="22_827jx"]
 [ext_resource type="ArrayMesh" uid="uid://d3c08jju3cls" path="res://assets/foliage/shrub1/shrub1_LOD0.res" id="22_i88wk"]
-[ext_resource type="ArrayMesh" uid="uid://bjdj6kys2lxjq" path="res://assets/foliage/foliage/fern1/fern1_LOD1.res" id="23_eaa0i"]
+[ext_resource type="ArrayMesh" uid="uid://bjdj6kys2lxjq" path="res://assets/foliage/fern1/fern1_LOD1.res" id="23_eaa0i"]
 [ext_resource type="ArrayMesh" uid="uid://cqokxv5f66a3u" path="res://assets/foliage/shrub1/shrub1_LOD1.res" id="23_whrxv"]
-[ext_resource type="ArrayMesh" uid="uid://cp2c3smrc2431" path="res://assets/foliage/foliage/fern1/fern1_LOD2.res" id="24_30iac"]
+[ext_resource type="ArrayMesh" uid="uid://cp2c3smrc2431" path="res://assets/foliage/fern1/fern1_LOD2.res" id="24_30iac"]
 [ext_resource type="ArrayMesh" uid="uid://cw7qnnm46fqal" path="res://assets/foliage/shrub1/shrub1_LOD2.res" id="24_ufa76"]
 [ext_resource type="ArrayMesh" uid="uid://c2o64a4a8v5ms" path="res://assets/foliage/shrub3/shrub3_LOD0.res" id="25_11v8r"]
 [ext_resource type="ArrayMesh" uid="uid://cmpjkkq2oraip" path="res://assets/foliage/shrub3/shrub3_LOD1.res" id="26_f3xed"]
@@ -398,7 +398,7 @@ metadata/class = "Greenhouse_Plant"
 [sub_resource type="Resource" id="Resource_mav04"]
 resource_name = "Greenhouse_PlantState"
 script = ExtResource("4_fuwkx")
-plant/plant_brush_active = true
+plant/plant_brush_active = false
 plant/plant_label = "grass2"
 plant/plant = SubResource("Resource_sqsxg")
 metadata/class = "Greenhouse_PlantState"
@@ -650,7 +650,7 @@ metadata/class = "Greenhouse_Plant"
 [sub_resource type="Resource" id="Resource_554hl"]
 resource_name = "Greenhouse_PlantState"
 script = ExtResource("4_fuwkx")
-plant/plant_brush_active = true
+plant/plant_brush_active = false
 plant/plant_label = "shrub4"
 plant/plant = SubResource("Resource_5ryo0")
 metadata/class = "Greenhouse_PlantState"
@@ -659,5 +659,4 @@ metadata/class = "Greenhouse_PlantState"
 resource_name = "Greenhouse"
 script = ExtResource("1_l0ncw")
 plant_types/greenhouse_plant_states = [SubResource("Resource_jgj2h"), SubResource("Resource_rxuxq"), SubResource("Resource_q3ejs"), SubResource("Resource_nvhf6"), SubResource("Resource_6ityl"), SubResource("Resource_mav04"), SubResource("Resource_wqaho"), SubResource("Resource_w6txv"), SubResource("Resource_jo2ik"), SubResource("Resource_554hl")]
-plant_types/selected_for_edit_resource = SubResource("Resource_q3ejs")
 metadata/class = "Greenhouse"

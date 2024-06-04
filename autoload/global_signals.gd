@@ -2,12 +2,9 @@ extends Node
 
 signal start_game()
 
-signal hud_menu(state)
-
 signal dad_to_mound()
 signal dad_to_clearing()
 
-signal player_to_mound()
 
 signal start_clearing()
 
@@ -56,17 +53,7 @@ signal animal_trigger()
 
 signal hiding()
 
-signal stick_create()
-
-signal stick_reset()
-
 signal cave_path_trigger()
-
-signal voice_path_reset()
-
-signal cave_path_reset()
-
-signal lake_path_reset()
 
 signal item_collected(item)
 
@@ -86,8 +73,8 @@ signal path_chosen(path)
 
 signal buzz_off()
 
-signal orb_to_clearing_two(start_state)
-signal voice_to_clearing_two(start_state)
+signal orb_to_clearing_two()
+signal voice_to_clearing_two()
 
 signal pull_into_lake()
 
@@ -96,13 +83,11 @@ signal start_lake()
 signal dad_lake_reset()
 signal orb_lake_reset()
 
-signal animal_to_lake()
-
 signal read(text)
 
 signal mouse_capture(state)
 
-signal mouse_capture_read(state)
+
 
 signal time_transition_0
 signal time_transition_1

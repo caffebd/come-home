@@ -9,13 +9,10 @@ extends CharacterBody3D
 
 @export var sitting_log: Node3D
 
-@onready var anim_tree: AnimationTree = %AnimationTree
-
 var use_check_points: Array[Marker3D]
 
 var target_position: Vector3 #set this to the target coordinate
 var speed: float = 1.0
-var max_speed: float = 4.0
 
 var check_index:int = 0
 
@@ -55,7 +52,6 @@ func _ready() -> void:
 	GlobalSignals.fork_set_up.connect(_dad_gone)
 	GlobalSignals.start_house.connect(_dad_gone)
 	GlobalSignals.start_in_cave.connect(_dad_gone)
-	GlobalSignals.lake_path_reset.connect(_dad_gone)
 	GlobalSignals.orb_to_clearing_two.connect(_dad_gone)
 	GlobalSignals.voice_to_clearing_two.connect(_dad_gone)
 	use_check_points = check_points
@@ -69,15 +65,13 @@ func _start_game():
 		print ("dad start")
 		await get_tree().create_timer(4.0).timeout
 		print ("dad psot timer")
-		#$AnimationPlayer.play("walk")
-		curr_anim = WALK
+		$AnimationPlayer.play("walk")
 		_next_position()
-		_update_tree()
+		#_update_tree()
 	
 func _start_clearing():
 	walking = false
 	disable_dad = true
-	curr_anim = SITTING
 	global_position = sitting_log.global_position
 	global_position.y -= 0.2
 	GlobalSignals.emit_signal("change_dad_max_dist", 20.0)
@@ -85,7 +79,6 @@ func _start_clearing():
 	
 
 func _dad_to_mound():
-	
 	walking = false
 	disable_dad = true
 	curr_anim = STANDING
@@ -98,8 +91,7 @@ func _dad_to_clearing():
 	_dad_repeat_log(false)
 	use_check_points = clearing_check_points
 	disable_dad = false
-	curr_anim = WALK
-	#$AnimationPlayer.play("walk")
+	$AnimationPlayer.play("walk")
 	_next_position()	
 
 func _dad_repeat_log(state):
@@ -109,55 +101,55 @@ func _dad_repeat_log(state):
 		%RepeatLogTimer.stop()
 
 
-func _dad_gone(start_state = false):
+func _dad_gone():
 	print ("remove dad")
 	disable_dad = true
 	visible = false
 	walking = false
-	player.normal_speed = 2.0
 	
-func _update_tree():
-	anim_tree["parameters/BlendTurn/blend_amount"] = turn_value
-	anim_tree["parameters/BlendSit/blend_amount"] = sit_down_value
-	anim_tree["parameters/BlendSitIdle/blend_amount"] = sitting_value
-	anim_tree["parameters/BlendStand/blend_amount"] = standing_value
+#func _update_tree():
+	#anim_tree["parameters/BlendTurn/blend_amount"] = turn_value
+	#anim_tree["parameters/SitDown/blend_amount"] = sit_down_value
+	#anim_tree["parameters/Sitting/blend_amount"] = sitting_value
+	#anim_tree["parameters/StandingIdle/blend_amount"] = standing_value
 	
-func _handle_animation(delta):
-	match curr_anim:		
-		WALK:
-			turn_value = lerp(turn_value, 0.0, blend_speed_two*delta)
-			sit_down_value = lerp(sit_down_value, 0.0, blend_speed*delta)
-			sitting_value = lerp(sitting_value, 0.0, blend_speed*delta)
-			standing_value = lerp(standing_value, 0.0, blend_speed*delta)
-			_update_tree()
-		TURN:
-			turn_value = lerp(turn_value, 1.0, blend_speed*delta)
-			sit_down_value = lerp(sit_down_value, 0.0, blend_speed*delta)
-			sitting_value = lerp(sitting_value, 0.0, blend_speed*delta)
-			standing_value = lerp(standing_value, 0.0, blend_speed*delta)
-			_update_tree()
-		SITDOWN:
-			sit_down_value = lerp(sit_down_value, 1.0, blend_speed*delta)
-			turn_value = lerp(turn_value, 0.0, blend_speed*delta)
-			sitting_value = lerp(sitting_value, 0.0, blend_speed*delta)
-			standing_value = lerp(standing_value, 0.0, blend_speed*delta)
-			_update_tree()
-		SITTING:
-			sit_down_value = lerp(sit_down_value, 0.0, blend_speed*delta)
-			turn_value = lerp(turn_value, 0.0, blend_speed*delta)
-			sitting_value = lerp(sitting_value, 1.0, blend_speed*delta)
-			standing_value = lerp(standing_value, 0.0, blend_speed*delta)
-			_update_tree()
-		STANDING:
-			standing_value = lerp(standing_value, 1.0, blend_speed*delta)
-			sit_down_value = lerp(sit_down_value, 0.0, blend_speed*delta)
-			turn_value = lerp(turn_value, 0.0, blend_speed*delta)
-			sitting_value = lerp(sitting_value, 0.0, blend_speed*delta)
-			_update_tree()
+#func _handle_animation(delta):
+	#match curr_anim:
+		#
+		#WALK:
+			#turn_value = lerp(turn_value, 0.0, blend_speed_two*delta)
+			#sit_down_value = lerp(sit_down_value, 0.0, blend_speed*delta)
+			#sitting_value = lerp(sitting_value, 0.0, blend_speed*delta)
+			#standing_value = lerp(standing_value, 0.0, blend_speed*delta)
+			#_update_tree()
+		#TURN:
+			#turn_value = lerp(turn_value, 1.0, blend_speed*delta)
+			#sit_down_value = lerp(sit_down_value, 0.0, blend_speed*delta)
+			#sitting_value = lerp(sitting_value, 0.0, blend_speed*delta)
+			#standing_value = lerp(standing_value, 0.0, blend_speed*delta)
+			#_update_tree()
+		#SITDOWN:
+			#sit_down_value = lerp(sit_down_value, 1.0, blend_speed*delta)
+			#turn_value = lerp(turn_value, 0.0, blend_speed*delta)
+			#sitting_value = lerp(sitting_value, 0.0, blend_speed*delta)
+			#standing_value = lerp(standing_value, 0.0, blend_speed*delta)
+			#_update_tree()
+		#SITTING:
+			#sit_down_value = lerp(sit_down_value, 0.0, blend_speed*delta)
+			#turn_value = lerp(turn_value, 0.0, blend_speed*delta)
+			#sitting_value = lerp(sitting_value, 1.0, blend_speed*delta)
+			#standing_value = lerp(standing_value, 0.0, blend_speed*delta)
+			#_update_tree()
+		#STANDING:
+			#standing_value = lerp(standing_value, 1.0, blend_speed*delta)
+			#sit_down_value = lerp(sit_down_value, 0.0, blend_speed*delta)
+			#turn_value = lerp(turn_value, 0.0, blend_speed*delta)
+			#sitting_value = lerp(sitting_value, 0.0, blend_speed*delta)
+			#_update_tree()
 			
 func _physics_process(delta: float) -> void:
 	
-	_handle_animation(delta)
+	#_handle_animation(delta)
 	
 
 	
@@ -176,23 +168,23 @@ func _physics_process(delta: float) -> void:
 					
 				#print ("walking")
 				rotation.y=lerp_angle(rotation.y,atan2(velocity.x,velocity.z),.1)
-				speed = lerp(speed, max_speed, 0.5)
+				speed = lerp(speed, 4.0, 0.5)
 				velocity.x = direction.x * speed
 				velocity.z = direction.z * speed
 				if not is_on_floor():
 					velocity.y -= gravity * delta
-				curr_anim = WALK
-				#$AnimationPlayer.speed_scale = lerp($AnimationPlayer.speed_scale, 0.8, 1.0)
+				#curr_anim = WALK
+				$AnimationPlayer.speed_scale = lerp($AnimationPlayer.speed_scale, 0.8, 1.0)
 				GlobalSignals.emit_signal("hide_speech")
 				$SpeechTimer.stop()
 
 				move_and_slide()
 			else:
 				if can_turn:
-					print ("turn")
+					#print ("turn")
 					can_turn = false
-					curr_anim = TURN
-					#$AnimationPlayer.speed_scale = lerp($AnimationPlayer.speed_scale, 0.0, 1.0)
+					#curr_anim = TURN
+					$AnimationPlayer.speed_scale = lerp($AnimationPlayer.speed_scale, 0.0, 1.0)
 					$SpeechTimer.start()
 					speed = lerp(speed, 0.0, 1.0)
 					velocity.x = direction.x * speed
@@ -264,15 +256,12 @@ func _check_for_narration(check_point: String):
 		"Check18":
 			Narration.narrate()
 			#GlobalSignals.emit_signal("show_narration", "but that day we went further than we had ever been before.")
-		"Check37":
+		"Check23":
 			GlobalSignals.emit_signal("change_dad_max_dist", 18.5)
-			max_speed = 6.5
-			
 		"CheckEnd":
 			Narration.main_index = Narration.corner_index
 			Narration.sub_index = 0
 			Narration.narrate()
-			max_speed = 4.0
 			#GlobalSignals.emit_signal("show_narration", "For a second I panicked when I lost sight of my dad.")
 
 
