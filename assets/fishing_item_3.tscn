@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://3mptlcdfok7e"]
+
+[ext_resource type="PackedScene" uid="uid://esd7o1i0sd3r" path="res://assets/imported/fishingItem3.glb" id="1_1gllc"]
+[ext_resource type="Material" uid="uid://d3d0gcoq1ts65" path="res://assets/materials/wood_1.tres" id="2_jmxdn"]
+
+[node name="fishingItem3" instance=ExtResource("1_1gllc")]
+
+[node name="BezierCurve_005" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_jmxdn")
